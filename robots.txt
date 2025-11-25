@@ -1,0 +1,9 @@
+# Robots.txt for Sal Negra Tenerife
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://salnegratenerife.com/sitemap.xml
+
+# Disallow admin/private areas (if any)
+Disallow: /.claude/
