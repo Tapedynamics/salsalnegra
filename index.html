@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sal Negra Tenerife - Restaurante con una amplia variedad de platos, mariscos, pescados, carnes y tapas con vistas al mar.">
+    <title>Sal Negra Tenerife - Restaurante</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=9">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/logo-header.png" alt="Sal Negra">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">INICIO</a></li>
+                <li><a href="sobre-nosotros.html">SOBRE NOSOTROS</a></li>
+                <li><a href="carta.html">CARTA</a></li>
+                <li><a href="reservas.html">RESERVAS</a></li>
+                <li><a href="menus-especiales.html">MENÚS ESPECIALES</a></li>
+                <li><a href="eventos.html">EVENTOS</a></li>
+                <li><a href="contacto.html">CONTACTO</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="videos/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-logo">
+            <img src="images/logo-white-clean.png" alt="Sal Negra Tenerife">
+        </div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Sabor Auténtico con Vistas al Mar</p>
+            <a href="reservas.html" class="btn btn-primary">RESERVAS</a>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="about">
+        <div class="container">
+            <!-- About Side Images -->
+            <div class="about-image-left">
+                <img src="images/hero-left.jpg" alt="Sal Negra Restaurant">
+            </div>
+            <div class="about-image-right">
+                <img src="images/hero-right.jpg" alt="Sal Negra Restaurant">
+            </div>
+
+            <div class="about-content">
+                <h2>Bienvenidos a Sal Negra</h2>
+                <p>En Sal Negra Tenerife disfrutarás de una experiencia gastronómica única. Nuestra amplia variedad de platos incluye los mejores mariscos, pescados frescos, carnes selectas y tapas tradicionales, todo mientras aprecias las impresionantes vistas al mar.</p>
+                <p>Cada plato está preparado con pasión y los mejores ingredientes, ofreciendo sabores auténticos que te transportarán a través de la rica tradición culinaria.</p>
+                <a href="sobre-nosotros.html" class="btn btn-primary">Descubre Más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Nuestro Restaurante</h2>
+
+            <!-- 3D Carousel -->
+            <div class="carousel-3d-container">
+                <div class="carousel-3d" id="carousel3d">
+                    <!-- Carousel items will be loaded dynamically -->
+                </div>
+                <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Anterior">‹</button>
+                <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Siguiente">›</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="carta.html" class="btn btn-primary">Ver Carta Completa</a>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <img class="lightbox-content" id="lightboxImg" alt="Gallery image">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sal Negra Tenerife</h4>
+                    <p>Restaurante con vistas al mar en el sur de Tenerife. Cocina mediterránea y productos frescos de calidad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><strong>Dirección:</strong><br>Avda. La Habana<br>Centro Comercial San Telmo<br>Local 13 b, Tenerife</p>
+                    <p><strong>Teléfono:</strong><br><a href="tel:922306958">922 30 69 58</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <p><strong>Lunes a Domingo</strong><br>09:00 - 17:00</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" target="_blank">Facebook</a>
+                        <a href="#" aria-label="Instagram" target="_blank">Instagram</a>
+                        <a href="#" aria-label="TripAdvisor" target="_blank">TripAdvisor</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sal Negra Tenerife. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js?v=3"></script>
+</body>
+</html>
