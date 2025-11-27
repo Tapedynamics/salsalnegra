@@ -441,6 +441,36 @@ p {
     margin: 0;
 }
 
+/* Menu Items with Images */
+.menu-item-with-image {
+    padding: 0;
+    overflow: hidden;
+}
+
+.menu-item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.menu-item-with-image:hover .menu-item-image {
+    transform: scale(1.05);
+}
+
+.menu-item-content {
+    padding: 1.5rem;
+}
+
+.menu-item-with-image .menu-item-header {
+    margin-bottom: 0.5rem;
+}
+
+.menu-item-with-image p {
+    margin: 0;
+}
+
 /* === GALLERY SECTION === */
 .gallery {
     padding: 4rem 0;
