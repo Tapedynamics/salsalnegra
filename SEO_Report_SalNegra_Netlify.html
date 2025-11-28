@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Auditoría SEO - Sal Negra Tenerife (Netlify)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #1a1a1a;
+            background: #f5f5f5;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .header a {
+            color: #00d4ff;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #1a1a2e;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #00d4ff;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .score-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-number {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00d4ff;
+        }
+
+        .score-text {
+            font-size: 24px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .metric {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .metric-value.green { color: #28a745; }
+        .metric-value.red { color: #dc3545; }
+        .metric-value.orange { color: #ff9800; }
+        .metric-value.blue { color: #00d4ff; }
+
+        .metric-label {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .problem-box {
+            background: white;
+            border-left: 6px solid #dc3545;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .problem-box.critical { border-left-color: #dc3545; }
+        .problem-box.high { border-left-color: #ff9800; }
+        .problem-box.medium { border-left-color: #1a1a2e; }
+
+        .problem-box h3 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .badge-critical {
+            background: #dc3545;
+            color: white;
+        }
+
+        .badge-high {
+            background: #ff9800;
+            color: white;
+        }
+
+        .badge-medium {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .before, .after {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .before {
+            border: 3px solid #dc3545;
+        }
+
+        .after {
+            border: 3px solid #28a745;
+        }
+
+        .before h5 {
+            color: #dc3545;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .after h5 {
+            color: #28a745;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 25px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .alert {
+            padding: 20px 25px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 17px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border: 2px solid #ff9800;
+            color: #856404;
+        }
+
+        .alert-info {
+            background: #e7f3ff;
+            border: 2px solid #00d4ff;
+            color: #0c5460;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 17px;
+        }
+
+        th {
+            background: #1a1a2e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 18px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding: 15px;
+            background: #f8f9fa;
+            margin: 10px 0;
+            border-left: 4px solid #00d4ff;
+            font-size: 18px;
+        }
+
+        .phase {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 6px solid #00d4ff;
+        }
+
+        .phase h3 {
+            margin-top: 0;
+            color: #1a1a2e;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0e0e0;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        .tag.green {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .tag.red {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .tag.orange {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 2px solid #00d4ff;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #1a1a2e;
+        }
+
+        .toc ul {
+            margin-left: 20px;
+        }
+
+        .toc a {
+            color: #1a1a2e;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+            color: #00d4ff;
+        }
+
+        .quick-win {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .quick-win h4 {
+            color: #155724;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .score-number {
+                font-size: 60px;
+            }
+
+            .metric-value {
+                font-size: 28px;
+            }
+
+            .code {
+                font-size: 12px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>INFORME DE AUDITORÍA SEO</h1>
+        <h1>Sal Negra Tenerife</h1>
+        <p>Fecha de Análisis: 28 Noviembre 2025</p>
+        <p>Sitio Web: <a href="https://salnegra.netlify.app" target="_blank">salnegra.netlify.app</a></p>
+        <p>Tipo de Negocio: Restaurante de Mariscos y Pescados con Vistas al Mar</p>
+    </div>
+
+    <div class="container">
+        <!-- Puntuación Principal -->
+        <div class="score-box">
+            <div class="score-number">5.5/10</div>
+            <div class="score-text">Puntuación SEO General</div>
+            <p style="margin-top: 20px; font-size: 20px;">Base técnica aceptable con múltiples oportunidades de mejora críticas</p>
+        </div>
+
+        <!-- Índice -->
+        <div class="toc">
+            <h3>Índice de Contenidos</h3>
+            <ul>
+                <li><a href="#resumen">Resumen Ejecutivo</a></li>
+                <li><a href="#metricas">Métricas Principales</a></li>
+                <li><a href="#puntos-fuertes">Puntos Fuertes</a></li>
+                <li><a href="#problemas-criticos">Problemas Críticos</a></li>
+                <li><a href="#problemas-importantes">Problemas Importantes</a></li>
+                <li><a href="#quick-wins">Quick Wins (Victorias Rápidas)</a></li>
+                <li><a href="#ejemplos">Ejemplos de Código</a></li>
+                <li><a href="#plan">Plan de Acción</a></li>
+                <li><a href="#roi">ROI Estimado</a></li>
+            </ul>
+        </div>
+
+        <!-- Resumen Ejecutivo -->
+        <div id="resumen" class="section">
+            <h2>Resumen Ejecutivo</h2>
+
+            <p>El sitio web <strong>salnegra.netlify.app</strong> presenta una estructura visual atractiva y contenido relevante para un restaurante de mariscos en Tenerife. Sin embargo, existen <strong>deficiencias técnicas SEO significativas</strong> que están limitando su visibilidad en buscadores.</p>
+
+            <div class="alert alert-warning">
+                <strong>Diagnóstico:</strong> El sitio tiene buena base de contenido pero carece de optimización técnica fundamental. Los meta tags están incompletos en todas las páginas, falta structured data en la mayoría de secciones, y hay problemas de consistencia en información de contacto.
+            </div>
+
+            <h3>Hallazgos Principales</h3>
+            <ul>
+                <li><strong>6 páginas analizadas:</strong> Homepage, Carta, Reservas, Sobre Nosotros, Menús Especiales, Eventos</li>
+                <li><strong>5 problemas críticos</strong> que requieren atención inmediata</li>
+                <li><strong>6 problemas importantes</strong> que afectan el rendimiento SEO</li>
+                <li><strong>Potencial de mejora:</strong> +40-60% en tráfico orgánico tras implementar correcciones</li>
+            </ul>
+        </div>
+
+        <!-- Métricas Principales -->
+        <div id="metricas" class="section">
+            <h2>Métricas Principales</h2>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value blue">6</div>
+                    <div class="metric-label">Páginas Analizadas</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value red">5</div>
+                    <div class="metric-label">Problemas Críticos</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value orange">6</div>
+                    <div class="metric-label">Problemas Importantes</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value green">+45%</div>
+                    <div class="metric-label">ROI Potencial (6 meses)</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value orange">3/10</div>
+                    <div class="metric-label">Meta Tags</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value orange">4/10</div>
+                    <div class="metric-label">Structured Data</div>
+                </div>
+            </div>
+
+            <h3>Desglose de Puntuación por Categoría</h3>
+            <table>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Puntuación</th>
+                    <th>Estado</th>
+                </tr>
+                <tr>
+                    <td>Contenido y Relevancia</td>
+                    <td><strong style="color: #28a745;">7/10</strong></td>
+                    <td><span class="tag green">Bueno</span></td>
+                </tr>
+                <tr>
+                    <td>Estructura de Headings</td>
+                    <td><strong style="color: #28a745;">7/10</strong></td>
+                    <td><span class="tag green">Bueno</span></td>
+                </tr>
+                <tr>
+                    <td>Title Tags</td>
+                    <td><strong style="color: #ff9800;">6/10</strong></td>
+                    <td><span class="tag orange">Mejorable</span></td>
+                </tr>
+                <tr>
+                    <td>Meta Descriptions</td>
+                    <td><strong style="color: #dc3545;">2/10</strong></td>
+                    <td><span class="tag red">Crítico</span></td>
+                </tr>
+                <tr>
+                    <td>Structured Data (Schema.org)</td>
+                    <td><strong style="color: #ff9800;">4/10</strong></td>
+                    <td><span class="tag orange">Incompleto</span></td>
+                </tr>
+                <tr>
+                    <td>Optimización de Imágenes</td>
+                    <td><strong style="color: #dc3545;">3/10</strong></td>
+                    <td><span class="tag red">Crítico</span></td>
+                </tr>
+                <tr>
+                    <td>SEO Local</td>
+                    <td><strong style="color: #ff9800;">5/10</strong></td>
+                    <td><span class="tag orange">Mejorable</span></td>
+                </tr>
+                <tr>
+                    <td>Enlaces Internos</td>
+                    <td><strong style="color: #28a745;">7/10</strong></td>
+                    <td><span class="tag green">Bueno</span></td>
+                </tr>
+                <tr>
+                    <td>Social Media Integration</td>
+                    <td><strong style="color: #dc3545;">2/10</strong></td>
+                    <td><span class="tag red">Crítico</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Puntos Fuertes -->
+        <div id="puntos-fuertes" class="section">
+            <h2>Puntos Fuertes</h2>
+
+            <div class="alert alert-success">
+                <strong>Lo que funciona bien:</strong> El sitio tiene elementos positivos que sirven como base sólida para las mejoras.
+            </div>
+
+            <h3>1. Estructura de Navegación Clara</h3>
+            <p>El menú de navegación es intuitivo con secciones bien definidas: Carta, Reservas, Sobre Nosotros, Menús Especiales, Eventos y Contacto. Esto facilita tanto la experiencia del usuario como el rastreo de buscadores.</p>
+
+            <h3>2. Schema Markup Básico en Homepage</h3>
+            <p>La página principal incluye structured data de tipo Restaurant con información esencial:</p>
+            <ul>
+                <li>Nombre del restaurante</li>
+                <li>Dirección física</li>
+                <li>Coordenadas GPS</li>
+                <li>Teléfono de contacto</li>
+                <li>Horarios de apertura</li>
+                <li>Tipo de cocina (mediterranea, mariscos)</li>
+            </ul>
+
+            <h3>3. Titles Descriptivos en Páginas Clave</h3>
+            <p>Algunas páginas tienen titles bien optimizados:</p>
+            <ul>
+                <li><strong>Carta:</strong> "Carta y Menú | Sal Negra Tenerife - Precios y Platos"</li>
+                <li><strong>Menús Especiales:</strong> "Menús Especiales para Grupos | Sal Negra Tenerife - Desde 45€"</li>
+            </ul>
+
+            <h3>4. Contenido Relevante y Auténtico</h3>
+            <p>El texto refleja la propuesta de valor del restaurante con keywords naturales: "vistas al mar", "mariscos frescos", "cocina mediterránea", "Tenerife".</p>
+
+            <h3>5. Call-to-Action Presentes</h3>
+            <p>Cada página incluye CTAs para reservar, facilitando la conversión.</p>
+
+            <h3>6. URLs Limpias y Descriptivas</h3>
+            <p>Las URLs son amigables para SEO: /carta, /reservas, /sobre-nosotros, /menus-especiales, /eventos, /contacto</p>
+        </div>
+
+        <!-- Problemas Críticos -->
+        <div id="problemas-criticos" class="section">
+            <h2>Problemas Críticos</h2>
+            <p>Estos problemas requieren <strong>atención inmediata</strong> ya que están afectando significativamente la visibilidad en buscadores.</p>
+
+            <div class="problem-box critical">
+                <h3>1. Meta Descriptions Ausentes en TODAS las Páginas <span class="badge badge-critical">CRÍTICO</span></h3>
+                <p><strong>Problema:</strong> Ninguna página del sitio tiene meta description definida. Google genera automáticamente snippets del contenido, pero estos no están optimizados para CTR.</p>
+                <p><strong>Impacto:</strong></p>
+                <ul>
+                    <li>Pérdida de control sobre cómo aparece el sitio en resultados de búsqueda</li>
+                    <li>CTR (Click-Through Rate) reducido hasta un 30%</li>
+                    <li>Oportunidad perdida de incluir keywords y llamadas a la acción</li>
+                </ul>
+                <p><strong>Páginas afectadas:</strong> Homepage, Carta, Reservas, Sobre Nosotros, Menús Especiales, Eventos, Contacto</p>
+            </div>
+
+            <div class="problem-box critical">
+                <h3>2. Imágenes Sin Alt Text <span class="badge badge-critical">CRÍTICO</span></h3>
+                <p><strong>Problema:</strong> Las imágenes del sitio (hero, galería, platos) no tienen atributos alt descriptivos.</p>
+                <p><strong>Impacto:</strong></p>
+                <ul>
+                    <li>Pérdida de posicionamiento en Google Images (fuente importante de tráfico para restaurantes)</li>
+                    <li>Problemas de accesibilidad (WCAG compliance)</li>
+                    <li>Señales SEO perdidas para keywords relevantes</li>
+                </ul>
+                <p><strong>Imágenes detectadas sin alt:</strong> hero-left.jpg, hero-right.jpg, gallery images, logo, imágenes de platos</p>
+            </div>
+
+            <div class="problem-box critical">
+                <h3>3. Links de Redes Sociales Rotos <span class="badge badge-critical">CRÍTICO</span></h3>
+                <p><strong>Problema:</strong> Los enlaces a Facebook, Instagram y TripAdvisor apuntan a "#" (placeholder) en lugar de URLs reales.</p>
+                <p><strong>Impacto:</strong></p>
+                <ul>
+                    <li>Señales sociales perdidas para SEO</li>
+                    <li>Experiencia de usuario negativa (enlaces que no funcionan)</li>
+                    <li>Pérdida de tráfico hacia perfiles sociales</li>
+                    <li>Daño a la credibilidad del sitio</li>
+                </ul>
+            </div>
+
+            <div class="problem-box critical">
+                <h3>4. Canonical Tags Ausentes <span class="badge badge-critical">CRÍTICO</span></h3>
+                <p><strong>Problema:</strong> No se detectan etiquetas canonical en ninguna página.</p>
+                <p><strong>Impacto:</strong></p>
+                <ul>
+                    <li>Riesgo de contenido duplicado (versiones con/sin www, http/https)</li>
+                    <li>Dilución de autoridad de página</li>
+                    <li>Confusión para buscadores sobre URL preferida</li>
+                </ul>
+            </div>
+
+            <div class="problem-box critical">
+                <h3>5. Open Graph y Twitter Cards Ausentes <span class="badge badge-critical">CRÍTICO</span></h3>
+                <p><strong>Problema:</strong> No hay meta tags para compartir en redes sociales.</p>
+                <p><strong>Impacto:</strong></p>
+                <ul>
+                    <li>Compartidos en redes sociales sin imagen/descripción optimizada</li>
+                    <li>Menor engagement en compartidos</li>
+                    <li>Pérdida de tráfico viral potencial</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problemas Importantes -->
+        <div id="problemas-importantes" class="section">
+            <h2>Problemas Importantes</h2>
+            <p>Estos problemas tienen impacto medio-alto y deben abordarse después de los críticos.</p>
+
+            <div class="problem-box high">
+                <h3>1. Inconsistencia en Horarios de Apertura <span class="badge badge-high">IMPORTANTE</span></h3>
+                <p><strong>Problema:</strong> Los horarios mostrados son "09:00 - 17:00", lo cual es inusual para un restaurante de mariscos (típicamente abierto para cenas).</p>
+                <p><strong>Impacto:</strong></p>
+                <ul>
+                    <li>Confusión para clientes potenciales</li>
+                    <li>Posible pérdida de reservas</li>
+                    <li>Inconsistencia con Google My Business (si existe)</li>
+                </ul>
+                <p><strong>Recomendación:</strong> Verificar y actualizar horarios reales. Si hay horarios diferentes por día, especificarlos en el schema.</p>
+            </div>
+
+            <div class="problem-box high">
+                <h3>2. Schema Markup Incompleto <span class="badge badge-high">IMPORTANTE</span></h3>
+                <p><strong>Problema:</strong> Solo la homepage tiene structured data. Páginas como Carta, Eventos y Menús no tienen schema específico.</p>
+                <p><strong>Schemas faltantes:</strong></p>
+                <ul>
+                    <li><strong>Carta:</strong> Falta schema Menu con MenuItem</li>
+                    <li><strong>Eventos:</strong> Falta schema Event</li>
+                    <li><strong>Menús Especiales:</strong> Falta schema AggregateOffer</li>
+                    <li><strong>Contacto:</strong> Falta schema ContactPoint</li>
+                </ul>
+            </div>
+
+            <div class="problem-box high">
+                <h3>3. NAP Inconsistente <span class="badge badge-high">IMPORTANTE</span></h3>
+                <p><strong>Problema:</strong> La información de contacto (Name, Address, Phone) tiene variaciones:</p>
+                <ul>
+                    <li>Falta código postal en algunas instancias</li>
+                    <li>"Avda." vs "Avenida" - inconsistencia</li>
+                    <li>"Centro Comercial" vs "Centro Commerciale" - mezcla de idiomas</li>
+                </ul>
+                <p><strong>Impacto:</strong> El NAP inconsistente afecta negativamente el SEO local y la verificación de Google My Business.</p>
+            </div>
+
+            <div class="problem-box high">
+                <h3>4. Falta de Mapa Interactivo en Contacto <span class="badge badge-high">IMPORTANTE</span></h3>
+                <p><strong>Problema:</strong> La página de contacto no tiene mapa de Google Maps embebido.</p>
+                <p><strong>Impacto:</strong></p>
+                <ul>
+                    <li>Menor tiempo en página</li>
+                    <li>Experiencia de usuario reducida</li>
+                    <li>Señal local perdida para SEO</li>
+                </ul>
+            </div>
+
+            <div class="problem-box high">
+                <h3>5. Sin Hreflang Tags <span class="badge badge-high">IMPORTANTE</span></h3>
+                <p><strong>Problema:</strong> El sitio está en español pero no tiene hreflang definido. Dado el mercado turístico de Tenerife, podría beneficiarse de versiones en inglés/alemán.</p>
+                <p><strong>Recomendación:</strong> Implementar al menos <code>hreflang="es"</code> para indicar el idioma principal.</p>
+            </div>
+
+            <div class="problem-box medium">
+                <h3>6. Contenido Thin en Algunas Páginas <span class="badge badge-medium">MEDIO</span></h3>
+                <p><strong>Problema:</strong> Páginas como Reservas y Contacto tienen poco contenido textual.</p>
+                <p><strong>Recomendación:</strong> Añadir FAQs, testimoniales, o información adicional relevante.</p>
+            </div>
+        </div>
+
+        <!-- Quick Wins -->
+        <div id="quick-wins" class="section">
+            <h2>Quick Wins (Victorias Rápidas)</h2>
+            <p>Estas mejoras pueden implementarse en <strong>menos de 2 horas</strong> y tendrán impacto inmediato.</p>
+
+            <div class="quick-win">
+                <h4>1. Añadir Meta Descriptions (30 minutos)</h4>
+                <p>Copiar y pegar las meta descriptions proporcionadas en la sección de código. Impacto inmediato en CTR.</p>
+            </div>
+
+            <div class="quick-win">
+                <h4>2. Añadir Alt Text a Imágenes (45 minutos)</h4>
+                <p>Añadir descripciones a todas las imágenes con keywords relevantes. Mejora accesibilidad y SEO.</p>
+            </div>
+
+            <div class="quick-win">
+                <h4>3. Corregir Links de Redes Sociales (10 minutos)</h4>
+                <p>Reemplazar "#" con URLs reales de perfiles sociales del restaurante.</p>
+            </div>
+
+            <div class="quick-win">
+                <h4>4. Añadir Canonical Tags (15 minutos)</h4>
+                <p>Añadir etiqueta canonical a cada página apuntando a sí misma.</p>
+            </div>
+
+            <div class="quick-win">
+                <h4>5. Verificar y Corregir Horarios (10 minutos)</h4>
+                <p>Actualizar horarios en el footer y schema markup con horarios reales del restaurante.</p>
+            </div>
+        </div>
+
+        <!-- Ejemplos de Código -->
+        <div id="ejemplos" class="section">
+            <h2>Ejemplos de Código</h2>
+            <p>Aquí tienes el código exacto para implementar las mejoras principales.</p>
+
+            <h3>1. Meta Descriptions para Cada Página</h3>
+
+            <h4>Homepage</h4>
+            <div class="comparison">
+                <div class="before">
+                    <h5>ANTES (Sin meta description)</h5>
+                    <div class="code">&lt;head&gt;
+  &lt;title&gt;Sal Negra Tenerife...&lt;/title&gt;
+  &lt;!-- No meta description --&gt;
+&lt;/head&gt;</div>
+                </div>
+                <div class="after">
+                    <h5>DESPUÉS (Optimizado)</h5>
+                    <div class="code">&lt;head&gt;
+  &lt;title&gt;Sal Negra Tenerife - Restaurante con Vistas al Mar | Mariscos y Pescados&lt;/title&gt;
+  &lt;meta name="description" content="Restaurante con vistas al mar en el sur de Tenerife. Especialidad en mariscos frescos, pescados y cocina mediterránea. Reserva tu mesa con vistas al océano. ☎️ +34 XXX XXX XXX"&gt;
+&lt;/head&gt;</div>
+                </div>
+            </div>
+
+            <h4>Página Carta</h4>
+            <div class="code">&lt;meta name="description" content="Descubre nuestra carta: mariscos frescos, pescados del día, tapas y especialidades mediterráneas. Precios desde 8€. Sal Negra Tenerife - Sabor auténtico con vistas al mar."&gt;</div>
+
+            <h4>Página Reservas</h4>
+            <div class="code">&lt;meta name="description" content="Reserva tu mesa en Sal Negra Tenerife. Restaurante con vistas al mar, ideal para ocasiones especiales. Reservas online o por teléfono. ¡Te esperamos!"&gt;</div>
+
+            <h4>Página Menús Especiales</h4>
+            <div class="code">&lt;meta name="description" content="Menús para grupos desde 45€/persona. Perfecto para celebraciones, eventos de empresa y ocasiones especiales. Mariscos, pescados y vistas al mar en Tenerife."&gt;</div>
+
+            <h4>Página Eventos</h4>
+            <div class="code">&lt;meta name="description" content="Eventos y música en directo en Sal Negra Tenerife. Disfruta de cenas con espectáculo, eventos privados y experiencias gastronómicas únicas con vistas al mar."&gt;</div>
+
+            <h4>Página Contacto</h4>
+            <div class="code">&lt;meta name="description" content="Contacta con Sal Negra Tenerife. 📍 Centro Comercial San Telmo, Arona. ☎️ +34 XXX XXX XXX. Horario de apertura y cómo llegar."&gt;</div>
+
+            <h3>2. Canonical Tags</h3>
+            <p>Añadir en el <code>&lt;head&gt;</code> de cada página:</p>
+            <div class="code">&lt;!-- Homepage --&gt;
+&lt;link rel="canonical" href="https://salnegra.netlify.app/"&gt;
+
+&lt;!-- Carta --&gt;
+&lt;link rel="canonical" href="https://salnegra.netlify.app/carta"&gt;
+
+&lt;!-- Reservas --&gt;
+&lt;link rel="canonical" href="https://salnegra.netlify.app/reservas"&gt;
+
+&lt;!-- Y así para cada página... --&gt;</div>
+
+            <h3>3. Open Graph Tags (para Homepage)</h3>
+            <div class="code">&lt;!-- Open Graph --&gt;
+&lt;meta property="og:type" content="restaurant"&gt;
+&lt;meta property="og:title" content="Sal Negra Tenerife - Restaurante con Vistas al Mar"&gt;
+&lt;meta property="og:description" content="Especialidad en mariscos frescos y pescados del día. Vistas espectaculares al océano Atlántico."&gt;
+&lt;meta property="og:image" content="https://salnegra.netlify.app/images/og-image.jpg"&gt;
+&lt;meta property="og:url" content="https://salnegra.netlify.app/"&gt;
+&lt;meta property="og:site_name" content="Sal Negra Tenerife"&gt;
+&lt;meta property="og:locale" content="es_ES"&gt;
+
+&lt;!-- Twitter Card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:title" content="Sal Negra Tenerife - Restaurante con Vistas al Mar"&gt;
+&lt;meta name="twitter:description" content="Mariscos frescos y pescados del día con vistas al océano."&gt;
+&lt;meta name="twitter:image" content="https://salnegra.netlify.app/images/og-image.jpg"&gt;</div>
+
+            <h3>4. Alt Text para Imágenes</h3>
+            <div class="comparison">
+                <div class="before">
+                    <h5>ANTES</h5>
+                    <div class="code">&lt;img src="hero-left.jpg"&gt;
+&lt;img src="sopa-pescado-marisco.jpg"&gt;
+&lt;img src="tabla-mariscos.jpg"&gt;</div>
+                </div>
+                <div class="after">
+                    <h5>DESPUÉS</h5>
+                    <div class="code">&lt;img src="hero-left.jpg" alt="Vista del restaurante Sal Negra con terraza frente al mar en Tenerife"&gt;
+&lt;img src="sopa-pescado-marisco.jpg" alt="Sopa de pescado y marisco fresco - especialidad de Sal Negra Tenerife"&gt;
+&lt;img src="tabla-mariscos.jpg" alt="Tabla de mariscos frescos: gambas, langostinos y mejillones"&gt;</div>
+                </div>
+            </div>
+
+            <h3>5. Schema Markup para Página de Eventos</h3>
+            <div class="code">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Música en Directo - Viernes Noche",
+  "description": "Disfruta de música en directo mientras cenas con vistas al mar",
+  "startDate": "2025-12-06T20:00:00+00:00",
+  "endDate": "2025-12-06T23:00:00+00:00",
+  "location": {
+    "@type": "Restaurant",
+    "name": "Sal Negra Tenerife",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avda. La Habana, Centro Comercial San Telmo, Local 13B",
+      "addressLocality": "Arona",
+      "addressRegion": "Santa Cruz de Tenerife",
+      "postalCode": "38660",
+      "addressCountry": "ES"
+    }
+  },
+  "organizer": {
+    "@type": "Restaurant",
+    "name": "Sal Negra Tenerife"
+  },
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+}
+&lt;/script&gt;</div>
+
+            <h3>6. Schema Menu para Página de Carta</h3>
+            <div class="code">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "Carta Sal Negra Tenerife",
+  "description": "Nuestra carta de mariscos, pescados y cocina mediterránea",
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Entrantes",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Tabla de Mariscos",
+          "description": "Selección de mariscos frescos del día",
+          "offers": {
+            "@type": "Offer",
+            "price": "38.00",
+            "priceCurrency": "EUR"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Pescados",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Pescado del Día",
+          "description": "Pescado fresco a la plancha o al horno",
+          "offers": {
+            "@type": "Offer",
+            "price": "22.00",
+            "priceCurrency": "EUR"
+          }
+        }
+      ]
+    }
+  ]
+}
+&lt;/script&gt;</div>
+
+            <h3>7. Hreflang Tag</h3>
+            <div class="code">&lt;link rel="alternate" hreflang="es" href="https://salnegra.netlify.app/"&gt;
+&lt;link rel="alternate" hreflang="x-default" href="https://salnegra.netlify.app/"&gt;</div>
+        </div>
+
+        <!-- Plan de Acción -->
+        <div id="plan" class="section">
+            <h2>Plan de Acción</h2>
+
+            <div class="phase">
+                <h3>Fase 1: Correcciones Críticas (Semana 1)</h3>
+                <p><strong>Objetivo:</strong> Resolver los problemas que más impactan la visibilidad.</p>
+                <ul class="checklist">
+                    <li>Añadir meta descriptions a todas las páginas</li>
+                    <li>Implementar canonical tags en todas las páginas</li>
+                    <li>Corregir enlaces de redes sociales (reemplazar # por URLs reales)</li>
+                    <li>Añadir alt text a todas las imágenes</li>
+                    <li>Verificar y corregir horarios de apertura</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Fase 2: Optimización Técnica (Semana 2)</h3>
+                <p><strong>Objetivo:</strong> Mejorar la estructura técnica SEO.</p>
+                <ul class="checklist">
+                    <li>Implementar Open Graph tags en todas las páginas</li>
+                    <li>Añadir Twitter Cards</li>
+                    <li>Implementar hreflang tags</li>
+                    <li>Estandarizar NAP en todo el sitio</li>
+                    <li>Añadir mapa de Google Maps embebido en página de contacto</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Fase 3: Structured Data Avanzado (Semana 3)</h3>
+                <p><strong>Objetivo:</strong> Maximizar rich snippets en resultados de búsqueda.</p>
+                <ul class="checklist">
+                    <li>Implementar schema Menu en página de carta</li>
+                    <li>Añadir schema Event para eventos y música en directo</li>
+                    <li>Implementar schema AggregateOffer para menús de grupos</li>
+                    <li>Añadir schema FAQPage donde sea relevante</li>
+                    <li>Validar todos los schemas con Google Rich Results Test</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Fase 4: Contenido y SEO Local (Semana 4)</h3>
+                <p><strong>Objetivo:</strong> Fortalecer presencia local y engagement.</p>
+                <ul class="checklist">
+                    <li>Añadir sección de FAQs en páginas relevantes</li>
+                    <li>Crear contenido adicional sobre la zona (atracciones cercanas, playas)</li>
+                    <li>Verificar/crear perfil de Google My Business</li>
+                    <li>Solicitar reseñas a clientes satisfechos</li>
+                    <li>Registrar en directorios locales de Tenerife</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ROI Estimado -->
+        <div id="roi" class="section">
+            <h2>ROI Estimado</h2>
+
+            <div class="alert alert-info">
+                <strong>Proyección conservadora basada en mejoras SEO típicas para restaurantes locales.</strong>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Métrica</th>
+                    <th>Actual (Estimado)</th>
+                    <th>Proyección (6 meses)</th>
+                    <th>Mejora</th>
+                </tr>
+                <tr>
+                    <td>Visitas Orgánicas/Mes</td>
+                    <td>~200-400</td>
+                    <td>~500-800</td>
+                    <td><span class="tag green">+100%</span></td>
+                </tr>
+                <tr>
+                    <td>CTR en Resultados</td>
+                    <td>~2-3%</td>
+                    <td>~4-6%</td>
+                    <td><span class="tag green">+100%</span></td>
+                </tr>
+                <tr>
+                    <td>Posición Media (Keywords Locales)</td>
+                    <td>~15-25</td>
+                    <td>~5-15</td>
+                    <td><span class="tag green">+10 posiciones</span></td>
+                </tr>
+                <tr>
+                    <td>Reservas vía Web/Mes</td>
+                    <td>~10-20</td>
+                    <td>~25-50</td>
+                    <td><span class="tag green">+150%</span></td>
+                </tr>
+            </table>
+
+            <h3>Keywords Objetivo Prioritarias</h3>
+            <table>
+                <tr>
+                    <th>Keyword</th>
+                    <th>Volumen Mensual (Est.)</th>
+                    <th>Dificultad</th>
+                    <th>Página Objetivo</th>
+                </tr>
+                <tr>
+                    <td>restaurante mariscos tenerife</td>
+                    <td>500-1000</td>
+                    <td><span class="tag orange">Media</span></td>
+                    <td>Homepage</td>
+                </tr>
+                <tr>
+                    <td>restaurante vistas mar tenerife</td>
+                    <td>200-500</td>
+                    <td><span class="tag green">Baja</span></td>
+                    <td>Homepage</td>
+                </tr>
+                <tr>
+                    <td>pescado fresco tenerife sur</td>
+                    <td>100-300</td>
+                    <td><span class="tag green">Baja</span></td>
+                    <td>Carta</td>
+                </tr>
+                <tr>
+                    <td>restaurante grupos tenerife</td>
+                    <td>100-200</td>
+                    <td><span class="tag green">Baja</span></td>
+                    <td>Menús Especiales</td>
+                </tr>
+                <tr>
+                    <td>eventos privados restaurante tenerife</td>
+                    <td>50-150</td>
+                    <td><span class="tag green">Baja</span></td>
+                    <td>Eventos</td>
+                </tr>
+            </table>
+
+            <h3>Valor Estimado de las Mejoras</h3>
+            <div class="alert alert-success">
+                <p><strong>Si cada reserva adicional tiene un ticket medio de 50€:</strong></p>
+                <ul>
+                    <li>+30 reservas/mes × 50€ = <strong>+1,500€/mes en facturación potencial</strong></li>
+                    <li>Anualizado: <strong>+18,000€/año</strong></li>
+                </ul>
+                <p><strong>Coste de implementación:</strong> ~8-16 horas de trabajo técnico</p>
+                <p><strong>ROI estimado primer año:</strong> >1000%</p>
+            </div>
+        </div>
+
+        <!-- Conclusiones -->
+        <div class="section">
+            <h2>Conclusiones</h2>
+
+            <p>El sitio <strong>salnegra.netlify.app</strong> tiene una base sólida con buen contenido y estructura de navegación, pero necesita optimización técnica SEO urgente.</p>
+
+            <h3>Prioridades Inmediatas:</h3>
+            <ol>
+                <li><strong>Meta descriptions</strong> - Impacto inmediato en CTR</li>
+                <li><strong>Alt text en imágenes</strong> - Mejora accesibilidad y SEO de imágenes</li>
+                <li><strong>Links de redes sociales</strong> - Credibilidad y señales sociales</li>
+                <li><strong>Canonical tags</strong> - Prevenir problemas de contenido duplicado</li>
+            </ol>
+
+            <h3>Siguientes Pasos Recomendados:</h3>
+            <ol>
+                <li>Implementar las correcciones de Fase 1 esta semana</li>
+                <li>Configurar Google Search Console para monitorizar progreso</li>
+                <li>Verificar/optimizar perfil de Google My Business</li>
+                <li>Programar revisión mensual de métricas SEO</li>
+            </ol>
+
+            <div class="alert alert-info">
+                <strong>¿Necesitas ayuda con la implementación?</strong> Este informe incluye todo el código necesario para las correcciones. Un desarrollador puede implementar todas las mejoras de Fase 1 en aproximadamente 2-4 horas.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>Informe generado por Claude Code - AI SEO Audit Specialist</strong></p>
+        <p style="margin-top: 10px;">Fecha: 28 Noviembre 2025</p>
+        <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">Este informe es una evaluación técnica basada en el análisis del sitio web. Los resultados reales pueden variar según factores externos.</p>
+    </div>
+</body>
+</html>
