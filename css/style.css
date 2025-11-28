@@ -882,18 +882,36 @@ p {
 
 .social-links {
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
 }
 
 .social-links a {
-    color: var(--color-gray-light);
-    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
     transition: var(--transition);
 }
 
 .social-links a:hover {
-    color: var(--color-primary);
+    background: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.social-links a svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-gray-light);
+    transition: var(--transition);
+}
+
+.social-links a:hover svg {
+    fill: var(--color-white);
 }
 
 /* === RESPONSIVE === */
