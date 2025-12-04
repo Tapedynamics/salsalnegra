@@ -337,3 +337,43 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('%c🍽️ Sal Negra Tenerife', 'color: #8b6f5c; font-size: 20px; font-weight: bold;');
     console.log('%cWebsite loaded successfully!', 'color: #0a0a0a; font-size: 14px;');
 });
+
+// === COOKIE CONSENT BANNER ===
+(function() {
+    const COOKIE_CONSENT_KEY = 'salnegra_cookie_consent';
+    
+    // Check if user already made a choice
+    const consentStatus = localStorage.getItem(COOKIE_CONSENT_KEY);
+    
+    if (!consentStatus) {
+        // Show banner after a short delay
+        setTimeout(function() {
+            const banner = document.getElementById('cookieBanner');
+            if (banner) {
+                banner.classList.add('active');
+            }
+        }, 1000);
+    }
+    
+    // Accept cookies
+    window.acceptCookies = function() {
+        localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
+        hideBanner();
+        // Here you can enable analytics, tracking, etc.
+        console.log('Cookies accepted');
+    };
+    
+    // Reject cookies
+    window.rejectCookies = function() {
+        localStorage.setItem(COOKIE_CONSENT_KEY, 'rejected');
+        hideBanner();
+        console.log('Cookies rejected');
+    };
+    
+    function hideBanner() {
+        const banner = document.getElementById('cookieBanner');
+        if (banner) {
+            banner.classList.remove('active');
+        }
+    }
+})();
