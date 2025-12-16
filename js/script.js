@@ -5,6 +5,37 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
+    // === HERO VIDEO ROTATION ===
+    const heroVideo = document.querySelector('.hero-video');
+
+    if (heroVideo) {
+        const heroVideos = [
+            'videos/hero-video.mp4',
+            'videos/hero-clip-sax.mp4',
+            'videos/hero-clip-2.mp4',
+            'videos/hero-clip-3.mp4'
+        ];
+
+        let currentVideoIndex = 0;
+
+        heroVideo.addEventListener('ended', function() {
+            currentVideoIndex = (currentVideoIndex + 1) % heroVideos.length;
+            heroVideo.style.opacity = '0';
+
+            setTimeout(function() {
+                heroVideo.src = heroVideos[currentVideoIndex];
+                heroVideo.load();
+                heroVideo.play();
+                setTimeout(function() {
+                    heroVideo.style.opacity = '1';
+                }, 100);
+            }, 300);
+        });
+
+        heroVideo.removeAttribute('loop');
+        heroVideo.style.transition = 'opacity 0.3s ease';
+    }
+
     // === MOBILE NAVIGATION ===
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
