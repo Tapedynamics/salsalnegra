@@ -916,6 +916,13 @@ p {
 
 /* === RESPONSIVE === */
 
+/* Desktop e laptop grandi */
+@media (max-width: 1920px) {
+    .about-content {
+        max-width: 550px;
+    }
+}
+
 /* Laptop 15" e schermi medi */
 @media (max-width: 1500px) {
     .about-image-left,
