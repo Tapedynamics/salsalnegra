@@ -933,7 +933,8 @@ p {
     }
 
     .about-content {
-        max-width: 500px;
+        max-width: 450px;
+        padding: 0 1rem;
     }
 }
 
@@ -954,7 +955,8 @@ p {
     }
 
     .about-content {
-        max-width: 420px;
+        max-width: 380px;
+        padding: 0 1rem;
     }
 }
 
