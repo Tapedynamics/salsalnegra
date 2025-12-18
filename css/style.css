@@ -920,25 +920,41 @@ p {
 @media (max-width: 1500px) {
     .about-image-left,
     .about-image-right {
-        width: 220px;
-        height: 300px;
+        width: 200px;
+        height: 280px;
+    }
+
+    .about-image-left {
+        left: 2%;
+    }
+
+    .about-image-right {
+        right: 2%;
     }
 
     .about-content {
-        max-width: 600px;
+        max-width: 550px;
     }
 }
 
 @media (max-width: 1300px) {
     .about-image-left,
     .about-image-right {
-        width: 180px;
-        height: 250px;
-        opacity: 0.7;
+        width: 160px;
+        height: 220px;
+        opacity: 0.6;
+    }
+
+    .about-image-left {
+        left: 1%;
+    }
+
+    .about-image-right {
+        right: 1%;
     }
 
     .about-content {
-        max-width: 500px;
+        max-width: 480px;
     }
 }
 
