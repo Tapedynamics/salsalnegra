@@ -1,0 +1,233 @@
+================================================================================
+SAL NEGRA TENERIFE - AGGIORNAMENTI 10 DICEMBRE 2025
+================================================================================
+
+COMPLETATO OGGI
+--------------------------------------------------------------------------------
+
+1. TRASFERIMENTO DOMINIO
+   - Dominio trasferito da IONOS a Namecheap
+   - Nameserver cambiati a Namecheap BasicDNS
+
+2. CONFIGURAZIONE DNS (Namecheap Advanced DNS)
+   - Record A: @ -> 75.2.60.5 (Netlify)
+   - Record CNAME: www -> salnegra.netlify.app
+
+3. DEPLOY NETLIFY
+   - Sito live su: https://salnegra.netlify.app
+   - Dominio custom configurato: https://salnegratenerife.com
+   - SSL/HTTPS attivo con Let's Encrypt
+
+4. STATO ATTUALE
+   - Sito online e funzionante
+   - HTTPS attivo
+   - DNS propagato correttamente
+
+
+================================================================================
+DA FARE - MIGLIORAMENTI SEO (Schema Markup)
+================================================================================
+
+Le seguenti pagine hanno punteggi SEO più bassi per mancanza di Schema markup.
+Aggiungere questi Schema per portare tutte le pagine a 8+/10:
+
+1. CONTACTO.HTML (attuale: 7/10)
+   Aggiungere: Schema LocalBusiness
+
+   <script type="application/ld+json">
+   {
+       "@context": "https://schema.org",
+       "@type": "LocalBusiness",
+       "@id": "https://salnegratenerife.com/#localbusiness",
+       "name": "Sal Negra Tenerife",
+       "image": "https://salnegratenerife.com/images/gallery1.jpg",
+       "url": "https://salnegratenerife.com",
+       "telephone": "+34 922 30 69 58",
+       "email": "info@salnegratenerife.com",
+       "address": {
+           "@type": "PostalAddress",
+           "streetAddress": "Avda. La Habana, Centro Comercial San Telmo, Local 13 b",
+           "addressLocality": "Los Cristianos",
+           "addressRegion": "Santa Cruz de Tenerife",
+           "postalCode": "38650",
+           "addressCountry": "ES"
+       },
+       "geo": {
+           "@type": "GeoCoordinates",
+           "latitude": 28.0525,
+           "longitude": -16.7248
+       },
+       "openingHoursSpecification": {
+           "@type": "OpeningHoursSpecification",
+           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+           "opens": "09:00",
+           "closes": "17:00"
+       },
+       "sameAs": [
+           "https://www.facebook.com/salnegratenerife",
+           "https://www.instagram.com/salnegratenerife/",
+           "https://www.tiktok.com/@salnegratnf"
+       ],
+       "priceRange": "$$",
+       "servesCuisine": ["Mediterranean", "Seafood", "Spanish"]
+   }
+   </script>
+
+--------------------------------------------------------------------------------
+
+2. MENUS-ESPECIALES.HTML (attuale: 7/10)
+   Aggiungere: Schema Menu per i 3 menù gruppi
+
+   <script type="application/ld+json">
+   {
+       "@context": "https://schema.org",
+       "@type": "Menu",
+       "name": "Menús Especiales para Grupos - Sal Negra Tenerife",
+       "description": "Menús especiales para grupos desde 45€ por persona",
+       "url": "https://salnegratenerife.com/menus-especiales.html",
+       "hasMenuSection": [
+           {
+               "@type": "MenuSection",
+               "name": "Menú Degustación Mar",
+               "description": "Menú de mariscos y pescados frescos",
+               "offers": {
+                   "@type": "Offer",
+                   "price": "45.00",
+                   "priceCurrency": "EUR"
+               }
+           },
+           {
+               "@type": "MenuSection",
+               "name": "Menú Tierra y Mar",
+               "description": "Combinación de carnes y mariscos",
+               "offers": {
+                   "@type": "Offer",
+                   "price": "50.00",
+                   "priceCurrency": "EUR"
+               }
+           },
+           {
+               "@type": "MenuSection",
+               "name": "Menú Celebración",
+               "description": "Menú premium para ocasiones especiales",
+               "offers": {
+                   "@type": "Offer",
+                   "price": "60.00",
+                   "priceCurrency": "EUR"
+               }
+           }
+       ]
+   }
+   </script>
+
+--------------------------------------------------------------------------------
+
+3. SOBRE-NOSOTROS.HTML (attuale: 6/10)
+   Aggiungere: Schema Organization
+
+   <script type="application/ld+json">
+   {
+       "@context": "https://schema.org",
+       "@type": "Organization",
+       "name": "Sal Negra Tenerife",
+       "url": "https://salnegratenerife.com",
+       "logo": "https://salnegratenerife.com/images/logo-header.png",
+       "description": "Restaurante con vistas al mar en el sur de Tenerife. Especialidad en mariscos frescos, pescados, carnes selectas y tapas tradicionales.",
+       "foundingDate": "2020",
+       "address": {
+           "@type": "PostalAddress",
+           "streetAddress": "Avda. La Habana, Centro Comercial San Telmo, Local 13 b",
+           "addressLocality": "Los Cristianos",
+           "addressRegion": "Santa Cruz de Tenerife",
+           "postalCode": "38650",
+           "addressCountry": "ES"
+       },
+       "contactPoint": {
+           "@type": "ContactPoint",
+           "telephone": "+34 922 30 69 58",
+           "contactType": "reservations"
+       },
+       "sameAs": [
+           "https://www.facebook.com/salnegratenerife",
+           "https://www.instagram.com/salnegratenerife/",
+           "https://www.tiktok.com/@salnegratnf"
+       ]
+   }
+   </script>
+
+--------------------------------------------------------------------------------
+
+4. RESERVAS.HTML (attuale: 6/10)
+   Aggiungere: Schema FoodEstablishment con ReserveAction
+
+   <script type="application/ld+json">
+   {
+       "@context": "https://schema.org",
+       "@type": "FoodEstablishment",
+       "name": "Sal Negra Tenerife",
+       "url": "https://salnegratenerife.com",
+       "telephone": "+34 922 30 69 58",
+       "acceptsReservations": "True",
+       "potentialAction": {
+           "@type": "ReserveAction",
+           "target": {
+               "@type": "EntryPoint",
+               "urlTemplate": "https://www.google.com/maps/reserve/v/dine/c/BOlR24NDHmg",
+               "actionPlatform": [
+                   "http://schema.org/DesktopWebPlatform",
+                   "http://schema.org/MobileWebPlatform"
+               ]
+           },
+           "result": {
+               "@type": "FoodEstablishmentReservation",
+               "name": "Reserva en Sal Negra Tenerife"
+           }
+       },
+       "address": {
+           "@type": "PostalAddress",
+           "streetAddress": "Avda. La Habana, Centro Comercial San Telmo, Local 13 b",
+           "addressLocality": "Los Cristianos",
+           "postalCode": "38650",
+           "addressCountry": "ES"
+       }
+   }
+   </script>
+
+
+================================================================================
+PUNTEGGI SEO ATTUALI vs PREVISTI
+================================================================================
+
+Pagina                  | Attuale | Dopo Schema
+------------------------|---------|------------
+index.html              | 8/10    | 8/10
+carta.html              | 9/10    | 9/10
+eventos.html            | 8/10    | 8/10
+contacto.html           | 7/10    | 8/10 (+1)
+menus-especiales.html   | 7/10    | 8/10 (+1)
+sobre-nosotros.html     | 6/10    | 8/10 (+2)
+reservas.html           | 6/10    | 8/10 (+2)
+
+PUNTEGGIO MEDIO: 7.5/10 -> 8.1/10
+
+
+================================================================================
+NOTE TECNICHE
+================================================================================
+
+- Ogni Schema va inserito nel <head> della rispettiva pagina HTML
+- Posizione consigliata: dopo i tag Hreflang e prima dei tag Fonts
+- Dopo le modifiche: git add, git commit, git push per deploy automatico su Netlify
+- Verificare Schema con: https://validator.schema.org/
+
+
+================================================================================
+CONTATTI E RISORSE
+================================================================================
+
+Sito live: https://salnegratenerife.com
+Netlify:   https://salnegra.netlify.app
+GitHub:    https://github.com/Tapedynamics/salsalnegra
+Registrar: Namecheap
+
+================================================================================
