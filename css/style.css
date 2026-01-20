@@ -377,6 +377,29 @@ p {
     margin-bottom: 1.5rem;
 }
 
+/* Since Badge - Anno apertura */
+.since-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #a68774 100%);
+    color: var(--color-white) !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 4px 15px rgba(139, 111, 92, 0.3);
+}
+
+.since-badge strong {
+    font-size: 1.2rem;
+}
+
+.content-wrapper .since-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 /* === MENU SECTION === */
 .menu {
     padding: 6rem 0;
