@@ -1,0 +1,4147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a1628">
+  <meta name="description" content="FoodQuest - La Isla de Sal Negra. Avventura gastronomica gamificata.">
+  <title>FoodQuest - Salnegra</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/foodquest/three.min.js"></script>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --dark: #1a1a2e;
+      --gold: #d4a853;
+      --gold-light: #f0d78c;
+      --teal: #0dcfcf;
+      --teal-dark: #0a9e9e;
+      --lava: #e74c3c;
+      --lava-dark: #c0392b;
+      --carb: #f39c12;
+      --prot: #e74c3c;
+      --fat: #f1c40f;
+      --hydr: #3498db;
+      --carb-dark: #d68910;
+      --prot-dark: #c0392b;
+      --fat-dark: #d4ac0d;
+      --hydr-dark: #2980b9;
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface-light: #1e293b;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --success: #22c55e;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-container {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Screen System */
+    .screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      padding: 20px;
+      padding-bottom: 100px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .screen.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      z-index: 10;
+    }
+
+    /* Typography */
+    .title-cinzel {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .title-large {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      text-align: center;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--dark);
+      box-shadow: 0 4px 12px rgba(212, 168, 83, 0.3);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(212, 168, 83, 0.2);
+    }
+
+    .btn-secondary {
+      background: var(--surface-light);
+      color: var(--text);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-secondary:active {
+      transform: scale(0.98);
+      background: var(--surface);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Input */
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid var(--surface-light);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .input::placeholder {
+      color: var(--text-dim);
+    }
+
+    /* Error */
+    .error-message {
+      color: var(--lava);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* ============ SPLASH SCREEN ============ */
+    #splash {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--dark) 50%, #0a0e1a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .volcano-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 2rem;
+    }
+
+    .volcano {
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 150px solid var(--lava-dark);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      filter: drop-shadow(0 4px 20px rgba(231, 76, 60, 0.4));
+    }
+
+    .lava-glow {
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, var(--lava), var(--lava-dark));
+      border-radius: 50%;
+      position: absolute;
+      top: -20px;
+      left: 80px;
+      animation: lavaGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes lavaGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    .ocean {
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(180deg, var(--teal-dark), var(--navy));
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      opacity: 0.6;
+      animation: wave 3s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .splash-title {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .splash-subtitle {
+      font-size: 1.2rem;
+      color: var(--teal);
+      font-style: italic;
+    }
+
+    .loading-spinner {
+      margin-top: 2rem;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--surface-light);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ============ LOGIN SCREEN ============ */
+    #login, #register {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 80px;
+    }
+
+    .logo-small {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    .link-text {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .link-text a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .link-text a:active {
+      opacity: 0.7;
+    }
+
+    /* Avatar Selection */
+    .avatar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar-option {
+      aspect-ratio: 1;
+      border: 3px solid var(--surface-light);
+      border-radius: 12px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .avatar-option.selected {
+      border-color: var(--gold);
+      background: var(--surface-light);
+      transform: scale(1.05);
+    }
+
+    .avatar-option:active {
+      transform: scale(0.95);
+    }
+
+    /* ============ DASHBOARD ============ */
+    #dashboard {
+      padding-top: 20px;
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .avatar-display {
+      font-size: 5rem;
+      margin-bottom: 0.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .player-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .player-level {
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Check-in Banner */
+    .checkin-banner {
+      background: linear-gradient(135deg, var(--success), #16a34a);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .checkin-banner-text {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .checkin-banner-hint {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* XP Bar */
+    .xp-container {
+      margin-bottom: 2rem;
+    }
+
+    .xp-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .xp-bar-bg {
+      height: 12px;
+      background: var(--surface-light);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .xp-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 6px;
+      transition: width 0.5s ease;
+      box-shadow: 0 0 10px rgba(212, 168, 83, 0.5);
+    }
+
+    /* Energy Bars */
+    .energy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .energy-card {
+      background: var(--surface);
+      border: 2px solid var(--surface-light);
+      border-radius: 12px;
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .energy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .energy-icon {
+      font-size: 1.5rem;
+    }
+
+    .energy-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .energy-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .energy-bar-bg {
+      height: 8px;
+      background: var(--surface-light);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .energy-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .energy-card.carb .energy-bar-fill { background: linear-gradient(90deg, var(--carb-dark), var(--carb)); }
+    .energy-card.carb .energy-label { color: var(--carb); }
+    .energy-card.prot .energy-bar-fill { background: linear-gradient(90deg, var(--prot-dark), var(--prot)); }
+    .energy-card.prot .energy-label { color: var(--prot); }
+    .energy-card.fat .energy-bar-fill { background: linear-gradient(90deg, var(--fat-dark), var(--fat)); }
+    .energy-card.fat .energy-label { color: var(--fat); }
+    .energy-card.hydr .energy-bar-fill { background: linear-gradient(90deg, var(--hydr-dark), var(--hydr)); }
+    .energy-card.hydr .energy-label { color: var(--hydr); }
+
+    /* Floating energy gain */
+    .energy-gain {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--success);
+      animation: floatUp 1.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translate(-50%, -50%); }
+      100% { opacity: 0; transform: translate(-50%, -150%); }
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: 1px solid var(--lava);
+      color: var(--lava);
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+
+    /* ============ ADVENTURE MAP ============ */
+    #adventure {
+      padding-top: 60px;
+    }
+
+    .back-btn {
+      position: sticky;
+      top: 0;
+      left: 0;
+      background: var(--surface);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 20;
+      min-height: 44px;
+    }
+
+    .back-btn:active {
+      transform: scale(0.95);
+    }
+
+    .map-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--gold);
+    }
+
+    .island-map {
+      position: relative;
+      width: 100%;
+      min-height: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .chapter-node {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 3px solid;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .chapter-node.unlocked {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-color: var(--gold);
+    }
+
+    .chapter-node.completed {
+      background: linear-gradient(135deg, var(--success), #16a34a);
+      border-color: var(--success);
+    }
+
+    .chapter-node.locked {
+      background: var(--surface);
+      border-color: var(--surface-light);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .chapter-node:active:not(.locked) {
+      transform: scale(0.95);
+    }
+
+    .chapter-node-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 0.5rem;
+      position: absolute;
+      bottom: -30px;
+      width: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .path-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .chapter-node {
+      z-index: 1;
+    }
+
+    /* ============ CHAPTER VIEW ============ */
+    #chapter {
+      padding-top: 60px;
+    }
+
+    .chapter-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .chapter-icon {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chapter-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+    }
+
+    .chapter-progress {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+
+    .stages-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .stage-card {
+      background: var(--surface);
+      border: 2px solid var(--surface-light);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .stage-card.completed {
+      border-color: var(--success);
+      opacity: 0.85;
+    }
+
+    .btn-replay {
+      background: transparent;
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      font-size: 0.85rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-replay:active {
+      background: var(--teal);
+      color: var(--dark);
+    }
+
+    .stage-card.active {
+      border-color: var(--gold);
+    }
+
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .stage-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .stage-status {
+      font-size: 1.5rem;
+    }
+
+    .stage-description {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .stage-costs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .cost-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 2px solid;
+    }
+
+    .cost-badge.carb { background: rgba(243, 156, 18, 0.1); border-color: var(--carb); color: var(--carb); }
+    .cost-badge.prot { background: rgba(231, 76, 60, 0.1); border-color: var(--prot); color: var(--prot); }
+    .cost-badge.fat { background: rgba(241, 196, 15, 0.1); border-color: var(--fat); color: var(--fat); }
+    .cost-badge.hydr { background: rgba(52, 152, 219, 0.1); border-color: var(--hydr); color: var(--hydr); }
+
+    .cost-badge.insufficient {
+      opacity: 0.5;
+      border-style: dashed;
+    }
+
+    .stage-action {
+      width: 100%;
+    }
+
+    .stage-reward {
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.1), rgba(240, 215, 140, 0.1));
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 1rem;
+    }
+
+    .stage-reward-title {
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .stage-reward-text {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    /* ============ REWARDS SCREEN ============ */
+    #rewards {
+      padding-top: 60px;
+    }
+
+    .rewards-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--gold);
+    }
+
+    .rewards-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .reward-card {
+      background: var(--surface);
+      border: 2px solid var(--surface-light);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .reward-card.unlocked {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.05), rgba(240, 215, 140, 0.05));
+    }
+
+    .reward-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+
+    .reward-icon {
+      font-size: 2.5rem;
+    }
+
+    .reward-info {
+      flex: 1;
+    }
+
+    .reward-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .reward-type {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .reward-description {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .reward-status {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .reward-status.unlocked {
+      background: var(--success);
+      color: white;
+    }
+
+    .reward-status.locked {
+      background: var(--surface-light);
+      color: var(--text-dim);
+    }
+
+    .reward-code {
+      margin-top: 1rem;
+      padding: 12px;
+      background: var(--dark);
+      border: 1px dashed var(--gold);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .reward-code-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .reward-code-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      color: var(--gold);
+      letter-spacing: 3px;
+    }
+
+    /* ============ CELEBRATION OVERLAY ============ */
+    .celebration-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .celebration-overlay.active {
+      display: flex;
+    }
+
+    .celebration-content {
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .celebration-icon {
+      font-size: 6rem;
+      margin-bottom: 1rem;
+      animation: bounce 1s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .celebration-title {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .celebration-message {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    .celebration-xp {
+      font-size: 1.5rem;
+      color: var(--success);
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    /* Confetti particles */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Level up overlay */
+    .levelup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(10, 22, 40, 0.95), rgba(26, 26, 46, 0.95));
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+      padding: 20px;
+    }
+
+    .levelup-overlay.active {
+      display: flex;
+    }
+
+    .levelup-content {
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .levelup-badge {
+      font-size: 8rem;
+      margin-bottom: 1rem;
+      animation: rotate 2s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(10deg) scale(1.1); }
+    }
+
+    .levelup-title {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .levelup-new-level {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    /* ============ 3D EXPLORE MINI-GAME ============ */
+    .stage-animation-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .stage-animation-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #runnerCanvas {
+      flex: 1;
+      display: block;
+      touch-action: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Game HUD */
+    #gameHUD {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #gameLives {
+      font-size: 1.4rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    #portalArrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    #arrowIcon {
+      font-size: 1.6rem;
+      color: var(--gold);
+      text-shadow: 0 0 8px rgba(212,168,83,0.6);
+      transition: transform 0.1s linear;
+    }
+
+    #portalDist {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+
+    #minimap {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      z-index: 12;
+      pointer-events: none;
+      background: rgba(0,0,0,0.3);
+      image-rendering: pixelated;
+    }
+
+    /* Virtual Joystick */
+    #joystickZone {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 15;
+      touch-action: none;
+    }
+
+    #joystickBase {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.25);
+      border: 3px solid rgba(255,255,255,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #joystickKnob {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 0 12px rgba(255,255,255,0.25);
+      pointer-events: none;
+      transition: none;
+    }
+
+    .stage-anim-result {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 20px;
+      text-align: center;
+      background: linear-gradient(to top, var(--surface) 80%, transparent);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .stage-anim-result.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .stage-anim-result-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stage-anim-result-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stage-anim-result-title.success { color: var(--success); }
+    .stage-anim-result-title.fail { color: var(--lava); }
+
+    .stage-anim-result-desc {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .stage-anim-energy-info {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .stage-anim-energy-badge {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .stage-anim-energy-badge.spent {
+      background: rgba(231, 76, 60, 0.15);
+      color: var(--lava);
+    }
+
+    .stage-anim-energy-badge.missing {
+      background: rgba(231, 76, 60, 0.15);
+      color: var(--lava);
+      border: 1px dashed var(--lava);
+    }
+
+    .stage-anim-energy-badge.xp {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--success);
+    }
+
+    #stageAnimClose {
+      margin-top: 0.5rem;
+    }
+
+    /* ============ CHARACTER SELECT ============ */
+    .char-select-btn {
+      background: linear-gradient(135deg, #6a1b9a, #9c27b0);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(106, 27, 154, 0.3);
+    }
+
+    .char-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 900;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .char-modal-overlay.active {
+      display: flex;
+    }
+
+    .char-modal {
+      background: var(--surface);
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 360px;
+      width: 100%;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .char-modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .char-card {
+      aspect-ratio: 1;
+      border: 3px solid var(--surface-light);
+      border-radius: 12px;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      padding: 6px;
+    }
+
+    .char-card.selected {
+      border-color: var(--gold);
+      background: rgba(212, 168, 83, 0.1);
+      box-shadow: 0 0 12px rgba(212, 168, 83, 0.3);
+    }
+
+    .char-card.locked {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .char-card img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    .char-card-name {
+      font-size: 0.65rem;
+      font-weight: 600;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    .char-card-lock {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* ============ UTILITY ============ */
+    .hidden {
+      display: none !important;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mt-2 {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- ============ SPLASH SCREEN ============ -->
+    <div class="screen active" id="splash">
+      <div class="volcano-container">
+        <div class="volcano">
+          <div class="lava-glow"></div>
+        </div>
+        <div class="ocean"></div>
+      </div>
+      <h1 class="title-cinzel splash-title">FOODQUEST</h1>
+      <p class="splash-subtitle">La Isla de Sal Negra</p>
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- ============ LOGIN SCREEN ============ -->
+    <div class="screen" id="login">
+      <h1 class="title-cinzel logo-small">🏴‍☠️ FOODQUEST</h1>
+
+      <div class="input-group">
+        <label class="input-label">Teléfono</label>
+        <input type="tel" class="input" id="loginPhone" placeholder="+34 600 000 000">
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">PIN (4 dígitos)</label>
+        <input type="password" class="input" id="loginPin" placeholder="••••" maxlength="4" inputmode="numeric">
+      </div>
+
+      <div class="error-message hidden" id="loginError"></div>
+
+      <button class="btn btn-primary" id="loginBtn">Entrar</button>
+
+      <p class="link-text">
+        ¿Primera vez? <a href="#" id="showRegisterLink">Regístrate</a>
+      </p>
+    </div>
+
+    <!-- ============ REGISTER SCREEN ============ -->
+    <div class="screen" id="register">
+      <h1 class="title-cinzel logo-small">🏴‍☠️ FOODQUEST</h1>
+      <p class="subtitle">Crea tu personaje</p>
+
+      <div class="input-group">
+        <label class="input-label">Teléfono</label>
+        <input type="tel" class="input" id="registerPhone" placeholder="+34 600 000 000">
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Nombre del personaje</label>
+        <input type="text" class="input" id="registerName" placeholder="Capitán Moreno">
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Elige tu avatar</label>
+        <div class="avatar-grid" id="avatarGrid"></div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">PIN (4 dígitos)</label>
+        <input type="password" class="input" id="registerPin" placeholder="••••" maxlength="4" inputmode="numeric">
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Confirma PIN</label>
+        <input type="password" class="input" id="registerPinConfirm" placeholder="••••" maxlength="4" inputmode="numeric">
+      </div>
+
+      <div class="error-message hidden" id="registerError"></div>
+
+      <button class="btn btn-primary" id="registerBtn">Crear Personaje</button>
+
+      <p class="link-text">
+        ¿Ya tienes cuenta? <a href="#" id="showLoginLink">Inicia sesión</a>
+      </p>
+    </div>
+
+    <!-- ============ DASHBOARD ============ -->
+    <div class="screen" id="dashboard">
+      <div class="dashboard-header">
+        <div class="avatar-display" id="dashboardAvatar"></div>
+        <h2 class="player-name" id="dashboardName"></h2>
+        <p class="player-level" id="dashboardLevel"></p>
+      </div>
+
+      <div class="checkin-banner hidden" id="checkinBanner">
+        <p class="checkin-banner-text" id="checkinBannerText"></p>
+        <p class="checkin-banner-hint">Ordina al cameriere e le tue energie si ricaricheranno</p>
+      </div>
+
+      <div class="xp-container">
+        <div class="xp-header">
+          <span>Esperienza</span>
+          <span id="xpText">0 / 200</span>
+        </div>
+        <div class="xp-bar-bg">
+          <div class="xp-bar-fill" id="xpBar" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="energy-grid">
+        <div class="energy-card carb">
+          <div class="energy-label">🍞 Carboidrati</div>
+          <div class="energy-header">
+            <div class="energy-value" id="energyCarb">0</div>
+          </div>
+          <div class="energy-bar-bg">
+            <div class="energy-bar-fill" id="energyCarbBar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="energy-card prot">
+          <div class="energy-label">🥩 Proteine</div>
+          <div class="energy-header">
+            <div class="energy-value" id="energyProt">0</div>
+          </div>
+          <div class="energy-bar-bg">
+            <div class="energy-bar-fill" id="energyProtBar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="energy-card fat">
+          <div class="energy-label">🧀 Grassi</div>
+          <div class="energy-header">
+            <div class="energy-value" id="energyFat">0</div>
+          </div>
+          <div class="energy-bar-bg">
+            <div class="energy-bar-fill" id="energyFatBar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="energy-card hydr">
+          <div class="energy-label">💧 Idratazione</div>
+          <div class="energy-header">
+            <div class="energy-value" id="energyHydr">0</div>
+          </div>
+          <div class="energy-bar-bg">
+            <div class="energy-bar-fill" id="energyHydrBar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" id="adventureBtn">🗺️ Avventura</button>
+        <button class="btn char-select-btn" id="characterBtn">🦸 Personaje</button>
+        <button class="btn btn-secondary" id="rewardsBtn">🏆 Ricompense</button>
+        <button class="btn logout-btn" id="logoutBtn">Esci</button>
+      </div>
+    </div>
+
+    <!-- ============ ADVENTURE MAP ============ -->
+    <div class="screen" id="adventure">
+      <button class="back-btn" id="backToMenu">← Menu</button>
+      <h2 class="title-cinzel map-title">Mappa dell'Isola</h2>
+      <div class="island-map" id="islandMap">
+        <svg class="path-svg" id="pathSvg"></svg>
+      </div>
+    </div>
+
+    <!-- ============ CHAPTER VIEW ============ -->
+    <div class="screen" id="chapter">
+      <button class="back-btn" id="backToMap">← Mappa</button>
+      <div class="chapter-header">
+        <div class="chapter-icon" id="chapterIcon"></div>
+        <h2 class="title-cinzel chapter-title" id="chapterTitle"></h2>
+        <p class="chapter-progress" id="chapterProgress"></p>
+      </div>
+      <div class="stages-list" id="stagesList"></div>
+    </div>
+
+    <!-- ============ REWARDS SCREEN ============ -->
+    <div class="screen" id="rewards">
+      <button class="back-btn" id="backToMenuFromRewards">← Menu</button>
+      <h2 class="title-cinzel rewards-title">🏆 Le Tue Ricompense</h2>
+      <div class="rewards-list" id="rewardsList"></div>
+    </div>
+
+    <!-- ============ CELEBRATION OVERLAY ============ -->
+    <div class="celebration-overlay" id="celebrationOverlay">
+      <div class="celebration-content">
+        <div class="celebration-icon" id="celebrationIcon">🎉</div>
+        <h2 class="title-cinzel celebration-title" id="celebrationTitle">Complimenti!</h2>
+        <p class="celebration-message" id="celebrationMessage"></p>
+        <p class="celebration-xp" id="celebrationXp"></p>
+        <button class="btn btn-primary" id="celebrationClose">Continua</button>
+      </div>
+    </div>
+
+    <!-- ============ LEVEL UP OVERLAY ============ -->
+    <div class="levelup-overlay" id="levelupOverlay">
+      <div class="levelup-content">
+        <div class="levelup-badge">👑</div>
+        <h2 class="title-cinzel levelup-title">LEVEL UP!</h2>
+        <p class="levelup-new-level" id="levelupNewLevel"></p>
+        <button class="btn btn-primary" id="levelupClose">Fantastico!</button>
+      </div>
+    </div>
+
+    <!-- ============ 3D EXPLORE MINI-GAME OVERLAY ============ -->
+    <div class="stage-animation-overlay" id="stageAnimOverlay">
+      <canvas id="runnerCanvas"></canvas>
+      <!-- HUD -->
+      <div id="gameHUD">
+        <div id="gameLives"></div>
+        <div id="portalArrow">
+          <div id="arrowIcon">&#10148;</div>
+          <div id="portalDist"></div>
+        </div>
+      </div>
+      <!-- Minimap -->
+      <canvas id="minimap" width="100" height="100"></canvas>
+      <!-- Virtual Joystick -->
+      <div id="joystickZone">
+        <div id="joystickBase">
+          <div id="joystickKnob"></div>
+        </div>
+      </div>
+      <!-- Result panel -->
+      <div class="stage-anim-result" id="stageAnimResult">
+        <div class="stage-anim-result-icon" id="stageAnimResultIcon"></div>
+        <div class="stage-anim-result-title" id="stageAnimResultTitle"></div>
+        <div class="stage-anim-result-desc" id="stageAnimResultDesc"></div>
+        <div class="stage-anim-energy-info" id="stageAnimEnergy"></div>
+        <button class="btn btn-primary" id="stageAnimClose">CONTINUA</button>
+      </div>
+    </div>
+
+    <!-- ============ CHARACTER SELECT MODAL ============ -->
+    <div class="char-modal-overlay" id="charModalOverlay">
+      <div class="char-modal">
+        <h3 class="char-modal-title">Elige Personaje</h3>
+        <div class="char-grid" id="charGrid"></div>
+        <button class="btn btn-primary" id="charModalClose">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============ CONSTANTS ============
+    const API_BASE = '/api/foodquest';
+    const MAX_ENERGY = 999;
+    const AVATARS = {
+      pirate: '🏴‍☠️',
+      explorer: '🧭',
+      mermaid: '🧜‍♀️',
+      chef: '👨‍🍳',
+      warrior: '⚔️',
+      mystic: '🔮'
+    };
+    const LEVELS = [
+      { level: 1, name: 'Naufrago', xp: 0 },
+      { level: 2, name: 'Esploratore', xp: 200 },
+      { level: 3, name: 'Avventuriero', xp: 500 },
+      { level: 4, name: 'Guerriero', xp: 1000 },
+      { level: 5, name: 'Capitano', xp: 2000 },
+      { level: 6, name: 'Leggenda', xp: 3500 },
+      { level: 7, name: "Re dell'Isola", xp: 5000 }
+    ];
+
+    // ============ STATE ============
+    let currentPlayer = null;
+    let currentEnergy = { carb: 0, prot: 0, fat: 0, hydr: 0, xp: 0, level: 1 };
+    let currentChapters = [];
+    let currentRewards = [];
+    let checkinStatus = null;
+    let energyPollInterval = null;
+    let selectedAvatar = 'pirate';
+    let currentChapterId = null;
+    let pendingTableId = null;
+
+    // ============ UTILITY FUNCTIONS ============
+    function getToken() {
+      return localStorage.getItem('fq_token');
+    }
+
+    function setToken(token) {
+      localStorage.setItem('fq_token', token);
+    }
+
+    function clearToken() {
+      localStorage.removeItem('fq_token');
+    }
+
+    async function apiCall(endpoint, method = 'GET', body = null) {
+      const token = getToken();
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      const options = { method, headers };
+      if (body) {
+        options.body = JSON.stringify(body);
+      }
+
+      const response = await fetch(`${API_BASE}${endpoint}`, options);
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({ message: 'Network error' }));
+        throw new Error(error.message || 'API error');
+      }
+
+      return response.json();
+    }
+
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const screen = document.getElementById(screenId);
+      if (!screen) return;
+      screen.scrollTop = 0;
+      screen.classList.add('active');
+    }
+
+    function showError(elementId, message) {
+      const el = document.getElementById(elementId);
+      el.textContent = message;
+      el.classList.remove('hidden');
+      setTimeout(() => el.classList.add('hidden'), 4000);
+    }
+
+    function getLevelInfo(xp) {
+      let currentLevel = LEVELS[0];
+      let nextLevel = LEVELS[1];
+
+      for (let i = 0; i < LEVELS.length; i++) {
+        if (xp >= LEVELS[i].xp) {
+          currentLevel = LEVELS[i];
+          nextLevel = LEVELS[i + 1] || LEVELS[i];
+        }
+      }
+
+      const progress = nextLevel.xp > currentLevel.xp
+        ? ((xp - currentLevel.xp) / (nextLevel.xp - currentLevel.xp)) * 100
+        : 100;
+
+      return { currentLevel, nextLevel, progress };
+    }
+
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        starsContainer.appendChild(star);
+      }
+    }
+
+    function createConfetti() {
+      const overlay = document.getElementById('celebrationOverlay');
+      const colors = ['#d4a853', '#f0d78c', '#0dcfcf', '#22c55e', '#f1c40f'];
+
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+        overlay.appendChild(confetti);
+      }
+
+      setTimeout(() => {
+        overlay.querySelectorAll('.confetti').forEach(c => c.remove());
+      }, 4000);
+    }
+
+    function showFloatingEnergyGain(type, amount) {
+      const card = document.querySelector(`.energy-card.${type}`);
+      if (!card) return;
+
+      const gain = document.createElement('div');
+      gain.className = 'energy-gain';
+      gain.textContent = `+${amount}`;
+      card.appendChild(gain);
+
+      setTimeout(() => gain.remove(), 1500);
+    }
+
+    // ============ INITIALIZATION ============
+    function init() {
+      createStars();
+
+      // Check for table parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const tableParam = urlParams.get('table');
+      if (tableParam) {
+        pendingTableId = parseInt(tableParam);
+      }
+
+      // Check if already logged in
+      if (getToken()) {
+        loadPlayerProfile();
+      } else {
+        setTimeout(() => showScreen('login'), 2000);
+      }
+
+      setupEventListeners();
+      createAvatarGrid();
+    }
+
+    function setupEventListeners() {
+      // Login/Register navigation
+      document.getElementById('showRegisterLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        showScreen('register');
+      });
+
+      document.getElementById('showLoginLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        showScreen('login');
+      });
+
+      // Login
+      document.getElementById('loginBtn').addEventListener('click', handleLogin);
+      document.getElementById('loginPin').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleLogin();
+      });
+
+      // Register
+      document.getElementById('registerBtn').addEventListener('click', handleRegister);
+
+      // Dashboard navigation
+      document.getElementById('adventureBtn').addEventListener('click', () => {
+        loadAdventureMap();
+        showScreen('adventure');
+      });
+
+      document.getElementById('rewardsBtn').addEventListener('click', () => {
+        loadRewards();
+        showScreen('rewards');
+      });
+
+      document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+
+      // Back buttons
+      document.getElementById('backToMenu').addEventListener('click', () => showScreen('dashboard'));
+      document.getElementById('backToMap').addEventListener('click', () => showScreen('adventure'));
+      document.getElementById('backToMenuFromRewards').addEventListener('click', () => showScreen('dashboard'));
+
+      // Celebration overlays
+      document.getElementById('celebrationClose').addEventListener('click', () => {
+        document.getElementById('celebrationOverlay').classList.remove('active');
+      });
+
+      document.getElementById('levelupClose').addEventListener('click', () => {
+        document.getElementById('levelupOverlay').classList.remove('active');
+      });
+
+      // Stage animation close
+      document.getElementById('stageAnimClose').addEventListener('click', closeStageAnimation);
+
+      // Character select
+      document.getElementById('characterBtn').addEventListener('click', () => {
+        // Load chapters to check unlocks before opening
+        apiCall('/chapters').then(data => {
+          currentChapters = data;
+          updateUnlockedChapters();
+          openCharacterModal();
+        }).catch(() => openCharacterModal());
+      });
+
+      document.getElementById('charModalClose').addEventListener('click', () => {
+        document.getElementById('charModalOverlay').classList.remove('active');
+      });
+    }
+
+    function createAvatarGrid() {
+      const grid = document.getElementById('avatarGrid');
+      Object.entries(AVATARS).forEach(([key, emoji]) => {
+        const option = document.createElement('div');
+        option.className = 'avatar-option';
+        if (key === 'pirate') option.classList.add('selected');
+        option.textContent = emoji;
+        option.addEventListener('click', () => {
+          document.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('selected'));
+          option.classList.add('selected');
+          selectedAvatar = key;
+        });
+        grid.appendChild(option);
+      });
+    }
+
+    // ============ AUTH ============
+    async function handleLogin() {
+      const phone = document.getElementById('loginPhone').value.trim();
+      const pin = document.getElementById('loginPin').value.trim();
+
+      if (!phone || !pin || pin.length !== 4) {
+        showError('loginError', 'Por favor, introduce teléfono y PIN de 4 dígitos');
+        return;
+      }
+
+      try {
+        const data = await apiCall('/auth/login', 'POST', { phone, pin });
+        setToken(data.token);
+        currentPlayer = data.player;
+
+        // Auto check-in if table parameter
+        if (pendingTableId) {
+          await handleAutoCheckin();
+        }
+
+        await loadPlayerData();
+        showScreen('dashboard');
+        startEnergyPolling();
+      } catch (error) {
+        showError('loginError', error.message);
+      }
+    }
+
+    async function handleRegister() {
+      const phone = document.getElementById('registerPhone').value.trim();
+      const name = document.getElementById('registerName').value.trim();
+      const pin = document.getElementById('registerPin').value.trim();
+      const pinConfirm = document.getElementById('registerPinConfirm').value.trim();
+
+      if (!phone || !name || !pin || !pinConfirm) {
+        showError('registerError', 'Por favor, completa todos los campos');
+        return;
+      }
+
+      if (pin.length !== 4 || pinConfirm.length !== 4) {
+        showError('registerError', 'El PIN debe tener 4 dígitos');
+        return;
+      }
+
+      if (pin !== pinConfirm) {
+        showError('registerError', 'Los PINs no coinciden');
+        return;
+      }
+
+      try {
+        const data = await apiCall('/auth/register', 'POST', {
+          phone,
+          character_name: name,
+          avatar: selectedAvatar,
+          pin
+        });
+
+        setToken(data.token);
+        currentPlayer = data.player;
+
+        // Auto check-in if table parameter
+        if (pendingTableId) {
+          await handleAutoCheckin();
+        }
+
+        await loadPlayerData();
+        showScreen('dashboard');
+        startEnergyPolling();
+      } catch (error) {
+        showError('registerError', error.message);
+      }
+    }
+
+    async function handleAutoCheckin() {
+      if (!pendingTableId) return;
+
+      try {
+        await apiCall('/checkin', 'POST', { table_id: pendingTableId });
+        pendingTableId = null; // Clear after successful check-in
+      } catch (error) {
+        console.error('Auto check-in failed:', error);
+      }
+    }
+
+    function handleLogout() {
+      stopEnergyPolling();
+      clearToken();
+      currentPlayer = null;
+      currentEnergy = { carb: 0, prot: 0, fat: 0, hydr: 0, xp: 0, level: 1 };
+      showScreen('login');
+    }
+
+    // ============ DATA LOADING ============
+    async function loadPlayerProfile() {
+      try {
+        const data = await apiCall('/player/profile');
+        currentPlayer = data;
+        await loadPlayerData();
+        showScreen('dashboard');
+        startEnergyPolling();
+      } catch (error) {
+        clearToken();
+        showScreen('login');
+      }
+    }
+
+    async function loadPlayerData() {
+      await Promise.all([
+        loadEnergy(),
+        loadCheckinStatus()
+      ]);
+      updateDashboard();
+    }
+
+    async function loadEnergy() {
+      try {
+        const data = await apiCall('/energy');
+        const oldEnergy = { ...currentEnergy };
+        currentEnergy = {
+          carb: data.energy_carb,
+          prot: data.energy_prot,
+          fat: data.energy_fat,
+          hydr: data.energy_hydr,
+          xp: data.xp,
+          level: data.level
+        };
+
+        // Show floating gains if energy increased
+        if (oldEnergy.carb < currentEnergy.carb) {
+          showFloatingEnergyGain('carb', currentEnergy.carb - oldEnergy.carb);
+        }
+        if (oldEnergy.prot < currentEnergy.prot) {
+          showFloatingEnergyGain('prot', currentEnergy.prot - oldEnergy.prot);
+        }
+        if (oldEnergy.fat < currentEnergy.fat) {
+          showFloatingEnergyGain('fat', currentEnergy.fat - oldEnergy.fat);
+        }
+        if (oldEnergy.hydr < currentEnergy.hydr) {
+          showFloatingEnergyGain('hydr', currentEnergy.hydr - oldEnergy.hydr);
+        }
+
+        // Check for level up
+        if (oldEnergy.level > 0 && currentEnergy.level > oldEnergy.level) {
+          showLevelUpOverlay();
+        }
+
+        updateDashboard();
+      } catch (error) {
+        console.error('Failed to load energy:', error);
+      }
+    }
+
+    async function loadCheckinStatus() {
+      try {
+        const data = await apiCall('/checkin/status');
+        checkinStatus = data;
+        updateCheckinBanner();
+      } catch (error) {
+        console.error('Failed to load check-in status:', error);
+      }
+    }
+
+    async function loadAdventureMap() {
+      try {
+        const data = await apiCall('/chapters');
+        currentChapters = data;
+        updateUnlockedChapters();
+        renderAdventureMap();
+      } catch (error) {
+        console.error('Failed to load chapters:', error);
+      }
+    }
+
+    async function loadChapter(chapterId) {
+      currentChapterId = chapterId;
+      const chapter = currentChapters.find(c => c.id === chapterId);
+      if (!chapter) return;
+
+      renderChapterView(chapter);
+      showScreen('chapter');
+    }
+
+    async function loadRewards() {
+      try {
+        const data = await apiCall('/rewards');
+        currentRewards = data;
+        renderRewards();
+      } catch (error) {
+        console.error('Failed to load rewards:', error);
+      }
+    }
+
+    // ============ ENERGY POLLING ============
+    function startEnergyPolling() {
+      stopEnergyPolling();
+      energyPollInterval = setInterval(loadEnergy, 15000);
+    }
+
+    function stopEnergyPolling() {
+      if (energyPollInterval) {
+        clearInterval(energyPollInterval);
+        energyPollInterval = null;
+      }
+    }
+
+    // ============ RENDERING ============
+    function updateDashboard() {
+      if (!currentPlayer) return;
+
+      // Avatar and name
+      document.getElementById('dashboardAvatar').textContent = AVATARS[currentPlayer.avatar];
+      document.getElementById('dashboardName').textContent = currentPlayer.character_name;
+
+      // Level
+      const levelInfo = getLevelInfo(currentEnergy.xp);
+      document.getElementById('dashboardLevel').textContent = `${levelInfo.currentLevel.name} - Livello ${levelInfo.currentLevel.level}`;
+
+      // XP bar
+      document.getElementById('xpText').textContent = `${currentEnergy.xp} / ${levelInfo.nextLevel.xp}`;
+      document.getElementById('xpBar').style.width = `${Math.min(levelInfo.progress, 100)}%`;
+
+      // Energy bars
+      updateEnergyBar('carb', currentEnergy.carb);
+      updateEnergyBar('prot', currentEnergy.prot);
+      updateEnergyBar('fat', currentEnergy.fat);
+      updateEnergyBar('hydr', currentEnergy.hydr);
+    }
+
+    function updateEnergyBar(type, value) {
+      const percentage = (value / MAX_ENERGY) * 100;
+      document.getElementById(`energy${type.charAt(0).toUpperCase() + type.slice(1)}`).textContent = value;
+      document.getElementById(`energy${type.charAt(0).toUpperCase() + type.slice(1)}Bar`).style.width = `${Math.min(percentage, 100)}%`;
+    }
+
+    function updateCheckinBanner() {
+      const banner = document.getElementById('checkinBanner');
+      const bannerText = document.getElementById('checkinBannerText');
+
+      if (checkinStatus && checkinStatus.checked_in) {
+        banner.classList.remove('hidden');
+        bannerText.textContent = `✓ Sei al tavolo ${checkinStatus.table_name}!`;
+      } else {
+        banner.classList.add('hidden');
+      }
+    }
+
+    function renderAdventureMap() {
+      const mapContainer = document.getElementById('islandMap');
+      const svgContainer = document.getElementById('pathSvg');
+
+      // Clear existing nodes
+      mapContainer.querySelectorAll('.chapter-node').forEach(n => n.remove());
+      svgContainer.innerHTML = '';
+
+      const positions = [
+        { x: 50, y: 420 },  // Chapter 1 - Beach
+        { x: 120, y: 320 }, // Chapter 2 - Jungle
+        { x: 200, y: 220 }, // Chapter 3 - Mountains
+        { x: 180, y: 120 }, // Chapter 4 - Volcano
+        { x: 100, y: 50 }   // Chapter 5 - Summit
+      ];
+
+      // Draw paths
+      svgContainer.setAttribute('viewBox', '0 0 300 500');
+      for (let i = 0; i < currentChapters.length - 1; i++) {
+        const start = positions[i];
+        const end = positions[i + 1];
+        const midX = (start.x + end.x) / 2;
+        const midY = (start.y + end.y) / 2;
+        const controlX = midX + (Math.random() > 0.5 ? 20 : -20);
+        const controlY = midY;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', `M ${start.x + 40} ${start.y + 40} Q ${controlX} ${controlY} ${end.x + 40} ${end.y + 40}`);
+        path.setAttribute('stroke', '#334155');
+        path.setAttribute('stroke-width', '3');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-dasharray', '5,5');
+        svgContainer.appendChild(path);
+      }
+
+      // Create nodes
+      currentChapters.forEach((chapter, index) => {
+        const pos = positions[index];
+        const node = document.createElement('div');
+        node.className = 'chapter-node';
+
+        if (chapter.progress.completed) {
+          node.classList.add('completed');
+        } else if (!chapter.locked) {
+          node.classList.add('unlocked');
+        } else {
+          node.classList.add('locked');
+        }
+
+        node.style.left = pos.x + 'px';
+        node.style.top = pos.y + 'px';
+        node.textContent = chapter.icon;
+
+        if (!chapter.locked) {
+          node.addEventListener('click', () => loadChapter(chapter.id));
+        }
+
+        const label = document.createElement('div');
+        label.className = 'chapter-node-label';
+        label.textContent = chapter.title;
+        node.appendChild(label);
+
+        mapContainer.appendChild(node);
+      });
+    }
+
+    function el(tag, cls, text) {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text != null) e.textContent = text;
+      return e;
+    }
+
+    function renderChapterView(chapter) {
+      document.getElementById('chapterIcon').textContent = chapter.icon;
+      document.getElementById('chapterTitle').textContent = chapter.title;
+      document.getElementById('chapterProgress').textContent =
+        `${chapter.progress.completed_stages} / ${chapter.stages.length} tappe completate`;
+
+      const stagesList = document.getElementById('stagesList');
+      stagesList.innerHTML = '';
+
+      chapter.stages.forEach((stage, index) => {
+        const isCompleted = chapter.progress.completed_stages > index;
+        const isActive = chapter.progress.completed_stages === index;
+
+        const card = el('div', 'stage-card');
+        if (isCompleted) card.classList.add('completed');
+        if (isActive) card.classList.add('active');
+
+        // Header
+        const header = el('div', 'stage-header');
+        header.appendChild(el('div', 'stage-title', stage.title));
+        header.appendChild(el('div', 'stage-status', isCompleted ? '\u2713' : isActive ? '\uD83D\uDCCD' : '\uD83D\uDD12'));
+        card.appendChild(header);
+
+        // Description
+        card.appendChild(el('div', 'stage-description', stage.description));
+
+        // Cost badges
+        const costs = el('div', 'stage-costs');
+        const costItems = [
+          { val: stage.cost_carb, cur: currentEnergy.carb, type: 'carb', icon: '\uD83C\uDF5E' },
+          { val: stage.cost_prot, cur: currentEnergy.prot, type: 'prot', icon: '\uD83E\uDD69' },
+          { val: stage.cost_fat,  cur: currentEnergy.fat,  type: 'fat',  icon: '\uD83E\uDDC0' },
+          { val: stage.cost_hydr, cur: currentEnergy.hydr, type: 'hydr', icon: '\uD83D\uDCA7' },
+        ];
+        for (const c of costItems) {
+          if (c.val > 0) {
+            const badge = el('div', `cost-badge ${c.type}${c.cur < c.val ? ' insufficient' : ''}`, `${c.icon} ${c.val}`);
+            costs.appendChild(badge);
+          }
+        }
+        card.appendChild(costs);
+
+        // Action button
+        if (!isCompleted && isActive) {
+          const btn = el('button', 'btn btn-primary stage-action', '\uD83D\uDDE1\uFE0F TENTA L\'AVVENTURA');
+          btn.addEventListener('click', () => attemptStage(chapter.id, index));
+          card.appendChild(btn);
+        }
+
+        // Replay button for completed stages
+        if (isCompleted) {
+          const replayBtn = el('button', 'btn-replay', '\uD83D\uDD04 RIGIOCA GRATIS');
+          replayBtn.addEventListener('click', () => attemptStage(chapter.id, index, true));
+          card.appendChild(replayBtn);
+        }
+
+        // Reward info
+        if (stage.xp_reward > 0 || stage.reward_id) {
+          const reward = el('div', 'stage-reward');
+          reward.appendChild(el('div', 'stage-reward-title', '\uD83C\uDF81 Ricompensa'));
+          let rewardText = '';
+          if (stage.xp_reward > 0) rewardText += `+${stage.xp_reward} XP`;
+          if (stage.reward_id) rewardText += (rewardText ? ' \u2022 ' : '') + 'Premio speciale';
+          reward.appendChild(el('div', 'stage-reward-text', rewardText));
+          card.appendChild(reward);
+        }
+
+        stagesList.appendChild(card);
+      });
+    }
+
+    function renderRewards() {
+      const rewardsList = document.getElementById('rewardsList');
+      rewardsList.innerHTML = '';
+
+      if (currentRewards.length === 0) {
+        const p = el('p', 'text-center', 'Nessuna ricompensa ancora. Completa le avventure per sbloccarle!');
+        p.style.color = 'var(--text-dim)';
+        rewardsList.appendChild(p);
+        return;
+      }
+
+      currentRewards.forEach(reward => {
+        const card = el('div', `reward-card${reward.unlocked ? ' unlocked' : ''}`);
+
+        const header = el('div', 'reward-header');
+        header.appendChild(el('div', 'reward-icon', reward.icon));
+        const info = el('div', 'reward-info');
+        info.appendChild(el('div', 'reward-name', reward.name));
+        info.appendChild(el('div', 'reward-type', reward.type));
+        header.appendChild(info);
+        card.appendChild(header);
+
+        card.appendChild(el('div', 'reward-description', reward.description));
+        card.appendChild(el('span', `reward-status ${reward.unlocked ? 'unlocked' : 'locked'}`,
+          reward.unlocked ? '\u2713 Sbloccato' : '\uD83D\uDD12 Bloccato'));
+
+        if (reward.unlocked && reward.code) {
+          const codeDiv = el('div', 'reward-code');
+          codeDiv.appendChild(el('div', 'reward-code-label', 'Mostra questo codice al personale:'));
+          codeDiv.appendChild(el('div', 'reward-code-value', reward.code));
+          card.appendChild(codeDiv);
+        }
+
+        rewardsList.appendChild(card);
+      });
+    }
+
+    // ============ 3D EXPLORE ENGINE (Three.js) ============
+    let animationBusy = false;
+    let runnerState = null;
+    let runnerRenderer = null, runnerScene = null, runnerCamera = null, runnerClock = null;
+
+    // Character system
+    const CHARACTER_DEFS = [
+      { id: 'gasparino', name: 'Gasparino', img: '/foodquest/assets/characters/gasparino.webp', unlock: 0 },
+      { id: 'pirate', name: 'Pirata', img: '/foodquest/assets/characters/pirate.webp', unlock: 1 },
+      { id: 'wizard', name: 'Mago', img: '/foodquest/assets/characters/wizard.webp', unlock: 2 },
+      { id: 'fairy', name: 'Hada', img: '/foodquest/assets/characters/fairy.webp', unlock: 3 },
+      { id: 'warrior', name: 'Guerrero', img: '/foodquest/assets/characters/warrior.webp', unlock: 4 },
+      { id: 'mermaid', name: 'Sirena', img: '/foodquest/assets/characters/mermaid.webp', unlock: 5 },
+    ];
+    let selectedCharacter = localStorage.getItem('fq_character') || 'gasparino';
+    let unlockedChapters = 0;
+
+    // Build procedural 3D characters (uses material pool)
+    function charMat(color, emissive) {
+      return makePhongMat(color, emissive, emissive ? 0.2 : 0, 40);
+    }
+
+    function buildCharacter3D(id) {
+      if (typeof THREE === 'undefined') return null;
+      const g = new THREE.Group();
+
+      // Shared body parts
+      function addHead(color, y) {
+        const head = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 12), charMat(color));
+        head.position.y = y;
+        g.add(head);
+        // Eyes
+        const eyeMat = charMat(0xffffff);
+        const pupilMat = charMat(0x111111);
+        for (const sx of [-0.18, 0.18]) {
+          const eye = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 8), eyeMat);
+          eye.position.set(sx, y + 0.05, 0.42);
+          g.add(eye);
+          const pupil = new THREE.Mesh(new THREE.SphereGeometry(0.05, 8, 8), pupilMat);
+          pupil.position.set(sx, y + 0.05, 0.5);
+          g.add(pupil);
+        }
+        // Mouth (smile)
+        const mouth = new THREE.Mesh(new THREE.TorusGeometry(0.08, 0.02, 8, 12, Math.PI), charMat(0xcc3333));
+        mouth.position.set(0, y - 0.15, 0.44);
+        mouth.rotation.x = Math.PI;
+        g.add(mouth);
+        return head;
+      }
+
+      function addBody(color, y, w, h) {
+        const body = new THREE.Mesh(new THREE.BoxGeometry(w || 0.7, h || 0.7, 0.5), charMat(color));
+        body.position.y = y;
+        g.add(body);
+        return body;
+      }
+
+      function addLeg(x, color) {
+        const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.12, 0.5, 8), charMat(color));
+        leg.position.set(x, 0.25, 0);
+        leg.userData.isLeg = true;
+        g.add(leg);
+        // Shoe
+        const shoe = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.1, 0.25), charMat(0x333333));
+        shoe.position.set(x, 0.02, 0.05);
+        g.add(shoe);
+        return leg;
+      }
+
+      function addArm(x, color) {
+        const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 8), charMat(color));
+        arm.position.set(x, 0.85, 0);
+        arm.rotation.z = x > 0 ? -0.3 : 0.3;
+        arm.userData.isArm = true;
+        g.add(arm);
+        // Hand
+        const hand = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8), charMat(0xffcc99));
+        hand.position.set(x + (x > 0 ? 0.08 : -0.08), 0.58, 0);
+        g.add(hand);
+        return arm;
+      }
+
+      const skinColor = 0xffcc99;
+
+      if (id === 'gasparino') {
+        addHead(skinColor, 1.45);
+        // Top hat
+        const hatBrim = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.06, 16), charMat(0x1a1a1a));
+        hatBrim.position.set(0, 1.75, 0);
+        g.add(hatBrim);
+        const hatTop = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.35, 0.5, 16), charMat(0x222222));
+        hatTop.position.set(0, 2.05, 0);
+        g.add(hatTop);
+        const hatBand = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.06, 16), charMat(0xd4a853));
+        hatBand.position.set(0, 1.83, 0);
+        g.add(hatBand);
+        // Body (suit)
+        addBody(0x1a1a2e, 0.9);
+        // Bow tie
+        const bow = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.1, 0.1), charMat(0xd4a853));
+        bow.position.set(0, 1.15, 0.28);
+        g.add(bow);
+        addArm(-0.5, 0x1a1a2e);
+        addArm(0.5, 0x1a1a2e);
+        addLeg(-0.18, 0x333333);
+        addLeg(0.18, 0x333333);
+        // Saxophone
+        const sax = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.1, 0.6, 8), charMat(0xd4a853, 0xd4a853));
+        sax.position.set(0.45, 0.7, 0.2);
+        sax.rotation.z = -0.5;
+        g.add(sax);
+        const saxBell = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), charMat(0xd4a853, 0xd4a853));
+        saxBell.position.set(0.58, 0.45, 0.2);
+        g.add(saxBell);
+
+      } else if (id === 'pirate') {
+        addHead(skinColor, 1.45);
+        // Bandana
+        const bandana = new THREE.Mesh(new THREE.SphereGeometry(0.52, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), charMat(0xf44336));
+        bandana.position.set(0, 1.5, 0);
+        g.add(bandana);
+        // Eyepatch
+        const patch = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.12, 0.06), charMat(0x111111));
+        patch.position.set(0.18, 1.5, 0.45);
+        g.add(patch);
+        // Body (pirate coat)
+        addBody(0x6d4c41, 0.9, 0.75, 0.7);
+        const belt = new THREE.Mesh(new THREE.BoxGeometry(0.78, 0.1, 0.52), charMat(0xd4a853));
+        belt.position.set(0, 0.65, 0);
+        g.add(belt);
+        addArm(-0.5, 0x6d4c41);
+        addArm(0.5, 0x6d4c41);
+        addLeg(-0.18, 0x5d4037);
+        addLeg(0.18, 0x5d4037);
+        // Cutlass
+        const blade = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.7, 0.02), charMat(0xcccccc, 0xeeeeee));
+        blade.position.set(0.6, 1.1, 0.1);
+        blade.rotation.z = -0.4;
+        g.add(blade);
+        const hilt = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.06, 0.06), charMat(0xd4a853));
+        hilt.position.set(0.52, 0.75, 0.1);
+        g.add(hilt);
+
+      } else if (id === 'wizard') {
+        addHead(skinColor, 1.45);
+        // Pointy hat
+        const hat = new THREE.Mesh(new THREE.ConeGeometry(0.45, 0.9, 16), charMat(0x6a1b9a));
+        hat.position.set(0, 2.1, 0);
+        g.add(hat);
+        // Stars on hat
+        const star = new THREE.Mesh(new THREE.SphereGeometry(0.05, 8, 8), charMat(0xffeb3b, 0xffeb3b));
+        star.position.set(0.15, 2.0, 0.3);
+        g.add(star);
+        const star2 = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 8), charMat(0xffeb3b, 0xffeb3b));
+        star2.position.set(-0.2, 2.2, 0.2);
+        g.add(star2);
+        // Beard
+        const beard = new THREE.Mesh(new THREE.ConeGeometry(0.25, 0.4, 8), charMat(0xeeeeee));
+        beard.position.set(0, 1.1, 0.2);
+        g.add(beard);
+        // Spectacles
+        for (const sx of [-0.16, 0.16]) {
+          const spec = new THREE.Mesh(new THREE.TorusGeometry(0.08, 0.015, 8, 16), charMat(0xd4a853));
+          spec.position.set(sx, 1.48, 0.47);
+          g.add(spec);
+        }
+        // Robe
+        addBody(0x7b1fa2, 0.85, 0.8, 0.8);
+        addArm(-0.5, 0x7b1fa2);
+        addArm(0.5, 0x7b1fa2);
+        addLeg(-0.15, 0x7b1fa2);
+        addLeg(0.15, 0x7b1fa2);
+        // Staff
+        const staff = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.8, 8), charMat(0x6d4c41));
+        staff.position.set(-0.6, 1.1, 0);
+        g.add(staff);
+        const orb = new THREE.Mesh(new THREE.SphereGeometry(0.15, 12, 12), charMat(0x00bcd4, 0x00bcd4));
+        orb.position.set(-0.6, 2.05, 0);
+        g.add(orb);
+
+      } else if (id === 'fairy') {
+        addHead(skinColor, 1.45);
+        // Flower crown
+        for (let a = 0; a < Math.PI * 2; a += Math.PI / 3) {
+          const flower = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8),
+            charMat([0xff69b4, 0xff9800, 0xffeb3b, 0xe91e63, 0x9c27b0, 0xf44336][Math.floor(a)]));
+          flower.position.set(Math.sin(a) * 0.4, 1.82, Math.cos(a) * 0.4);
+          g.add(flower);
+        }
+        // Wings
+        for (const sx of [-1, 1]) {
+          const wing = new THREE.Mesh(
+            new THREE.PlaneGeometry(0.8, 1.0),
+            new THREE.MeshPhongMaterial({ color: 0x81d4fa, emissive: 0x4fc3f7, emissiveIntensity: 0.3,
+              transparent: true, opacity: 0.6, side: THREE.DoubleSide })
+          );
+          wing.position.set(sx * 0.6, 1.3, -0.2);
+          wing.rotation.y = sx * 0.4;
+          wing.userData.isWing = true;
+          g.add(wing);
+        }
+        // Dress
+        const dress = new THREE.Mesh(new THREE.ConeGeometry(0.4, 0.8, 12), charMat(0x4caf50));
+        dress.position.set(0, 0.7, 0);
+        g.add(dress);
+        addBody(0x66bb6a, 0.95, 0.6, 0.5);
+        addArm(-0.45, 0x66bb6a);
+        addArm(0.45, 0x66bb6a);
+        addLeg(-0.12, skinColor);
+        addLeg(0.12, skinColor);
+        // Wand
+        const wand = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.7, 8), charMat(0xd4a853));
+        wand.position.set(0.55, 1.2, 0.1);
+        wand.rotation.z = -0.3;
+        g.add(wand);
+        const wandStar = new THREE.Mesh(new THREE.OctahedronGeometry(0.1, 0), charMat(0xffeb3b, 0xffeb3b));
+        wandStar.position.set(0.65, 1.55, 0.1);
+        g.add(wandStar);
+
+      } else if (id === 'warrior') {
+        addHead(skinColor, 1.45);
+        // Helmet
+        const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.55, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2), charMat(0x9e9e9e, 0xbdbdbd));
+        helmet.position.set(0, 1.5, 0);
+        g.add(helmet);
+        const crest = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.35, 0.5), charMat(0xd4a853));
+        crest.position.set(0, 2.0, 0);
+        g.add(crest);
+        // Cape
+        const cape = new THREE.Mesh(
+          new THREE.PlaneGeometry(0.8, 1.2),
+          new THREE.MeshPhongMaterial({ color: 0xf44336, side: THREE.DoubleSide })
+        );
+        cape.position.set(0, 0.9, -0.35);
+        g.add(cape);
+        // Armor body
+        addBody(0x9e9e9e, 0.9, 0.75, 0.7);
+        const chestPlate = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.4, 0.1), charMat(0xd4a853));
+        chestPlate.position.set(0, 0.95, 0.28);
+        g.add(chestPlate);
+        addArm(-0.5, 0x9e9e9e);
+        addArm(0.5, 0x9e9e9e);
+        addLeg(-0.18, 0x757575);
+        addLeg(0.18, 0x757575);
+        // Sword
+        const sword = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.9, 0.02), charMat(0xcccccc, 0xeeeeee));
+        sword.position.set(0.6, 1.2, 0.1);
+        sword.rotation.z = -0.3;
+        g.add(sword);
+        // Shield
+        const shield = new THREE.Mesh(new THREE.CircleGeometry(0.35, 12), charMat(0xd4a853));
+        shield.position.set(-0.55, 0.9, 0.25);
+        shield.rotation.y = 0.3;
+        g.add(shield);
+        const shieldInner = new THREE.Mesh(new THREE.CircleGeometry(0.2, 12), charMat(0xf44336));
+        shieldInner.position.set(-0.55, 0.9, 0.27);
+        shieldInner.rotation.y = 0.3;
+        g.add(shieldInner);
+
+      } else if (id === 'mermaid') {
+        addHead(skinColor, 1.45);
+        // Hair
+        const hair = new THREE.Mesh(new THREE.SphereGeometry(0.55, 16, 12), charMat(0x00bcd4));
+        hair.position.set(0, 1.5, -0.1);
+        hair.scale.set(1, 1, 0.8);
+        g.add(hair);
+        // Hair flowing down
+        const hairBack = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.8, 0.15), charMat(0x00bcd4));
+        hairBack.position.set(0, 1.1, -0.25);
+        g.add(hairBack);
+        // Crown
+        const crown = new THREE.Mesh(new THREE.TorusGeometry(0.35, 0.04, 8, 16), charMat(0xff69b4));
+        crown.position.set(0, 1.85, 0);
+        crown.rotation.x = Math.PI / 2;
+        g.add(crown);
+        const shell1 = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8), charMat(0xff69b4));
+        shell1.position.set(0, 1.92, 0.2);
+        g.add(shell1);
+        // Body top
+        addBody(0x80deea, 0.95, 0.6, 0.5);
+        // Shell bra
+        for (const sx of [-0.15, 0.15]) {
+          const sh = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 8), charMat(0xce93d8));
+          sh.position.set(sx, 1.0, 0.28);
+          g.add(sh);
+        }
+        addArm(-0.45, skinColor);
+        addArm(0.45, skinColor);
+        // Fish tail (instead of legs)
+        const tail = new THREE.Mesh(new THREE.ConeGeometry(0.35, 1.0, 12), charMat(0x00acc1, 0x00838f));
+        tail.position.set(0, 0.35, 0);
+        g.add(tail);
+        const fin = new THREE.Mesh(
+          new THREE.PlaneGeometry(0.6, 0.3),
+          new THREE.MeshPhongMaterial({ color: 0x00acc1, side: THREE.DoubleSide })
+        );
+        fin.position.set(0, -0.1, 0);
+        fin.rotation.x = Math.PI / 4;
+        g.add(fin);
+        // Trident
+        const trident = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.8, 8), charMat(0xd4a853, 0xd4a853));
+        trident.position.set(0.6, 1.2, 0);
+        g.add(trident);
+        for (const tx of [-0.12, 0, 0.12]) {
+          const prong = new THREE.Mesh(new THREE.ConeGeometry(0.035, 0.3, 6), charMat(0xd4a853, 0xd4a853));
+          prong.position.set(0.6 + tx, 2.2, 0);
+          g.add(prong);
+        }
+      }
+
+      return g;
+    }
+
+    // Preload not needed for 3D characters, keep for character select UI images
+    const charTextures = {};
+    function preloadCharTextures() {}
+
+    // Chapter 3D themes
+    const RUNNER_THEMES = {
+      1: { // Mare - Spiaggia
+        ground: 0xf5d76e, groundSide: 0x2196f3, sky: 0x87ceeb, fog: 0x87ceeb,
+        lightColor: 0xfff5e1, ambientColor: 0xffffff,
+        terrainScale: 0.03, heightMultiplier: 4, waterLevel: 0.35,
+        hasRiver: false, hasLava: false,
+        waterColor: 0x2196f3, waterOpacity: 0.55,
+        terrainColors: [
+          { h: 0.0, color: [0.96, 0.84, 0.43] },  // sabbia bagnata
+          { h: 0.35, color: [0.96, 0.88, 0.55] },  // sabbia
+          { h: 0.5, color: [0.55, 0.76, 0.29] },   // erba costiera
+          { h: 0.75, color: [0.40, 0.60, 0.22] },   // erba scura
+          { h: 1.0, color: [0.75, 0.70, 0.60] },    // roccia chiara
+        ],
+        obstacles: [
+          { geo: 'box', w:1.6, h:1.0, d:1.6, color: 0x1565c0, jumpable: true },
+          { geo: 'sphere', r:0.7, color: 0xff69b4, jumpable: true },
+          { geo: 'box', w:2.0, h:2.2, d:1.0, color: 0xf44336, jumpable: false },
+        ],
+        decos: [
+          { geo: 'cone', r:0.4, h:5, color: 0x8d6e63, topGeo: 'sphere', topR: 1.8, topColor: 0x4caf50 }, // palma
+          { geo: 'sphere', r:1.2, color: 0x2196f3, opacity: 0.4 }, // acqua
+          { geo: 'cone', r:0.8, h:1.5, color: 0xffeb3b }, // duna
+        ]
+      },
+      2: { // Grotta - Cristalli
+        ground: 0x263238, groundSide: 0x1a1a2e, sky: 0x0d0d1a, fog: 0x1a1a2e,
+        lightColor: 0x9c27b0, ambientColor: 0x4a148c,
+        terrainScale: 0.05, heightMultiplier: 8, waterLevel: 0.2,
+        hasRiver: false, hasLava: false,
+        waterColor: 0x1a237e, waterOpacity: 0.7,
+        terrainColors: [
+          { h: 0.0, color: [0.10, 0.12, 0.14] },  // roccia scura bagnata
+          { h: 0.2, color: [0.15, 0.19, 0.22] },   // roccia grotta
+          { h: 0.45, color: [0.20, 0.25, 0.28] },   // pietra
+          { h: 0.7, color: [0.25, 0.22, 0.30] },    // roccia viola
+          { h: 1.0, color: [0.30, 0.25, 0.40] },    // cristallo
+        ],
+        obstacles: [
+          { geo: 'cone', r:0.6, h:2.5, color: 0xce93d8, emissive: 0x7b1fa2, jumpable: false },
+          { geo: 'sphere', r:0.8, color: 0x616161, jumpable: true },
+          { geo: 'box', w:1.8, h:2.2, d:1.0, color: 0x37474f, jumpable: false },
+        ],
+        decos: [
+          { geo: 'cone', r:0.5, h:4, color: 0x7c4dff, emissive: 0x7c4dff, emInt: 0.3 }, // cristallo
+          { geo: 'cone', r:0.3, h:3, color: 0xb388ff, emissive: 0xb388ff, emInt: 0.2 }, // stalattite
+          { geo: 'sphere', r:0.8, color: 0x455a64 }, // masso
+        ]
+      },
+      3: { // Mercato
+        ground: 0x8d6e63, groundSide: 0x5d4037, sky: 0xffab91, fog: 0xffcc80,
+        lightColor: 0xff9800, ambientColor: 0xffe0b2,
+        terrainScale: 0.02, heightMultiplier: 3, waterLevel: 0.15,
+        hasRiver: false, hasLava: false,
+        waterColor: 0x4fc3f7, waterOpacity: 0.5,
+        terrainColors: [
+          { h: 0.0, color: [0.45, 0.35, 0.25] },  // terra bagnata
+          { h: 0.15, color: [0.55, 0.43, 0.30] },  // terra
+          { h: 0.35, color: [0.60, 0.50, 0.35] },   // terra chiara
+          { h: 0.65, color: [0.50, 0.65, 0.30] },   // erba
+          { h: 1.0, color: [0.55, 0.45, 0.38] },    // sentiero
+        ],
+        obstacles: [
+          { geo: 'box', w:2.0, h:2.4, d:1.8, color: 0x5d4037, jumpable: false },
+          { geo: 'cylinder', r:0.5, h:1.5, color: 0x8d6e63, jumpable: true },
+          { geo: 'box', w:1.4, h:1.0, d:1.4, color: 0xa1887f, jumpable: true },
+        ],
+        decos: [
+          { geo: 'box', w:1.5, h:3, d:1.5, color: 0xd7ccc8, topGeo: 'cone', topR: 1.2, topH: 1.5, topColor: 0xf44336 }, // casetta
+          { geo: 'cylinder', r:0.3, h:3.5, color: 0x795548, topGeo: 'box', topW: 2, topH: 0.3, topD: 2, topColor: 0xff9800 }, // lampione
+          { geo: 'box', w:0.8, h:1.5, d:0.8, color: 0xffcc80 }, // cassa
+        ]
+      },
+      4: { // Vulcano
+        ground: 0x4e342e, groundSide: 0x3e2723, sky: 0xbf360c, fog: 0xff5722,
+        lightColor: 0xff3d00, ambientColor: 0xff8a65,
+        terrainScale: 0.04, heightMultiplier: 12, waterLevel: 0.25,
+        hasRiver: false, hasLava: true,
+        waterColor: 0xff6d00, waterOpacity: 0.8,
+        terrainColors: [
+          { h: 0.0, color: [0.20, 0.12, 0.08] },  // roccia vulcanica scura
+          { h: 0.25, color: [0.30, 0.18, 0.12] },  // basalto
+          { h: 0.5, color: [0.35, 0.22, 0.14] },   // roccia calda
+          { h: 0.75, color: [0.25, 0.15, 0.10] },   // roccia nera
+          { h: 1.0, color: [0.40, 0.25, 0.15] },    // cima vulcano
+        ],
+        obstacles: [
+          { geo: 'sphere', r:0.8, color: 0xff6d00, emissive: 0xff6d00, emInt: 0.3, jumpable: true },
+          { geo: 'cone', r:0.5, h:2.4, color: 0xd50000, emissive: 0xff1744, emInt: 0.5, jumpable: false },
+          { geo: 'box', w:1.6, h:1.0, d:1.6, color: 0x5d4037, jumpable: true },
+        ],
+        decos: [
+          { geo: 'cone', r:1.5, h:6, color: 0x5d4037, topGeo: 'sphere', topR: 0.5, topColor: 0xff3d00, topEmissive: 0xff3d00 }, // mini vulcano
+          { geo: 'sphere', r:0.6, color: 0xff6d00, emissive: 0xff3d00, emInt: 0.5, opacity: 0.6 }, // lava pool
+          { geo: 'box', w:1.2, h:2, d:1.2, color: 0x424242 }, // roccia
+        ]
+      },
+      5: { // Giungla
+        ground: 0x388e3c, groundSide: 0x1b5e20, sky: 0x81c784, fog: 0x388e3c,
+        lightColor: 0xffeb3b, ambientColor: 0xc8e6c9,
+        terrainScale: 0.035, heightMultiplier: 7, waterLevel: 0.28,
+        hasRiver: true, hasLava: false,
+        waterColor: 0x2e7d32, waterOpacity: 0.5,
+        terrainColors: [
+          { h: 0.0, color: [0.18, 0.35, 0.12] },  // erba bagnata
+          { h: 0.28, color: [0.22, 0.45, 0.18] },  // erba scura
+          { h: 0.5, color: [0.30, 0.55, 0.22] },   // erba giungla
+          { h: 0.75, color: [0.25, 0.40, 0.18] },   // foresta densa
+          { h: 1.0, color: [0.35, 0.30, 0.22] },    // roccia muschiata
+        ],
+        obstacles: [
+          { geo: 'cylinder', r:0.5, h:2.8, color: 0x5d4037, jumpable: false },
+          { geo: 'box', w:2.0, h:0.6, d:0.8, color: 0x2e7d32, jumpable: true },
+          { geo: 'box', w:1.5, h:2.2, d:1.0, color: 0x6d4c41, jumpable: false },
+        ],
+        decos: [
+          { geo: 'cylinder', r:0.3, h:6, color: 0x6d4c41, topGeo: 'sphere', topR: 2.5, topColor: 0x2e7d32 }, // albero
+          { geo: 'cylinder', r:0.2, h:4, color: 0x8d6e63, topGeo: 'sphere', topR: 1.5, topColor: 0x66bb6a }, // albero piccolo
+          { geo: 'box', w:2, h:0.3, d:2, color: 0x4caf50, opacity: 0.5 }, // cespuglio
+        ]
+      },
+    };
+
+    const CELL_SIZE = 2;
+    const GRID_SIZE = 80;
+    const WORLD_SIZE = GRID_SIZE * CELL_SIZE; // 160
+    const MAX_LIVES = 3;
+    const PLAYER_SPEED = 7;
+    const ENEMY_COUNT_MIN = 15;
+    const ENEMY_COUNT_MAX = 22;
+    const WATER_LEVEL = 0.3;
+    const MAX_TERRAIN_HEIGHT = 10;
+    const SLOPE_THRESHOLD = 0.6;
+
+    // Joystick state (shared between touch and keyboard)
+    let joystickX = 0, joystickY = 0;
+    let keysDown = {};
+
+    function attemptStage(chapterId, stageIndex, isReplay) {
+      if (animationBusy) return;
+      animationBusy = true;
+
+      const chapter = currentChapters.find(c => c.id === chapterId);
+      if (!chapter) { animationBusy = false; return; }
+      const stage = chapter.stages[stageIndex];
+      if (!stage) { animationBusy = false; return; }
+
+      // Replay = always free, no energy check
+      const canAfford = isReplay ? true :
+        currentEnergy.carb >= stage.cost_carb &&
+        currentEnergy.prot >= stage.cost_prot &&
+        currentEnergy.fat >= stage.cost_fat &&
+        currentEnergy.hydr >= stage.cost_hydr;
+
+      const overlay = document.getElementById('stageAnimOverlay');
+      document.getElementById('stageAnimResult').classList.remove('show');
+      overlay.classList.add('show');
+
+      setTimeout(() => initExploreGame(canAfford, chapterId, stageIndex, stage, !!isReplay), 350);
+    }
+
+    // ---- MAP GENERATION ----
+    function seededRandom(seed) {
+      let s = seed;
+      return function() {
+        s = (s * 1103515245 + 12345) & 0x7fffffff;
+        return s / 0x7fffffff;
+      };
+    }
+
+    // Procedural noise
+    function hash2D(ix, iy, seed) {
+      let h = ix * 374761393 + iy * 668265263 + seed * 1274126177;
+      h = (h ^ (h >> 13)) * 1103515245;
+      h = h ^ (h >> 16);
+      return (h & 0x7fffffff) / 0x7fffffff;
+    }
+
+    function noise2D(x, y, seed) {
+      const ix = Math.floor(x), iy = Math.floor(y);
+      const fx = x - ix, fy = y - iy;
+      const ux = fx * fx * (3 - 2 * fx);
+      const uy = fy * fy * (3 - 2 * fy);
+      const a = hash2D(ix, iy, seed);
+      const b = hash2D(ix + 1, iy, seed);
+      const c = hash2D(ix, iy + 1, seed);
+      const d = hash2D(ix + 1, iy + 1, seed);
+      return a + (b - a) * ux + (c - a) * uy + (a - b - c + d) * ux * uy;
+    }
+
+    function fbm(x, y, seed, octaves, lacunarity, gain) {
+      let value = 0, amplitude = 1, frequency = 1, maxVal = 0;
+      for (let i = 0; i < octaves; i++) {
+        value += noise2D(x * frequency, y * frequency, seed + i * 43) * amplitude;
+        maxVal += amplitude;
+        amplitude *= gain;
+        frequency *= lacunarity;
+      }
+      return value / maxVal;
+    }
+
+    function smoothstep(edge0, edge1, x) {
+      const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
+      return t * t * (3 - 2 * t);
+    }
+
+    function generateMap(chapterId) {
+      const rand = seededRandom(chapterId * 7919 + 1337);
+      const theme = RUNNER_THEMES[chapterId] || RUNNER_THEMES[1];
+      const hmSize = GRID_SIZE + 1; // 81 vertices per side
+      const heightmap = new Float32Array(hmSize * hmSize);
+      const cellTypes = new Uint8Array(GRID_SIZE * GRID_SIZE); // 0=walk, 1=water, 2=spawn, 3=portal, 4=lava, 5=steep
+
+      const scale = theme.terrainScale || 0.03;
+      const hMul = theme.heightMultiplier || MAX_TERRAIN_HEIGHT;
+      const wLevel = theme.waterLevel != null ? theme.waterLevel : WATER_LEVEL;
+      const seed = chapterId * 7919 + 1337;
+
+      // Generate heightmap with fbm + edge falloff
+      for (let iy = 0; iy < hmSize; iy++) {
+        for (let ix = 0; ix < hmSize; ix++) {
+          let h = fbm(ix * scale, iy * scale, seed, 5, 2.0, 0.5);
+          // Power curve for more dramatic peaks
+          h = Math.pow(h, 1.3);
+          // Edge falloff - terrain sinks to water at edges
+          const edgeX = Math.min(ix, hmSize - 1 - ix) / (hmSize * 0.15);
+          const edgeY = Math.min(iy, hmSize - 1 - iy) / (hmSize * 0.15);
+          const edgeFactor = smoothstep(0, 1, Math.min(edgeX, edgeY));
+          h *= edgeFactor;
+          heightmap[iy * hmSize + ix] = h;
+        }
+      }
+
+      // Classify cells based on height and slope
+      for (let cy = 0; cy < GRID_SIZE; cy++) {
+        for (let cx = 0; cx < GRID_SIZE; cx++) {
+          // Average height of 4 corners
+          const h00 = heightmap[cy * hmSize + cx];
+          const h10 = heightmap[cy * hmSize + cx + 1];
+          const h01 = heightmap[(cy + 1) * hmSize + cx];
+          const h11 = heightmap[(cy + 1) * hmSize + cx + 1];
+          const avgH = (h00 + h10 + h01 + h11) / 4;
+
+          // Slope = max height difference between corners
+          const maxH = Math.max(h00, h10, h01, h11);
+          const minH = Math.min(h00, h10, h01, h11);
+          const slope = (maxH - minH) * hMul;
+
+          if (avgH < wLevel) {
+            cellTypes[cy * GRID_SIZE + cx] = theme.hasLava ? 4 : 1; // water or lava
+          } else if (slope > SLOPE_THRESHOLD) {
+            cellTypes[cy * GRID_SIZE + cx] = 5; // too steep
+          } else {
+            cellTypes[cy * GRID_SIZE + cx] = 0; // walkable
+          }
+        }
+      }
+
+      // Carve river if theme has one
+      if (theme.hasRiver) {
+        carveRiver(heightmap, cellTypes, hmSize, rand, seed);
+      }
+
+      // Find spawn and portal positions on walkable cells
+      const spawnPos = findWalkableCell(cellTypes, 5, 5, 20, 20, rand);
+      const portalPos = findWalkableCell(cellTypes, GRID_SIZE - 20, GRID_SIZE - 20, GRID_SIZE - 5, GRID_SIZE - 5, rand);
+
+      cellTypes[spawnPos[1] * GRID_SIZE + spawnPos[0]] = 2;
+      cellTypes[portalPos[1] * GRID_SIZE + portalPos[0]] = 3;
+
+      // Flatten terrain around spawn and portal (radius 3)
+      flattenArea(heightmap, hmSize, spawnPos[0], spawnPos[1], 3, wLevel + 0.15);
+      flattenArea(heightmap, hmSize, portalPos[0], portalPos[1], 3, wLevel + 0.15);
+
+      // Ensure path exists with BFS; if not, carve corridor
+      if (!bfsPathExists(cellTypes, spawnPos, portalPos)) {
+        carvePathCorridor(heightmap, cellTypes, hmSize, spawnPos, portalPos, wLevel);
+      }
+
+      return { heightmap, cellTypes, hmSize, spawnPos, portalPos };
+    }
+
+    function carveRiver(heightmap, cellTypes, hmSize, rand, seed) {
+      // Start from a high point on one edge, meander to opposite edge
+      const startX = 5 + Math.floor(rand() * (GRID_SIZE - 10));
+      let rx = startX, ry = 0;
+      const riverWidth = 2;
+      const bridgeAt = Math.floor(GRID_SIZE * 0.3 + rand() * GRID_SIZE * 0.4);
+
+      while (ry < GRID_SIZE) {
+        // Carve river cells
+        const isBridge = (Math.abs(ry - bridgeAt) < 2);
+        if (!isBridge) {
+          for (let dx = -riverWidth; dx <= riverWidth; dx++) {
+            const cx = Math.round(rx) + dx;
+            if (cx >= 0 && cx < GRID_SIZE && ry >= 0 && ry < GRID_SIZE) {
+              cellTypes[ry * GRID_SIZE + cx] = 1; // water
+              // Lower all 4 heightmap vertices for this cell
+              for (let vy = 0; vy <= 1; vy++) {
+                for (let vx = 0; vx <= 1; vx++) {
+                  const hx = cx + vx, hy = ry + vy;
+                  if (hx >= 0 && hx < hmSize && hy >= 0 && hy < hmSize) {
+                    heightmap[hy * hmSize + hx] = 0.1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        // Meander
+        rx += (noise2D(rx * 0.1, ry * 0.1, seed + 999) - 0.5) * 2;
+        rx = Math.max(3, Math.min(GRID_SIZE - 4, rx));
+        ry++;
+      }
+    }
+
+    function findWalkableCell(cellTypes, minX, minY, maxX, maxY, rand) {
+      // Try random cells in the area first
+      for (let attempt = 0; attempt < 200; attempt++) {
+        const x = minX + Math.floor(rand() * (maxX - minX));
+        const y = minY + Math.floor(rand() * (maxY - minY));
+        if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
+          if (cellTypes[y * GRID_SIZE + x] === 0) return [x, y];
+        }
+      }
+      // Fallback: scan the area
+      for (let y = minY; y < maxY && y < GRID_SIZE; y++) {
+        for (let x = minX; x < maxX && x < GRID_SIZE; x++) {
+          if (cellTypes[y * GRID_SIZE + x] === 0) return [x, y];
+        }
+      }
+      // Ultimate fallback: force a cell walkable
+      const fx = Math.floor((minX + maxX) / 2);
+      const fy = Math.floor((minY + maxY) / 2);
+      cellTypes[fy * GRID_SIZE + fx] = 0;
+      return [fx, fy];
+    }
+
+    function flattenArea(heightmap, hmSize, cx, cy, radius, targetH) {
+      for (let dy = -radius; dy <= radius; dy++) {
+        for (let dx = -radius; dx <= radius; dx++) {
+          const hx = cx + dx, hy = cy + dy;
+          if (hx >= 0 && hx < hmSize && hy >= 0 && hy < hmSize) {
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist <= radius) {
+              const blend = smoothstep(0, radius, radius - dist);
+              const idx = hy * hmSize + hx;
+              heightmap[idx] = heightmap[idx] * (1 - blend) + targetH * blend;
+            }
+          }
+        }
+      }
+    }
+
+    function bfsPathExists(cellTypes, startPos, endPos) {
+      const visited = new Uint8Array(GRID_SIZE * GRID_SIZE);
+      const queue = [startPos[0] + startPos[1] * GRID_SIZE];
+      let head = 0;
+      visited[queue[0]] = 1;
+      const target = endPos[0] + endPos[1] * GRID_SIZE;
+      while (head < queue.length) {
+        const idx = queue[head++];
+        if (idx === target) return true;
+        const x = idx % GRID_SIZE, y = (idx - x) / GRID_SIZE;
+        for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1]]) {
+          const nx = x + dx, ny = y + dy;
+          if (nx >= 0 && nx < GRID_SIZE && ny >= 0 && ny < GRID_SIZE) {
+            const nIdx = ny * GRID_SIZE + nx;
+            const ct = cellTypes[nIdx];
+            if (!visited[nIdx] && (ct === 0 || ct === 2 || ct === 3)) {
+              visited[nIdx] = 1;
+              queue.push(nIdx);
+            }
+          }
+        }
+      }
+      return false;
+    }
+
+    function carvePathCorridor(heightmap, cellTypes, hmSize, startPos, endPos, wLevel) {
+      // Walk from start to end in a straight-ish line, flattening terrain
+      let x = startPos[0], y = startPos[1];
+      const tx = endPos[0], ty = endPos[1];
+      while (x !== tx || y !== ty) {
+        // Move towards target
+        if (Math.abs(tx - x) > Math.abs(ty - y)) {
+          x += tx > x ? 1 : -1;
+        } else {
+          y += ty > y ? 1 : -1;
+        }
+        // Flatten corridor (width 2)
+        for (let dx = -1; dx <= 1; dx++) {
+          for (let dy = -1; dy <= 1; dy++) {
+            const cx = x + dx, cy = y + dy;
+            if (cx >= 0 && cx < GRID_SIZE && cy >= 0 && cy < GRID_SIZE) {
+              cellTypes[cy * GRID_SIZE + cx] = 0;
+              // Raise all 4 heightmap vertices above water
+              const hTarget = wLevel + 0.1;
+              for (let vy = 0; vy <= 1; vy++) {
+                for (let vx = 0; vx <= 1; vx++) {
+                  const hx = cx + vx, hy = cy + vy;
+                  if (hx >= 0 && hx < hmSize && hy >= 0 && hy < hmSize) {
+                    heightmap[hy * hmSize + hx] = Math.max(heightmap[hy * hmSize + hx], hTarget);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    function buildMapMeshes(mapData, theme) {
+      const meshes = [];
+      const { heightmap, cellTypes, hmSize } = mapData;
+      const hMul = theme.heightMultiplier || MAX_TERRAIN_HEIGHT;
+      const wLevel = theme.waterLevel != null ? theme.waterLevel : WATER_LEVEL;
+      const terrainColors = theme.terrainColors || [
+        { h: 0.0, color: [0.3, 0.5, 0.2] },
+        { h: 1.0, color: [0.6, 0.6, 0.5] },
+      ];
+
+      // --- Terrain PlaneGeometry with vertex displacement + vertex colors ---
+      const terrGeo = new THREE.PlaneGeometry(WORLD_SIZE, WORLD_SIZE, GRID_SIZE, GRID_SIZE);
+      terrGeo.rotateX(-Math.PI / 2);
+
+      const posAttr = terrGeo.attributes.position;
+      const colors = new Float32Array(posAttr.count * 3);
+
+      for (let i = 0; i < posAttr.count; i++) {
+        // PlaneGeometry vertices go row-by-row from -WORLD_SIZE/2 to +WORLD_SIZE/2
+        // We need to offset to 0..WORLD_SIZE and map to heightmap
+        const wx = posAttr.getX(i) + WORLD_SIZE / 2;
+        const wz = posAttr.getZ(i) + WORLD_SIZE / 2;
+
+        // Map to heightmap indices
+        const hx = (wx / WORLD_SIZE) * GRID_SIZE;
+        const hz = (wz / WORLD_SIZE) * GRID_SIZE;
+        const ix = Math.min(Math.floor(hx), hmSize - 1);
+        const iz = Math.min(Math.floor(hz), hmSize - 1);
+
+        const h = heightmap[iz * hmSize + ix];
+        const y = h * hMul;
+
+        posAttr.setY(i, y);
+
+        // Vertex color based on normalized height
+        const normH = Math.max(0, Math.min(1, h));
+        let r = terrainColors[0].color[0], g = terrainColors[0].color[1], b = terrainColors[0].color[2];
+        for (let c = 0; c < terrainColors.length - 1; c++) {
+          if (normH >= terrainColors[c].h && normH <= terrainColors[c + 1].h) {
+            const t = (normH - terrainColors[c].h) / (terrainColors[c + 1].h - terrainColors[c].h);
+            r = terrainColors[c].color[0] + (terrainColors[c + 1].color[0] - terrainColors[c].color[0]) * t;
+            g = terrainColors[c].color[1] + (terrainColors[c + 1].color[1] - terrainColors[c].color[1]) * t;
+            b = terrainColors[c].color[2] + (terrainColors[c + 1].color[2] - terrainColors[c].color[2]) * t;
+            break;
+          }
+        }
+        colors[i * 3] = r;
+        colors[i * 3 + 1] = g;
+        colors[i * 3 + 2] = b;
+      }
+
+      posAttr.needsUpdate = true;
+      terrGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+      terrGeo.computeVertexNormals();
+
+      const terrMat = new THREE.MeshPhongMaterial({
+        vertexColors: true,
+        flatShading: true,
+        shininess: 5,
+      });
+      const terrain = new THREE.Mesh(terrGeo, terrMat);
+      terrain.position.set(WORLD_SIZE / 2, 0, WORLD_SIZE / 2);
+      meshes.push(terrain);
+
+      // --- Water / Lava plane ---
+      const waterY = wLevel * hMul;
+      const waterSize = WORLD_SIZE * 1.5;
+      const waterGeo = new THREE.PlaneGeometry(waterSize, waterSize);
+      waterGeo.rotateX(-Math.PI / 2);
+
+      const isLava = theme.hasLava;
+      const waterMat = new THREE.MeshPhongMaterial({
+        color: theme.waterColor || 0x2196f3,
+        transparent: true,
+        opacity: theme.waterOpacity || 0.55,
+        shininess: isLava ? 5 : 40,
+        emissive: isLava ? theme.waterColor || 0xff6d00 : 0x000000,
+        emissiveIntensity: isLava ? 0.4 : 0,
+        side: THREE.DoubleSide,
+      });
+      const waterMesh = new THREE.Mesh(waterGeo, waterMat);
+      waterMesh.position.set(WORLD_SIZE / 2, waterY, WORLD_SIZE / 2);
+      meshes.push(waterMesh);
+
+      // --- Rocks on steep cells (InstancedMesh) ---
+      const steepCells = [];
+      for (let cy = 0; cy < GRID_SIZE; cy++) {
+        for (let cx = 0; cx < GRID_SIZE; cx++) {
+          if (cellTypes[cy * GRID_SIZE + cx] === 5) {
+            steepCells.push([cx, cy]);
+          }
+        }
+      }
+
+      if (steepCells.length > 0) {
+        const rockGeo = new THREE.DodecahedronGeometry(0.8, 0);
+        const rockMat = new THREE.MeshPhongMaterial({
+          color: theme.groundSide || 0x666666,
+          flatShading: true,
+          shininess: 5,
+        });
+        const maxRocks = Math.min(steepCells.length, 500);
+        const rockInstances = new THREE.InstancedMesh(rockGeo, rockMat, maxRocks);
+        const dummy = new THREE.Object3D();
+        const rockRand = seededRandom(hmSize * 17);
+
+        for (let i = 0; i < maxRocks; i++) {
+          const [cx, cy] = steepCells[Math.floor(rockRand() * steepCells.length)];
+          const wx = cx * CELL_SIZE + CELL_SIZE * rockRand();
+          const wz = cy * CELL_SIZE + CELL_SIZE * rockRand();
+          const h = getTerrainHeightFromMap(heightmap, hmSize, wx, wz, hMul);
+          const sc = 0.5 + rockRand() * 1.0;
+          dummy.position.set(wx, h, wz);
+          dummy.scale.set(sc, sc * (0.5 + rockRand() * 0.8), sc);
+          dummy.rotation.set(rockRand() * Math.PI, rockRand() * Math.PI, 0);
+          dummy.updateMatrix();
+          rockInstances.setMatrixAt(i, dummy.matrix);
+        }
+        rockInstances.instanceMatrix.needsUpdate = true;
+        meshes.push(rockInstances);
+      }
+
+      return { meshes, terrain, waterMesh, waterY };
+    }
+
+    // Terrain height from heightmap with bilinear interpolation
+    function getTerrainHeightFromMap(heightmap, hmSize, worldX, worldZ, hMul) {
+      const gx = (worldX / WORLD_SIZE) * GRID_SIZE;
+      const gz = (worldZ / WORLD_SIZE) * GRID_SIZE;
+      const ix = Math.max(0, Math.min(hmSize - 2, Math.floor(gx)));
+      const iz = Math.max(0, Math.min(hmSize - 2, Math.floor(gz)));
+      const fx = gx - ix, fz = gz - iz;
+      const h00 = heightmap[iz * hmSize + ix];
+      const h10 = heightmap[iz * hmSize + ix + 1];
+      const h01 = heightmap[(iz + 1) * hmSize + ix];
+      const h11 = heightmap[(iz + 1) * hmSize + ix + 1];
+      const h = h00 * (1 - fx) * (1 - fz) + h10 * fx * (1 - fz) + h01 * (1 - fx) * fz + h11 * fx * fz;
+      return h * hMul;
+    }
+
+    function getTerrainHeight(worldX, worldZ) {
+      if (!runnerState || !runnerState.mapData) return 0;
+      const md = runnerState.mapData;
+      const hMul = (runnerState.theme.heightMultiplier || MAX_TERRAIN_HEIGHT);
+      return getTerrainHeightFromMap(md.heightmap, md.hmSize, worldX, worldZ, hMul);
+    }
+
+    function buildPortal(theme) {
+      const group = new THREE.Group();
+
+      // Main torus ring
+      const torusGeo = new THREE.TorusGeometry(1.5, 0.15, 16, 32);
+      const torusMat = new THREE.MeshPhongMaterial({ color: 0xd4a853, emissive: 0xd4a853, emissiveIntensity: 0.5, shininess: 60 });
+      const torus = new THREE.Mesh(torusGeo, torusMat);
+      torus.rotation.x = Math.PI / 2;
+      torus.position.y = 2;
+      group.add(torus);
+
+      // Inner disc
+      const discGeo = new THREE.CircleGeometry(1.3, 24);
+      const discMat = new THREE.MeshPhongMaterial({ color: 0x0dcfcf, emissive: 0x0dcfcf, emissiveIntensity: 0.4, transparent: true, opacity: 0.3, side: THREE.DoubleSide });
+      const disc = new THREE.Mesh(discGeo, discMat);
+      disc.rotation.x = Math.PI / 2;
+      disc.position.y = 2;
+      group.add(disc);
+
+      // Vertical beam
+      const beamGeo = new THREE.CylinderGeometry(0.3, 0.3, 10, 8);
+      const beamMat = new THREE.MeshPhongMaterial({ color: 0xd4a853, emissive: 0xd4a853, emissiveIntensity: 0.3, transparent: true, opacity: 0.15 });
+      const beam = new THREE.Mesh(beamGeo, beamMat);
+      beam.position.y = 5;
+      group.add(beam);
+
+      // Orbiting spheres
+      const orbs = [];
+      for (let i = 0; i < 4; i++) {
+        const orbGeo = new THREE.SphereGeometry(0.15, 8, 8);
+        const orbMat = new THREE.MeshPhongMaterial({ color: 0xd4a853, emissive: 0xd4a853, emissiveIntensity: 0.6 });
+        const orb = new THREE.Mesh(orbGeo, orbMat);
+        orb.userData.orbAngle = (Math.PI * 2 / 4) * i;
+        group.add(orb);
+        orbs.push(orb);
+      }
+
+      // Point light
+      const light = new THREE.PointLight(0xd4a853, 2, 15);
+      light.position.y = 2;
+      group.add(light);
+
+      group.userData = { torus, disc, beam, orbs, light };
+      return group;
+    }
+
+    function spawnEnemies(mapData, theme) {
+      const enemies = [];
+      const rand = seededRandom(Date.now());
+      const count = ENEMY_COUNT_MIN + Math.floor(rand() * (ENEMY_COUNT_MAX - ENEMY_COUNT_MIN + 1));
+      const obsTmpls = theme.obstacles || [];
+      const { cellTypes, heightmap, hmSize, spawnPos } = mapData;
+      const hMul = theme.heightMultiplier || MAX_TERRAIN_HEIGHT;
+
+      // Collect free cells (not near spawn)
+      const freeCells = [];
+      for (let y = 1; y < GRID_SIZE - 1; y++) {
+        for (let x = 1; x < GRID_SIZE - 1; x++) {
+          const ct = cellTypes[y * GRID_SIZE + x];
+          if (ct === 0) {
+            const distSpawn = Math.abs(x - spawnPos[0]) + Math.abs(y - spawnPos[1]);
+            if (distSpawn > 6) freeCells.push([x, y]);
+          }
+        }
+      }
+
+      for (let i = 0; i < count && freeCells.length > 0; i++) {
+        const idx = Math.floor(rand() * freeCells.length);
+        const [cx, cy] = freeCells.splice(idx, 1)[0];
+
+        const tmpl = obsTmpls[Math.floor(rand() * obsTmpls.length)] || { geo: 'sphere', r: 0.5, color: 0xff0000 };
+        const geo = makeGeo(tmpl);
+        const mat = makePhongMat(tmpl.color, tmpl.emissive, tmpl.emInt || (tmpl.emissive ? 0.4 : 0), 30);
+        const mesh = new THREE.Mesh(geo, mat);
+
+        const worldX = cx * CELL_SIZE + CELL_SIZE / 2;
+        const worldZ = cy * CELL_SIZE + CELL_SIZE / 2;
+        const h = tmpl.h || tmpl.r * 2 || 1;
+        const terrainH = getTerrainHeightFromMap(heightmap, hmSize, worldX, worldZ, hMul);
+        mesh.position.set(worldX, terrainH + h / 2, worldZ);
+
+        // Patrol config
+        const axis = rand() < 0.5 ? 'x' : 'z';
+        const range = 4 + rand() * 4;
+        const speed = 2 + rand() * 1;
+        const dir = rand() < 0.5 ? 1 : -1;
+
+        mesh.userData = {
+          enemy: true,
+          originX: worldX, originZ: worldZ,
+          axis, range, speed, dir, height: h,
+          gridX: cx, gridZ: cy,
+        };
+
+        enemies.push(mesh);
+      }
+      return enemies;
+    }
+
+    // ---- JOYSTICK ----
+    let _joystickCleanup = null;
+
+    function setupJoystick() {
+      // Remove previous listeners if any
+      if (_joystickCleanup) { _joystickCleanup(); _joystickCleanup = null; }
+
+      const zone = document.getElementById('joystickZone');
+      const base = document.getElementById('joystickBase');
+      const knob = document.getElementById('joystickKnob');
+
+      // Compute center of the base circle in screen coords
+      let baseCX = 0, baseCY = 0;
+      function recalcCenter() {
+        const r = base.getBoundingClientRect();
+        baseCX = r.left + r.width / 2;
+        baseCY = r.top + r.height / 2;
+      }
+      recalcCenter();
+
+      let touchId = null;
+      const maxR = 50; // max knob displacement in px
+
+      function onTouchStart(e) {
+        e.preventDefault();
+        if (touchId !== null) return;
+        recalcCenter();
+        const t = e.changedTouches[0];
+        touchId = t.identifier;
+        updateKnob(t.clientX, t.clientY);
+      }
+
+      function onTouchMove(e) {
+        e.preventDefault();
+        for (const t of e.changedTouches) {
+          if (t.identifier !== touchId) continue;
+          updateKnob(t.clientX, t.clientY);
+        }
+      }
+
+      function onTouchEnd(e) {
+        for (const t of e.changedTouches) {
+          if (t.identifier !== touchId) continue;
+          touchId = null;
+          knob.style.transform = 'translate(0px, 0px)';
+          joystickX = 0;
+          joystickY = 0;
+        }
+      }
+
+      function updateKnob(cx, cy) {
+        let dx = cx - baseCX;
+        let dy = cy - baseCY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > maxR) {
+          dx = dx / dist * maxR;
+          dy = dy / dist * maxR;
+        }
+        knob.style.transform = `translate(${dx}px, ${dy}px)`;
+        joystickX = dx / maxR;
+        joystickY = -dy / maxR; // screen Y is inverted: up = negative
+      }
+
+      zone.addEventListener('touchstart', onTouchStart, { passive: false });
+      zone.addEventListener('touchmove', onTouchMove, { passive: false });
+      zone.addEventListener('touchend', onTouchEnd);
+      zone.addEventListener('touchcancel', onTouchEnd);
+
+      _joystickCleanup = () => {
+        zone.removeEventListener('touchstart', onTouchStart);
+        zone.removeEventListener('touchmove', onTouchMove);
+        zone.removeEventListener('touchend', onTouchEnd);
+        zone.removeEventListener('touchcancel', onTouchEnd);
+      };
+    }
+
+    function setupKeyboard() {
+      const handler = (e) => {
+        if (!runnerState || runnerState.phase !== 'running') return;
+        const down = e.type === 'keydown';
+        keysDown[e.key] = down;
+        // Map WASD + arrows to joystick
+        joystickX = (keysDown['d'] || keysDown['ArrowRight'] ? 1 : 0) - (keysDown['a'] || keysDown['ArrowLeft'] ? 1 : 0);
+        joystickY = (keysDown['w'] || keysDown['ArrowUp'] ? 1 : 0) - (keysDown['s'] || keysDown['ArrowDown'] ? 1 : 0);
+      };
+      document.addEventListener('keydown', handler);
+      document.addEventListener('keyup', handler);
+      return handler;
+    }
+
+    // ---- EXPLORE GAME INIT ----
+    function initExploreGame(canAfford, chapterId, stageIndex, stage, isReplay) {
+      const canvas = document.getElementById('runnerCanvas');
+      const rect = canvas.getBoundingClientRect();
+
+      // Dispose previous
+      if (runnerRenderer) { runnerRenderer.dispose(); runnerRenderer = null; }
+
+      // Renderer
+      runnerRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+      runnerRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      runnerRenderer.setSize(rect.width, rect.height);
+
+      // Scene
+      runnerScene = new THREE.Scene();
+      const theme = RUNNER_THEMES[chapterId] || RUNNER_THEMES[1];
+
+      // Gradient sky
+      const skyCanvas = document.createElement('canvas');
+      skyCanvas.width = 2; skyCanvas.height = 256;
+      const skyCtx = skyCanvas.getContext('2d');
+      const topColor = new THREE.Color(theme.sky);
+      const botColor = new THREE.Color(theme.groundSide || theme.ground);
+      const grad = skyCtx.createLinearGradient(0, 0, 0, 256);
+      grad.addColorStop(0, '#' + topColor.getHexString());
+      grad.addColorStop(0.6, '#' + new THREE.Color().lerpColors(topColor, botColor, 0.3).getHexString());
+      grad.addColorStop(1, '#' + botColor.getHexString());
+      skyCtx.fillStyle = grad;
+      skyCtx.fillRect(0, 0, 2, 256);
+      const skyTex = new THREE.CanvasTexture(skyCanvas);
+      runnerScene.background = skyTex;
+
+      runnerScene.fog = new THREE.Fog(theme.fog, 25, 90);
+
+      // Camera
+      runnerCamera = new THREE.PerspectiveCamera(55, rect.width / Math.max(rect.height, 1), 0.1, 250);
+
+      // Lights
+      runnerScene.add(new THREE.AmbientLight(theme.ambientColor, 0.8));
+      const dirLight = new THREE.DirectionalLight(theme.lightColor, 1.2);
+      dirLight.position.set(10, 20, 10);
+      runnerScene.add(dirLight);
+      runnerScene.add(new THREE.HemisphereLight(theme.sky, theme.ground, 0.5));
+
+      // Generate map
+      const mapData = generateMap(chapterId);
+      const hMul = theme.heightMultiplier || MAX_TERRAIN_HEIGHT;
+
+      // Build map meshes
+      const mapResult = buildMapMeshes(mapData, theme);
+      mapResult.meshes.forEach(m => runnerScene.add(m));
+
+      // Portal
+      const portalGroup = buildPortal(theme);
+      const portalX = mapData.portalPos[0] * CELL_SIZE + CELL_SIZE / 2;
+      const portalZ = mapData.portalPos[1] * CELL_SIZE + CELL_SIZE / 2;
+      const portalTerrH = getTerrainHeightFromMap(mapData.heightmap, mapData.hmSize, portalX, portalZ, hMul);
+      portalGroup.position.set(portalX, portalTerrH, portalZ);
+      runnerScene.add(portalGroup);
+
+      // Enemies
+      const enemies = spawnEnemies(mapData, theme);
+      enemies.forEach(e => runnerScene.add(e));
+
+      // Decorations (on free cells)
+      const decorations = [];
+      const decoTemplates = theme.decos || [];
+      if (decoTemplates.length > 0) {
+        const dRand = seededRandom(chapterId * 31337);
+        let decoCount = 0;
+        for (let y = 2; y < GRID_SIZE - 2 && decoCount < 70; y++) {
+          for (let x = 2; x < GRID_SIZE - 2 && decoCount < 70; x++) {
+            const ct = mapData.cellTypes[y * GRID_SIZE + x];
+            if (ct !== 0) continue;
+            if (dRand() > 0.03) continue; // ~3% chance on bigger map
+            const distSpawn = Math.abs(x - mapData.spawnPos[0]) + Math.abs(y - mapData.spawnPos[1]);
+            const distPortal = Math.abs(x - mapData.portalPos[0]) + Math.abs(y - mapData.portalPos[1]);
+            if (distSpawn < 4 || distPortal < 4) continue;
+            const tmpl = decoTemplates[Math.floor(dRand() * decoTemplates.length)];
+            const mesh = buildDecoMesh(tmpl);
+            if (!mesh) continue;
+            const h = tmpl.h || tmpl.r * 2 || 1;
+            const wx = x * CELL_SIZE + CELL_SIZE / 2;
+            const wz = y * CELL_SIZE + CELL_SIZE / 2;
+            const terrH = getTerrainHeightFromMap(mapData.heightmap, mapData.hmSize, wx, wz, hMul);
+            mesh.position.set(wx, terrH + h / 2 * 0.6, wz);
+            mesh.scale.set(0.6, 0.6, 0.6);
+            mesh.rotation.y = dRand() * Math.PI * 2;
+            runnerScene.add(mesh);
+            decorations.push(mesh);
+            decoCount++;
+          }
+        }
+      }
+
+      // Player
+      const playerModel = buildCharacter3D(selectedCharacter) || buildCharacter3D('gasparino');
+      const spawnX = mapData.spawnPos[0] * CELL_SIZE + CELL_SIZE / 2;
+      const spawnZ = mapData.spawnPos[1] * CELL_SIZE + CELL_SIZE / 2;
+      const spawnTerrH = getTerrainHeightFromMap(mapData.heightmap, mapData.hmSize, spawnX, spawnZ, hMul);
+      playerModel.position.set(spawnX, spawnTerrH, spawnZ);
+      playerModel.scale.set(1.2, 1.2, 1.2);
+      runnerScene.add(playerModel);
+
+      // Build minimap image
+      const minimapCache = buildMinimapImage(mapData, theme);
+
+      // Clock
+      runnerClock = new THREE.Clock();
+
+      // State
+      runnerState = {
+        canAfford, chapterId, stageIndex, stage, theme, isReplay,
+        playerModel, skyTex, mapData,
+        // Map rendering
+        waterMesh: mapResult.waterMesh, waterY: mapResult.waterY,
+        // Player position
+        px: spawnX, pz: spawnZ, rotY: 0,
+        // Portal
+        portalGroup, portalX, portalZ,
+        // Enemies
+        enemies,
+        // Lives
+        lives: MAX_LIVES,
+        invincible: false, invincibleTimer: 0,
+        hitFlash: 0,
+        // State
+        phase: 'running',
+        // Decorations
+        decorations,
+        // Walk animation phase
+        walkPhase: 0,
+        // Minimap
+        minimapCache,
+        mmCtx: document.getElementById('minimap').getContext('2d'),
+      };
+
+      // Setup input
+      setupJoystick();
+      const keyHandler = setupKeyboard();
+      runnerState._keyHandler = keyHandler;
+
+      // Update HUD
+      updateGameHUD();
+
+      // Handle resize
+      runnerState._resizeHandler = () => {
+        if (!runnerRenderer) return;
+        const r = canvas.getBoundingClientRect();
+        runnerRenderer.setSize(r.width, r.height);
+        runnerCamera.aspect = r.width / Math.max(r.height, 1);
+        runnerCamera.updateProjectionMatrix();
+      };
+      window.addEventListener('resize', runnerState._resizeHandler);
+
+      // Start loop
+      gameTick();
+    }
+
+    // ============ GEOMETRY & MATERIAL POOL ============
+    const _geoCache = {};
+    const _matCache = {};
+
+    function getGeo(key, factory) {
+      if (!_geoCache[key]) _geoCache[key] = factory();
+      return _geoCache[key];
+    }
+
+    function getMat(key, factory) {
+      if (!_matCache[key]) _matCache[key] = factory();
+      return _matCache[key];
+    }
+
+    function geoKey(type, a, b, c) { return `${type}_${a}_${b||0}_${c||0}`; }
+
+    function makeGeo(tmpl) {
+      const k = geoKey(tmpl.geo, tmpl.w || tmpl.r, tmpl.h || tmpl.r, tmpl.d);
+      return getGeo(k, () => {
+        if (tmpl.geo === 'box') return new THREE.BoxGeometry(tmpl.w, tmpl.h, tmpl.d);
+        if (tmpl.geo === 'sphere') return new THREE.SphereGeometry(tmpl.r, 16, 12);
+        if (tmpl.geo === 'cone') return new THREE.ConeGeometry(tmpl.r, tmpl.h, 12);
+        if (tmpl.geo === 'cylinder') return new THREE.CylinderGeometry(tmpl.r, tmpl.r, tmpl.h, 12);
+        return new THREE.BoxGeometry(1, 1, 1);
+      });
+    }
+
+    function makePhongMat(color, emissive, emInt, shininess, opacity) {
+      const k = `${color}_${emissive||0}_${emInt||0}_${shininess||30}_${opacity||1}`;
+      return getMat(k, () => new THREE.MeshPhongMaterial({
+        color, emissive: emissive || 0x000000,
+        emissiveIntensity: emInt || 0,
+        shininess: shininess || 30,
+        opacity: opacity || 1,
+        transparent: (opacity != null && opacity < 1),
+      }));
+    }
+
+    function clearPools() {
+      for (const k in _geoCache) { _geoCache[k].dispose(); delete _geoCache[k]; }
+      for (const k in _matCache) { _matCache[k].dispose(); delete _matCache[k]; }
+    }
+
+    function buildDecoMesh(d) {
+      const geo = makeGeo({ geo: d.geo, r: d.r, h: d.h, w: d.w || 1, d: d.d || d.w || 1 });
+      if (!geo) return null;
+      const m = makePhongMat(d.color, d.emissive, d.emInt, 15, d.opacity);
+      const mesh = new THREE.Mesh(geo, m);
+
+      if (d.topGeo) {
+        const tGeo = makeGeo({ geo: d.topGeo, r: d.topR || 1, h: d.topH || 1, w: d.topW || 1, d: d.topD || 1 });
+        if (tGeo) {
+          const tMat = makePhongMat(d.topColor || 0x4caf50, d.topEmissive, d.topEmissive ? 0.3 : 0, 15);
+          const topMesh = new THREE.Mesh(tGeo, tMat);
+          topMesh.position.y = (d.h || 1) / 2 + (d.topH || d.topR || 1) * 0.3;
+          mesh.add(topMesh);
+        }
+      }
+      return mesh;
+    }
+
+    // ---- GRID COLLISION HELPER ----
+    function gridFree(worldX, worldZ) {
+      if (!runnerState || !runnerState.mapData) return false;
+      const gx = Math.floor(worldX / CELL_SIZE);
+      const gz = Math.floor(worldZ / CELL_SIZE);
+      if (gx < 0 || gx >= GRID_SIZE || gz < 0 || gz >= GRID_SIZE) return false;
+      const ct = runnerState.mapData.cellTypes[gz * GRID_SIZE + gx];
+      return ct === 0 || ct === 2 || ct === 3; // walkable, spawn, portal
+    }
+
+    // ---- ENEMY UPDATE ----
+    function updateEnemies(dt) {
+      if (!runnerState) return;
+      for (const e of runnerState.enemies) {
+        const d = e.userData;
+        const step = d.speed * d.dir * dt;
+
+        if (d.axis === 'x') {
+          const newX = e.position.x + step;
+          if (Math.abs(newX - d.originX) > d.range || !gridFree(newX, e.position.z)) {
+            d.dir *= -1;
+          } else {
+            e.position.x = newX;
+          }
+        } else {
+          const newZ = e.position.z + step;
+          if (Math.abs(newZ - d.originZ) > d.range || !gridFree(e.position.x, newZ)) {
+            d.dir *= -1;
+          } else {
+            e.position.z = newZ;
+          }
+        }
+
+        // Follow terrain height
+        const terrH = getTerrainHeight(e.position.x, e.position.z);
+        e.position.y = terrH + d.height / 2;
+
+        // Slow rotation for visual interest
+        e.rotation.y += 0.8 * dt;
+      }
+    }
+
+    // ---- ENEMY COLLISION ----
+    function checkEnemyCollision() {
+      if (!runnerState || runnerState.invincible) return false;
+      const px = runnerState.px, pz = runnerState.pz;
+      for (const e of runnerState.enemies) {
+        const dx = px - e.position.x;
+        const dz = pz - e.position.z;
+        if (dx * dx + dz * dz < 1.44) return true; // 1.2^2
+      }
+      return false;
+    }
+
+    // ---- PORTAL ANIMATION ----
+    function updatePortalAnim(dt) {
+      if (!runnerState) return;
+      const pg = runnerState.portalGroup;
+      const ud = pg.userData;
+      const t = runnerClock.elapsedTime;
+
+      ud.torus.rotation.z += 0.5 * dt;
+      ud.beam.material.opacity = 0.1 + Math.sin(t * 2) * 0.08;
+
+      for (const orb of ud.orbs) {
+        orb.userData.orbAngle += 2 * dt;
+        orb.position.set(
+          Math.cos(orb.userData.orbAngle) * 1.8,
+          2 + Math.sin(orb.userData.orbAngle * 1.5) * 0.3,
+          Math.sin(orb.userData.orbAngle) * 1.8
+        );
+      }
+    }
+
+    // ---- HUD UPDATE ----
+    function updateGameHUD() {
+      if (!runnerState) return;
+      const st = runnerState;
+
+      // Lives
+      document.getElementById('gameLives').textContent = Array(st.lives).fill('\u2764\uFE0F').join('');
+
+      // Portal arrow + distance
+      const dx = st.portalX - st.px;
+      const dz = st.portalZ - st.pz;
+      const dist = Math.sqrt(dx * dx + dz * dz);
+      document.getElementById('portalDist').textContent = Math.floor(dist) + 'm';
+
+      // Arrow direction relative to screen (camera faces +Z, screen X is flipped)
+      const angleToPortal = Math.atan2(-dx, dz);
+      // CSS rotate: 0deg = right, 90deg = down. Arrow ➤ points right at 0deg.
+      // Screen angle: 0 = up → CSS needs -90deg offset
+      document.getElementById('arrowIcon').style.transform = `rotate(${(angleToPortal * 180 / Math.PI) - 90}deg)`;
+    }
+
+    // ---- HIT HANDLER ----
+    function handleHit() {
+      if (!runnerState) return;
+      runnerState.lives--;
+      runnerState.invincible = true;
+      runnerState.invincibleTimer = 1.5;
+      runnerState.hitFlash = 0.5;
+      navigator.vibrate?.(100);
+      updateGameHUD();
+
+      if (runnerState.lives <= 0) {
+        runnerState.phase = 'gameover';
+        setTimeout(() => {
+          if (runnerState) {
+            runnerState.phase = 'done';
+            showAnimResult(false, runnerState.stage, null);
+          }
+        }, 1200);
+      }
+    }
+
+    // ---- MAIN GAME TICK ----
+    function gameTick() {
+      if (!runnerState || !runnerRenderer) return;
+      const dt = Math.min(runnerClock.getDelta(), 0.05);
+      const st = runnerState;
+
+      if (st.phase === 'running') {
+        // Read joystick input
+        const ix = joystickX, iy = joystickY;
+        const intensity = Math.min(1, Math.sqrt(ix * ix + iy * iy));
+
+        if (intensity > 0.1) {
+          // Absolute world-space movement (camera looks along +Z, so screen X is flipped)
+          // Joystick RIGHT (+ix) = -X in world, Joystick UP (+iy) = +Z in world
+          const vx = -ix * PLAYER_SPEED * intensity;
+          const vz = iy * PLAYER_SPEED * intensity;
+
+          // Wall collision: separate axis check with padding
+          const pad = 0.4;
+          const newX = st.px + vx * dt;
+          if (gridFree(newX - pad, st.pz - pad) && gridFree(newX + pad, st.pz - pad) &&
+              gridFree(newX - pad, st.pz + pad) && gridFree(newX + pad, st.pz + pad)) {
+            st.px = newX;
+          }
+
+          const newZ = st.pz + vz * dt;
+          if (gridFree(st.px - pad, newZ - pad) && gridFree(st.px + pad, newZ - pad) &&
+              gridFree(st.px - pad, newZ + pad) && gridFree(st.px + pad, newZ + pad)) {
+            st.pz = newZ;
+          }
+
+          // Rotate character to face movement direction (cosmetic)
+          const targetRot = Math.atan2(vx, vz);
+          let diff = targetRot - st.rotY;
+          while (diff > Math.PI) diff -= Math.PI * 2;
+          while (diff < -Math.PI) diff += Math.PI * 2;
+          st.rotY += diff * Math.min(1, 10 * dt);
+
+          // Walk animation
+          st.walkPhase += dt * 8;
+        }
+
+        // Invincibility timer
+        if (st.invincible) {
+          st.invincibleTimer -= dt;
+          if (st.invincibleTimer <= 0) st.invincible = false;
+        }
+
+        // Hit flash
+        if (st.hitFlash > 0) st.hitFlash -= dt * 2;
+
+        // Terrain height at player position
+        const terrH = getTerrainHeight(st.px, st.pz);
+
+        // Update player model
+        st.playerModel.position.set(st.px, terrH, st.pz);
+        st.playerModel.rotation.y = st.rotY;
+
+        // Walk animation (bob + leg/arm swing)
+        if (intensity > 0.1) {
+          st.playerModel.position.y = terrH + Math.sin(st.walkPhase * 2) * 0.08;
+          st.playerModel.children.forEach(child => {
+            if (child.userData.isLeg) {
+              child.rotation.x = Math.sin(st.walkPhase + (child.position.x > 0 ? Math.PI : 0)) * 0.5;
+            }
+            if (child.userData.isArm) {
+              child.rotation.x = Math.sin(st.walkPhase + (child.position.x > 0 ? 0 : Math.PI)) * 0.3;
+            }
+            if (child.userData.isWing) {
+              child.rotation.y = child.position.x > 0
+                ? 0.4 + Math.sin(st.walkPhase * 3) * 0.3
+                : -0.4 - Math.sin(st.walkPhase * 3) * 0.3;
+            }
+          });
+        } else {
+          // Reset to idle
+          st.playerModel.position.y = terrH;
+          st.playerModel.children.forEach(child => {
+            if (child.userData.isLeg) child.rotation.x = 0;
+            if (child.userData.isArm) child.rotation.x = 0;
+          });
+        }
+
+        // Invincible blink
+        st.playerModel.visible = st.invincible ? Math.sin(Date.now() * 0.02) > 0 : true;
+
+        // Camera: fixed angle, follows position + terrain height
+        const camUp = 16, camBack = 12;
+        const tgtX = st.px;
+        const tgtY = terrH + camUp;
+        const tgtZ = st.pz - camBack;
+        const lerpF = Math.min(1, 5 * dt);
+        runnerCamera.position.x += (tgtX - runnerCamera.position.x) * lerpF;
+        runnerCamera.position.y += (tgtY - runnerCamera.position.y) * lerpF;
+        runnerCamera.position.z += (tgtZ - runnerCamera.position.z) * lerpF;
+        runnerCamera.lookAt(st.px, terrH + 1, st.pz);
+
+        // Water/Lava animation
+        if (st.waterMesh) {
+          const t = runnerClock.elapsedTime;
+          st.waterMesh.position.y = st.waterY + Math.sin(t * 0.8) * 0.05;
+          if (st.theme.hasLava) {
+            st.waterMesh.material.emissiveIntensity = 0.3 + Math.sin(t * 2) * 0.15;
+          }
+        }
+
+        // Update minimap
+        updateMinimap(st);
+
+        // Update enemies
+        updateEnemies(dt);
+
+        // Enemy collision
+        if (checkEnemyCollision()) {
+          handleHit();
+        }
+
+        // Portal animation
+        updatePortalAnim(dt);
+
+        // Update HUD
+        updateGameHUD();
+
+        // Check portal reach
+        const pdx = st.px - st.portalX;
+        const pdz = st.pz - st.portalZ;
+        if (pdx * pdx + pdz * pdz < 4.0) { // distance < 2.0
+          if (st.isReplay) {
+            // Replay: no API call, just show success
+            st.phase = 'success';
+            navigator.vibrate?.([50, 30, 50]);
+            setTimeout(() => {
+              if (runnerState) {
+                runnerState.phase = 'done';
+                showReplayResult();
+              }
+            }, 800);
+          } else if (st.canAfford) {
+            st.phase = 'success';
+            navigator.vibrate?.([50, 30, 50]);
+            handleExploreSuccess();
+          } else {
+            st.phase = 'done';
+            showAnimResult(false, st.stage, null);
+          }
+        }
+      }
+
+      // Hit flash (fog color shift)
+      if (st.hitFlash > 0) {
+        if (!st._fogBase) st._fogBase = new THREE.Color();
+        if (!st._fogRed) st._fogRed = new THREE.Color(0xff0000);
+        runnerScene.fog.color.copy(st._fogBase.set(st.theme.fog)).lerp(st._fogRed, st.hitFlash);
+      } else if (runnerScene.fog) {
+        runnerScene.fog.color.set(st.theme.fog);
+      }
+
+      runnerRenderer.render(runnerScene, runnerCamera);
+
+      if (st.phase !== 'done') {
+        requestAnimationFrame(gameTick);
+      }
+    }
+
+    // ---- SUCCESS HANDLER ----
+    async function handleExploreSuccess() {
+      if (!runnerState) return;
+      const { chapterId, stageIndex, stage } = runnerState;
+
+      const apiResult = await apiCall(`/chapters/${chapterId}/stages/${stageIndex}/complete`, 'POST')
+        .catch(err => ({ error: err.message }));
+
+      if (apiResult && !apiResult.error) {
+        currentEnergy = {
+          carb: apiResult.player.energy_carb,
+          prot: apiResult.player.energy_prot,
+          fat: apiResult.player.energy_fat,
+          hydr: apiResult.player.energy_hydr,
+          xp: apiResult.player.xp,
+          level: apiResult.player.level
+        };
+      }
+
+      await sleep(1000);
+      if (runnerState) {
+        runnerState.phase = 'done';
+        showAnimResult(true, stage, apiResult);
+      }
+    }
+
+    // ---- RESULT PANEL ----
+    function showAnimResult(success, stage, apiResult) {
+      const result = document.getElementById('stageAnimResult');
+      const icon = document.getElementById('stageAnimResultIcon');
+      const title = document.getElementById('stageAnimResultTitle');
+      const desc = document.getElementById('stageAnimResultDesc');
+      const energy = document.getElementById('stageAnimEnergy');
+
+      if (success) {
+        icon.textContent = '\uD83C\uDF89';
+        title.textContent = apiResult && apiResult.chapter_completed ? 'CAPITULO COMPLETADO!' : 'ETAPA COMPLETADA!';
+        title.className = 'stage-anim-result-title success';
+        desc.textContent = apiResult && apiResult.chapter_completed
+          ? 'Has completado todas las etapas de este capitulo!'
+          : 'Buen trabajo, aventurero!';
+
+        let badges = '';
+        if (stage.cost_carb > 0) badges += `<span class="stage-anim-energy-badge spent">\uD83C\uDF5E -${stage.cost_carb}</span>`;
+        if (stage.cost_prot > 0) badges += `<span class="stage-anim-energy-badge spent">\uD83E\uDD69 -${stage.cost_prot}</span>`;
+        if (stage.cost_fat > 0) badges += `<span class="stage-anim-energy-badge spent">\uD83E\uDDC0 -${stage.cost_fat}</span>`;
+        if (stage.cost_hydr > 0) badges += `<span class="stage-anim-energy-badge spent">\uD83D\uDCA7 -${stage.cost_hydr}</span>`;
+        if (apiResult && apiResult.xp_earned) badges += `<span class="stage-anim-energy-badge xp">\u2728 +${apiResult.xp_earned} XP</span>`;
+        energy.innerHTML = badges;
+      } else {
+        const isGameOver = runnerState && runnerState.lives <= 0;
+        icon.textContent = '\uD83D\uDC80';
+        title.textContent = isGameOver ? 'GAME OVER!' : 'ENERGIA INSUFICIENTE!';
+        title.className = 'stage-anim-result-title fail';
+        desc.textContent = isGameOver
+          ? 'Has perdido todas las vidas. Intentalo de nuevo!'
+          : 'Pide en el restaurante para recargar tu energia!';
+
+        let badges = '';
+        if (!isGameOver) {
+          const missing_carb = stage.cost_carb - currentEnergy.carb;
+          const missing_prot = stage.cost_prot - currentEnergy.prot;
+          const missing_fat = stage.cost_fat - currentEnergy.fat;
+          const missing_hydr = stage.cost_hydr - currentEnergy.hydr;
+          if (missing_carb > 0) badges += `<span class="stage-anim-energy-badge missing">\uD83C\uDF5E -${missing_carb}</span>`;
+          if (missing_prot > 0) badges += `<span class="stage-anim-energy-badge missing">\uD83E\uDD69 -${missing_prot}</span>`;
+          if (missing_fat > 0) badges += `<span class="stage-anim-energy-badge missing">\uD83E\uDDC0 -${missing_fat}</span>`;
+          if (missing_hydr > 0) badges += `<span class="stage-anim-energy-badge missing">\uD83D\uDCA7 -${missing_hydr}</span>`;
+        }
+        energy.innerHTML = badges;
+      }
+
+      result.classList.add('show');
+    }
+
+    function showReplayResult() {
+      const result = document.getElementById('stageAnimResult');
+      const icon = document.getElementById('stageAnimResultIcon');
+      const title = document.getElementById('stageAnimResultTitle');
+      const desc = document.getElementById('stageAnimResultDesc');
+      const energy = document.getElementById('stageAnimEnergy');
+
+      icon.textContent = '\uD83D\uDD04';
+      title.textContent = 'COMPLETADO!';
+      title.className = 'stage-anim-result-title success';
+      desc.textContent = 'Nivel completado de nuevo. Sin costo de energia.';
+      energy.innerHTML = '<span class="stage-anim-energy-badge xp">\uD83C\uDFAE Partida gratis</span>';
+      result.classList.add('show');
+    }
+
+    // ---- CLEANUP ----
+    // ---- MINIMAP ----
+    function buildMinimapImage(mapData, theme) {
+      const size = 100;
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      const imgData = ctx.createImageData(size, size);
+      const { cellTypes, heightmap, hmSize } = mapData;
+      const wLevel = theme.waterLevel != null ? theme.waterLevel : WATER_LEVEL;
+      const isLava = theme.hasLava;
+      const terrainColors = theme.terrainColors;
+
+      for (let py = 0; py < size; py++) {
+        for (let px = 0; px < size; px++) {
+          const gx = Math.floor((px / size) * GRID_SIZE);
+          const gy = Math.floor((py / size) * GRID_SIZE);
+          const ct = cellTypes[gy * GRID_SIZE + gx];
+          const idx = (py * size + px) * 4;
+          let r, g, b;
+
+          if (ct === 1) { // water
+            r = 30; g = 100; b = 200;
+          } else if (ct === 4) { // lava
+            r = 220; g = 100; b = 20;
+          } else if (ct === 5) { // steep
+            r = 100; g = 100; b = 100;
+          } else { // walkable
+            const h = heightmap[gy * hmSize + gx];
+            const normH = Math.max(0, Math.min(1, h));
+            if (terrainColors && terrainColors.length > 1) {
+              let cr = terrainColors[0].color[0], cg = terrainColors[0].color[1], cb = terrainColors[0].color[2];
+              for (let c = 0; c < terrainColors.length - 1; c++) {
+                if (normH >= terrainColors[c].h && normH <= terrainColors[c + 1].h) {
+                  const t = (normH - terrainColors[c].h) / (terrainColors[c + 1].h - terrainColors[c].h);
+                  cr = terrainColors[c].color[0] + (terrainColors[c + 1].color[0] - terrainColors[c].color[0]) * t;
+                  cg = terrainColors[c].color[1] + (terrainColors[c + 1].color[1] - terrainColors[c].color[1]) * t;
+                  cb = terrainColors[c].color[2] + (terrainColors[c + 1].color[2] - terrainColors[c].color[2]) * t;
+                  break;
+                }
+              }
+              r = Math.floor(cr * 255);
+              g = Math.floor(cg * 255);
+              b = Math.floor(cb * 255);
+            } else {
+              r = 60; g = 140; b = 60;
+            }
+          }
+          imgData.data[idx] = r;
+          imgData.data[idx + 1] = g;
+          imgData.data[idx + 2] = b;
+          imgData.data[idx + 3] = 255;
+        }
+      }
+      ctx.putImageData(imgData, 0, 0);
+      return canvas;
+    }
+
+    function updateMinimap(st) {
+      if (!st.mmCtx || !st.minimapCache) return;
+      const ctx = st.mmCtx;
+      const size = 100;
+
+      // Draw cached terrain
+      ctx.drawImage(st.minimapCache, 0, 0);
+
+      // Portal dot (gold)
+      const ptX = (st.portalX / WORLD_SIZE) * size;
+      const ptY = (st.portalZ / WORLD_SIZE) * size;
+      ctx.fillStyle = '#d4a853';
+      ctx.beginPath();
+      ctx.arc(ptX, ptY, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Player dot (white)
+      const plX = (st.px / WORLD_SIZE) * size;
+      const plY = (st.pz / WORLD_SIZE) * size;
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(plX, plY, 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    function closeStageAnimation() {
+      const overlay = document.getElementById('stageAnimOverlay');
+      overlay.classList.remove('show');
+
+      // Clean up keyboard listeners
+      if (runnerState && runnerState._keyHandler) {
+        document.removeEventListener('keydown', runnerState._keyHandler);
+        document.removeEventListener('keyup', runnerState._keyHandler);
+      }
+
+      // Clean up resize listener
+      if (runnerState && runnerState._resizeHandler) {
+        window.removeEventListener('resize', runnerState._resizeHandler);
+      }
+
+      // Reset joystick
+      joystickX = 0; joystickY = 0;
+      keysDown = {};
+      if (_joystickCleanup) { _joystickCleanup(); _joystickCleanup = null; }
+      const knob = document.getElementById('joystickKnob');
+      if (knob) knob.style.transform = 'translate(0px, 0px)';
+
+      // Dispose sky texture
+      if (runnerState && runnerState.skyTex) {
+        runnerState.skyTex.dispose();
+      }
+
+      // Clear minimap
+      if (runnerState && runnerState.minimapCache) {
+        runnerState.minimapCache = null;
+      }
+      const mmCanvas = document.getElementById('minimap');
+      if (mmCanvas) {
+        const mmCtx = mmCanvas.getContext('2d');
+        mmCtx.clearRect(0, 0, 100, 100);
+      }
+
+      // Dispose non-pooled scene objects
+      if (runnerScene) {
+        runnerScene.traverse((obj) => {
+          if (obj.geometry && !Object.values(_geoCache).includes(obj.geometry)) {
+            obj.geometry.dispose();
+          }
+          if (obj.material) {
+            const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
+            for (const m of mats) {
+              if (!Object.values(_matCache).includes(m)) {
+                if (m.map) m.map.dispose();
+                m.dispose();
+              }
+            }
+          }
+        });
+        runnerScene.clear();
+      }
+
+      clearPools();
+
+      if (runnerRenderer) {
+        runnerRenderer.dispose();
+        runnerRenderer = null;
+      }
+      runnerScene = null;
+      runnerCamera = null;
+      runnerClock = null;
+      runnerState = null;
+
+      updateDashboard();
+      if (currentChapterId) {
+        loadAdventureMap().then(() => loadChapter(currentChapterId));
+      }
+
+      animationBusy = false;
+    }
+
+    // ============ CHARACTER SELECT (event delegation) ============
+    function openCharacterModal() {
+      const grid = document.getElementById('charGrid');
+      grid.innerHTML = '';
+
+      CHARACTER_DEFS.forEach(c => {
+        const isUnlocked = c.unlock <= unlockedChapters;
+        const isSelected = c.id === selectedCharacter;
+
+        const card = el('div', `char-card${isSelected ? ' selected' : ''}${!isUnlocked ? ' locked' : ''}`);
+        card.dataset.charId = c.id;
+
+        const img = document.createElement('img');
+        img.src = c.img;
+        img.alt = c.name;
+        img.onerror = function() { this.style.display = 'none'; };
+        card.appendChild(img);
+        card.appendChild(el('div', 'char-card-name', c.name));
+        if (!isUnlocked) card.appendChild(el('div', 'char-card-lock', '\uD83D\uDD12'));
+
+        grid.appendChild(card);
+      });
+
+      document.getElementById('charModalOverlay').classList.add('active');
+    }
+
+    // Single delegated listener for char grid
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('charGrid');
+      if (grid) grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.char-card');
+        if (!card || card.classList.contains('locked')) return;
+        const charId = card.dataset.charId;
+        if (!charId) return;
+        selectedCharacter = charId;
+        localStorage.setItem('fq_character', charId);
+        grid.querySelectorAll('.char-card').forEach(cc => cc.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+    });
+
+    function updateUnlockedChapters() {
+      unlockedChapters = 0;
+      if (currentChapters && currentChapters.length > 0) {
+        for (const ch of currentChapters) {
+          if (ch.progress && ch.progress.completed) {
+            unlockedChapters++;
+          }
+        }
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // ============ STAGE COMPLETION ============
+    async function handleCompleteStage(chapterId, stageIndex) {
+      attemptStage(chapterId, stageIndex);
+    }
+
+    function showCelebration(data) {
+      const overlay = document.getElementById('celebrationOverlay');
+      document.getElementById('celebrationIcon').textContent = data.stage_completed ? '🎉' : '🎊';
+      document.getElementById('celebrationTitle').textContent = data.chapter_completed ? 'Capitolo Completato!' : 'Tappa Completata!';
+      document.getElementById('celebrationMessage').textContent = data.chapter_completed
+        ? 'Hai completato tutte le tappe di questo capitolo!'
+        : 'Ottimo lavoro! Continua così!';
+      document.getElementById('celebrationXp').textContent = `+${data.xp_earned} XP`;
+
+      createConfetti();
+      overlay.classList.add('active');
+    }
+
+    function showLevelUpOverlay() {
+      const overlay = document.getElementById('levelupOverlay');
+      const levelInfo = getLevelInfo(currentEnergy.xp);
+      document.getElementById('levelupNewLevel').textContent = `${levelInfo.currentLevel.name} - Livello ${levelInfo.currentLevel.level}`;
+      overlay.classList.add('active');
+    }
+
+    // ============ START APP ============
+    document.addEventListener('DOMContentLoaded', () => {
+      init();
+      preloadCharTextures();
+    });
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/foodquest/sw.js').catch(() => {
+          console.log('Service worker registration failed');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
