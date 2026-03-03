@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon" href="images/logo-header.png">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="restaurant">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://salnegratenerife.com/">
     <meta property="og:title" content="Sal Negra Tenerife - Restaurante con Vistas al Mar">
     <meta property="og:description" content="Disfruta de mariscos frescos, pescados y tapas tradicionales con impresionantes vistas al mar en el sur de Tenerife.">
@@ -70,17 +70,30 @@
             "latitude": 28.0525,
             "longitude": -16.7248
         },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "09:00",
-            "closes": "17:00"
-        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "opens": "13:00",
+                "closes": "23:59"
+            }
+        ],
         "servesCuisine": ["Mediterranean", "Seafood", "Spanish"],
         "priceRange": "$$",
-        "acceptsReservations": "True",
+        "acceptsReservations": true,
         "menu": "https://salnegratenerife.com/carta.html",
         "description": "Restaurante con vistas al mar en el sur de Tenerife. Especialidad en mariscos frescos, pescados, carnes selectas y tapas tradicionales."
+    }
+    </script>
+
+    <!-- BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://salnegratenerife.com/"}
+        ]
     }
     </script>
 
@@ -129,7 +142,7 @@
             <img src="images/logo-white-clean.png" alt="Sal Negra Tenerife">
         </div>
         <div class="hero-content">
-            <p class="hero-subtitle">Sabor Auténtico con Vistas al Mar</p>
+            <h1 class="hero-subtitle">Sal Negra Tenerife — Sabor Auténtico con Vistas al Mar</h1>
             <a href="https://www.google.com/maps/reserve/v/dine/c/BOlR24NDHmg" target="_blank" rel="noopener" class="btn btn-primary">RESERVAS</a>
         </div>
     </section>
@@ -139,10 +152,10 @@
         <div class="container">
             <!-- About Side Images -->
             <div class="about-image-left">
-                <img src="images/hero-left.jpg" alt="Sal Negra Restaurant">
+                <img src="images/hero-left.jpg" alt="Terraza de Sal Negra con vistas al mar en Tenerife">
             </div>
             <div class="about-image-right">
-                <img src="images/hero-right.jpg" alt="Sal Negra Restaurant">
+                <img src="images/hero-right.jpg" alt="Platos de mariscos frescos servidos en Sal Negra">
             </div>
 
             <div class="about-content">
