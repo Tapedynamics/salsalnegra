@@ -10,6 +10,21 @@
       gtag('config', 'G-7G77T77WRT');
       gtag('config', 'AW-16644254944');
     </script>
+    <!-- Google tag (gtag.js) event - delayed navigation helper -->
+    <script>
+      function gtagSendEvent(url) {
+        var callback = function () {
+          if (typeof url === 'string') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'ads_conversion_Contactar_1', {
+          'event_callback': callback,
+          'event_timeout': 2000,
+        });
+        return false;
+      }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contacta con Sal Negra Tenerife - Avda. La Habana, Centro Comercial San Telmo, Local 13b. Tel: 922 30 69 58. Horario: Lunes a Domingo 13:00-00:00.">
@@ -145,11 +160,11 @@
                     </div>
                     <div class="info-item">
                         <h3>📞 Teléfono</h3>
-                        <p><a href="tel:922306958">922 30 69 58</a></p>
+                        <p><a href="tel:922306958" onclick="return gtagSendEvent('tel:922306958');">922 30 69 58</a></p>
                     </div>
                     <div class="info-item">
                         <h3>💬 WhatsApp</h3>
-                        <p><a href="https://wa.me/message/NTUARUZTYOZCE1" target="_blank" rel="noopener">Enviar mensaje</a></p>
+                        <p><a href="https://wa.me/message/NTUARUZTYOZCE1" target="_blank" rel="noopener" onclick="return gtagSendEvent('https://wa.me/message/NTUARUZTYOZCE1');">Enviar mensaje</a></p>
                     </div>
                     <div class="info-item">
                         <h3>📧 Email</h3>
@@ -195,7 +210,7 @@
                     <h4>Contacto</h4>
                     <p><strong>Dirección:</strong><br>Avda. La Habana<br>Centro Comercial San Telmo<br>Local 13 b, Tenerife</p>
                     <p><strong>Teléfono:</strong><br><a href="tel:922306958">922 30 69 58</a></p>
-                    <p style="margin-top: 0.5rem;"><strong>WhatsApp:</strong><br><a href="https://wa.me/message/NTUARUZTYOZCE1" target="_blank" rel="noopener" style="color: #25D366;">Enviar mensaje</a></p>
+                    <p style="margin-top: 0.5rem;"><strong>WhatsApp:</strong><br><a href="https://wa.me/message/NTUARUZTYOZCE1" target="_blank" rel="noopener" style="color: #25D366;" onclick="return gtagSendEvent('https://wa.me/message/NTUARUZTYOZCE1');">Enviar mensaje</a></p>
                 </div>
                 <div class="footer-section">
                     <h4>Horarios</h4>
@@ -240,6 +255,10 @@
         </div>
     </div>
 
+    <!-- Google tag (gtag.js) event - page load conversion -->
+    <script>
+      gtag('event', 'ads_conversion_Contactar_1', {});
+    </script>
     <!-- JavaScript -->
     <script src="js/script.js?v=4"></script>
 </body>
