@@ -1,0 +1,85 @@
+# Netlify configuration for salnegratenerife.com
+
+[build]
+  publish = "."
+
+# === REDIRECTS ===
+# Redirect .html extensions to clean URLs (301 permanent)
+[[redirects]]
+  from = "/sobre-nosotros.html"
+  to = "/sobre-nosotros"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/carta.html"
+  to = "/carta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reservas.html"
+  to = "/reservas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/menus-especiales.html"
+  to = "/menus-especiales"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/eventos.html"
+  to = "/eventos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contacto.html"
+  to = "/contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/politica-privacidad.html"
+  to = "/politica-privacidad"
+  status = 301
+  force = true
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# === HEADERS ===
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml; charset=utf-8"
