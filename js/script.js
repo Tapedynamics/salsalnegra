@@ -99,35 +99,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryImages = [
         {
             src: 'images/gallery1.jpg',
-            alt: 'Plato 1'
+            alt: 'Tartar de atún fresco con crackers - Sal Negra Tenerife'
         },
         {
             src: 'images/gallery2.jpg',
-            alt: 'Plato 2'
+            alt: 'Gambas al ajillo en cazuela de hierro - Sal Negra Tenerife'
         },
         {
             src: 'images/gallery3.jpg',
-            alt: 'Plato 3'
+            alt: 'Zamburiñas a la plancha con pétalos - Sal Negra Tenerife'
         },
         {
             src: 'images/gallery4.jpg',
-            alt: 'Restaurante 1'
+            alt: 'Paella de mariscos con gambas y mejillones - Sal Negra Tenerife'
         },
         {
             src: 'images/gallery5.jpg',
-            alt: 'Restaurante 2'
+            alt: 'Vieiras gratinadas en su concha - Sal Negra Tenerife'
         },
         {
             src: 'images/gallery6.jpg',
-            alt: 'Restaurante 3'
+            alt: 'Mejillones al vapor con hierbas - Sal Negra Tenerife'
         },
         {
             src: 'images/gallery7.jpg',
-            alt: 'Plato 4'
+            alt: 'Chopitos fritos con rúcula - Sal Negra Tenerife'
         },
         {
             src: 'images/gallery8.jpg',
-            alt: 'Plato 5'
+            alt: 'Brocheta de solomillo a la parrilla - Sal Negra Tenerife'
         }
     ];
 
