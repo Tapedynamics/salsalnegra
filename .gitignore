@@ -8,8 +8,9 @@ PROGETTO_SALNEGRA.txt
 # Local Netlify folder
 .netlify
 
-# Blog automation (repo separato, non pubblicato da Netlify)
-blog-automation/
+# Blog automation local deps (tracciato il codice ma non le dipendenze)
+.github/scripts/blog/node_modules/
+.github/scripts/blog/.env
 
 # Windows artefatti
 nul
