@@ -61,6 +61,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (mejores-restaurantes-mariscos-costa-adeje)
+[[redirects]]
+  from = "/blog/mejores-restaurantes-mariscos-costa-adeje.html"
+  to = "/blog/mejores-restaurantes-mariscos-costa-adeje"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/best-seafood-restaurants-costa-adeje.html"
+  to = "/en/blog/best-seafood-restaurants-costa-adeje"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
