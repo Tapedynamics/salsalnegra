@@ -47,6 +47,20 @@
   status = 301
   force = true
 
+# Blog clean URLs (ES)
+[[redirects]]
+  from = "/blog/mariscos-primavera-tenerife-2026.html"
+  to = "/blog/mariscos-primavera-tenerife-2026"
+  status = 301
+  force = true
+
+# Blog clean URLs (EN)
+[[redirects]]
+  from = "/en/blog/seasonal-seafood-tenerife-spring-2026.html"
+  to = "/en/blog/seasonal-seafood-tenerife-spring-2026"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

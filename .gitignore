@@ -4,3 +4,15 @@ foto e video/
 # File locali
 .claude/
 PROGETTO_SALNEGRA.txt
+
+# Local Netlify folder
+.netlify
+
+# Blog automation (repo separato, non pubblicato da Netlify)
+blog-automation/
+
+# Windows artefatti
+nul
+
+# Node
+node_modules/
