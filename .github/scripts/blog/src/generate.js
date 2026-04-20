@@ -62,13 +62,12 @@ async function main() {
 
   console.log(`Topic #${topic.id}: ${topic.title_es}`);
 
-  console.log('Generating ES article...');
-  const bodyEs = await generateArticleEs(topic);
-  console.log(`  ES: ${bodyEs.length} chars`);
-
-  console.log('Generating EN article...');
-  const bodyEn = await generateArticleEn(topic);
-  console.log(`  EN: ${bodyEn.length} chars`);
+  console.log('Generating ES + EN articles in parallel...');
+  const [bodyEs, bodyEn] = await Promise.all([
+    generateArticleEs(topic),
+    generateArticleEn(topic)
+  ]);
+  console.log(`  ES: ${bodyEs.length} chars · EN: ${bodyEn.length} chars`);
 
   console.log('Generating excerpts...');
   const [excerptEs, excerptEn] = await Promise.all([
@@ -109,7 +108,6 @@ async function main() {
   console.log('Updating netlify.toml redirects...');
   addNetlifyRedirects(SITE_ROOT, topic);
 
-  console.log('Updating state...');
   state.published.push({
     id: topic.id,
     date,
@@ -119,12 +117,22 @@ async function main() {
   saveState(state);
 
   console.log('Committing and pushing...');
+  const statePath = path.relative(SITE_ROOT, STATE_PATH).replace(/\\/g, '/');
   commitAndPush({
     siteRoot: SITE_ROOT,
     slug: topic.slug_es,
     branch: process.env.GIT_BRANCH || 'main',
     authorName: process.env.GIT_AUTHOR_NAME || 'Sal Negra Blog Bot',
-    authorEmail: process.env.GIT_AUTHOR_EMAIL || 'blog-bot@salnegratenerife.com'
+    authorEmail: process.env.GIT_AUTHOR_EMAIL || 'blog-bot@salnegratenerife.com',
+    paths: [
+      `blog/${topic.slug_es}.html`,
+      `en/blog/${topic.slug_en}.html`,
+      'blog/index.html',
+      'en/blog/index.html',
+      'sitemap.xml',
+      'netlify.toml',
+      statePath
+    ]
   });
 
   console.log('Done. Netlify will pick up the push and rebuild in ~1-2 minutes.');

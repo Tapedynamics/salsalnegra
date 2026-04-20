@@ -1,10 +1,6 @@
-const { execSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 
-function sh(cmd, cwd) {
-  return execSync(cmd, { cwd, stdio: 'pipe' }).toString().trim();
-}
-
-function commitAndPush({ siteRoot, slug, branch, authorName, authorEmail }) {
+function commitAndPush({ siteRoot, slug, branch, authorName, authorEmail, paths }) {
   const env = {
     ...process.env,
     GIT_AUTHOR_NAME: authorName,
@@ -13,15 +9,14 @@ function commitAndPush({ siteRoot, slug, branch, authorName, authorEmail }) {
     GIT_COMMITTER_EMAIL: authorEmail
   };
 
-  execSync('git add -A', { cwd: siteRoot, env, stdio: 'inherit' });
+  const addArgs = paths && paths.length ? ['add', '--', ...paths] : ['add', '-A'];
+  const addResult = spawnSync('git', addArgs, { cwd: siteRoot, env, stdio: 'inherit' });
+  if (addResult.status !== 0) throw new Error(`git add failed (status ${addResult.status})`);
 
-  // If nothing changed, skip
-  try {
-    execSync('git diff --cached --quiet', { cwd: siteRoot, env });
+  const diffResult = spawnSync('git', ['diff', '--cached', '--quiet'], { cwd: siteRoot, env });
+  if (diffResult.status === 0) {
     console.log('No changes staged — skipping commit.');
     return;
-  } catch {
-    // There are staged changes, continue
   }
 
   execSync(`git commit -m "blog: publish ${slug}"`, { cwd: siteRoot, env, stdio: 'inherit' });
