@@ -74,6 +74,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (mojo-verde-canario-historia-receta)
+[[redirects]]
+  from = "/blog/mojo-verde-canario-historia-receta.html"
+  to = "/blog/mojo-verde-canario-historia-receta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-mojo-verde-history-recipe.html"
+  to = "/en/blog/canary-mojo-verde-history-recipe"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

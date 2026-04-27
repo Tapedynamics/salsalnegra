@@ -103,4 +103,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/best-seafood-restaurants-costa-adeje"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-mojo-verde-history-recipe"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/canary-mojo-verde-history-recipe</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-mojo-verde-history-recipe"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
+  </url>
 </urlset>
