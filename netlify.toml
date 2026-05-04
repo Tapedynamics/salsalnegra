@@ -87,6 +87,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (papas-arrugadas-mojo-origen)
+[[redirects]]
+  from = "/blog/papas-arrugadas-mojo-origen.html"
+  to = "/blog/papas-arrugadas-mojo-origen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/papas-arrugadas-canary-origin.html"
+  to = "/en/blog/papas-arrugadas-canary-origin"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

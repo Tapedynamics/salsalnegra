@@ -121,4 +121,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-mojo-verde-history-recipe"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/papas-arrugadas-canary-origin"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/papas-arrugadas-canary-origin</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/papas-arrugadas-canary-origin"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
+  </url>
 </urlset>
