@@ -100,6 +100,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (vinos-canarios-tenerife-guia-maridaje)
+[[redirects]]
+  from = "/blog/vinos-canarios-tenerife-guia-maridaje.html"
+  to = "/blog/vinos-canarios-tenerife-guia-maridaje"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-wines-tenerife-pairing-guide.html"
+  to = "/en/blog/canary-wines-tenerife-pairing-guide"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
