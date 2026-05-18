@@ -113,6 +113,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (que-comer-tenerife-primera-vez)
+[[redirects]]
+  from = "/blog/que-comer-tenerife-primera-vez.html"
+  to = "/blog/que-comer-tenerife-primera-vez"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/what-to-eat-tenerife-first-time.html"
+  to = "/en/blog/what-to-eat-tenerife-first-time"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
