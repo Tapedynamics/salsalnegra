@@ -126,6 +126,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (pulpo-canario-como-pedirlo)
+[[redirects]]
+  from = "/blog/pulpo-canario-como-pedirlo.html"
+  to = "/blog/pulpo-canario-como-pedirlo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-octopus-how-to-order.html"
+  to = "/en/blog/canary-octopus-how-to-order"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
