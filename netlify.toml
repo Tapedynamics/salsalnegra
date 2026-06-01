@@ -139,6 +139,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (cena-empresa-tenerife-sur)
+[[redirects]]
+  from = "/blog/cena-empresa-tenerife-sur.html"
+  to = "/blog/cena-empresa-tenerife-sur"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/corporate-dinner-south-tenerife.html"
+  to = "/en/blog/corporate-dinner-south-tenerife"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

@@ -193,4 +193,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-octopus-how-to-order"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/pulpo-canario-como-pedirlo"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/cena-empresa-tenerife-sur</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/corporate-dinner-south-tenerife"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/corporate-dinner-south-tenerife</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/corporate-dinner-south-tenerife"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
+  </url>
 </urlset>
