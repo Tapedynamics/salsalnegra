@@ -152,6 +152,49 @@
   status = 301
   force = true
 
+# === EN main pages: clean URLs (301 permanent) ===
+[[redirects]]
+  from = "/en/about.html"
+  to = "/en/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/menu.html"
+  to = "/en/menu"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/booking.html"
+  to = "/en/booking"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/special-menus.html"
+  to = "/en/special-menus"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/events.html"
+  to = "/en/events"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/contact.html"
+  to = "/en/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/privacy-policy.html"
+  to = "/en/privacy-policy"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

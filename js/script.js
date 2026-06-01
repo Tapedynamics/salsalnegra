@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (heroVideo) {
         const heroVideos = [
-            'videos/hero-video.mp4',
-            'videos/hero-clip-sax.mp4',
-            'videos/hero-clip-2.mp4',
-            'videos/hero-clip-3.mp4'
+            '/videos/hero-video.mp4',
+            '/videos/hero-clip-sax.mp4',
+            '/videos/hero-clip-2.mp4',
+            '/videos/hero-clip-3.mp4'
         ];
 
         let currentVideoIndex = 0;
@@ -98,35 +98,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Gallery images
     const galleryImages = [
         {
-            src: 'images/gallery1.jpg',
+            src: '/images/gallery1.jpg',
             alt: 'Tartar de atún fresco con crackers - Sal Negra Tenerife'
         },
         {
-            src: 'images/gallery2.jpg',
+            src: '/images/gallery2.jpg',
             alt: 'Gambas al ajillo en cazuela de hierro - Sal Negra Tenerife'
         },
         {
-            src: 'images/gallery3.jpg',
+            src: '/images/gallery3.jpg',
             alt: 'Zamburiñas a la plancha con pétalos - Sal Negra Tenerife'
         },
         {
-            src: 'images/gallery4.jpg',
+            src: '/images/gallery4.jpg',
             alt: 'Paella de mariscos con gambas y mejillones - Sal Negra Tenerife'
         },
         {
-            src: 'images/gallery5.jpg',
+            src: '/images/gallery5.jpg',
             alt: 'Vieiras gratinadas en su concha - Sal Negra Tenerife'
         },
         {
-            src: 'images/gallery6.jpg',
+            src: '/images/gallery6.jpg',
             alt: 'Mejillones al vapor con hierbas - Sal Negra Tenerife'
         },
         {
-            src: 'images/gallery7.jpg',
+            src: '/images/gallery7.jpg',
             alt: 'Chopitos fritos con rúcula - Sal Negra Tenerife'
         },
         {
-            src: 'images/gallery8.jpg',
+            src: '/images/gallery8.jpg',
             alt: 'Brocheta de solomillo a la parrilla - Sal Negra Tenerife'
         }
     ];

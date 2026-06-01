@@ -3,45 +3,129 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://salnegratenerife.com/</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/sobre-nosotros</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/sobre-nosotros"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/about</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/sobre-nosotros"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/carta</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/carta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/menu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/carta"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/menu</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/carta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/menu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/carta"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/reservas</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/reservas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/reservas"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/booking</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/reservas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/reservas"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/menus-especiales</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menus-especiales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/special-menus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menus-especiales"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/special-menus</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menus-especiales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/special-menus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menus-especiales"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/eventos</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/eventos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/eventos"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/events</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/eventos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/eventos"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/contacto</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/contacto"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/contact</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/contacto"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/blog/</loc>
@@ -81,9 +165,21 @@
   </url>
   <url>
     <loc>https://salnegratenerife.com/politica-privacidad</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/politica-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/politica-privacidad"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/privacy-policy</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/politica-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/politica-privacidad"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje</loc>
