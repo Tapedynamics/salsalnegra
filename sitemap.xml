@@ -307,4 +307,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/corporate-dinner-south-tenerife"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/los-cristianos-donde-comer-local</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/los-cristianos-donde-comer-local"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/los-cristianos-local-food-spots"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/los-cristianos-donde-comer-local"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/los-cristianos-local-food-spots</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/los-cristianos-donde-comer-local"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/los-cristianos-local-food-spots"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/los-cristianos-donde-comer-local"/>
+  </url>
 </urlset>

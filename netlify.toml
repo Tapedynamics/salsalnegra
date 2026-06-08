@@ -195,6 +195,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (los-cristianos-donde-comer-local)
+[[redirects]]
+  from = "/blog/los-cristianos-donde-comer-local.html"
+  to = "/blog/los-cristianos-donde-comer-local"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/los-cristianos-local-food-spots.html"
+  to = "/en/blog/los-cristianos-local-food-spots"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
