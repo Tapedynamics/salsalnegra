@@ -8,6 +8,7 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/"/>
   </url>
   <url>
@@ -17,6 +18,7 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/"/>
   </url>
   <url>
@@ -26,6 +28,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/sobre-nosotros"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/chi-siamo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/sobre-nosotros"/>
   </url>
   <url>
@@ -35,6 +38,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/sobre-nosotros"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/chi-siamo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/sobre-nosotros"/>
   </url>
   <url>
@@ -44,6 +48,7 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/carta"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/menu"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/carta"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/carta"/>
   </url>
   <url>
@@ -53,6 +58,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/carta"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/menu"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/carta"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/carta"/>
   </url>
   <url>
@@ -62,6 +68,7 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/reservas"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/prenotazioni"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/reservas"/>
   </url>
   <url>
@@ -71,6 +78,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/reservas"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/prenotazioni"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/reservas"/>
   </url>
   <url>
@@ -80,6 +88,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menus-especiales"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/special-menus"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/menu-speciali"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menus-especiales"/>
   </url>
   <url>
@@ -89,6 +98,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menus-especiales"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/special-menus"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/menu-speciali"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menus-especiales"/>
   </url>
   <url>
@@ -98,6 +108,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/eventos"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/events"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/eventi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/eventos"/>
   </url>
   <url>
@@ -107,6 +118,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/eventos"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/events"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/eventi"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/eventos"/>
   </url>
   <url>
@@ -116,6 +128,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/contacto"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/contatti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/contacto"/>
   </url>
   <url>
@@ -125,6 +138,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/contacto"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/contatti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/contacto"/>
   </url>
   <url>
@@ -134,6 +148,7 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/"/>
   </url>
   <url>
@@ -143,6 +158,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/"/>
   </url>
   <url>
@@ -152,6 +168,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mariscos-primavera-tenerife-2026"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/seasonal-seafood-tenerife-spring-2026"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/pesce-fresco-primavera-tenerife-2026"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mariscos-primavera-tenerife-2026"/>
   </url>
   <url>
@@ -161,6 +178,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mariscos-primavera-tenerife-2026"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/seasonal-seafood-tenerife-spring-2026"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/pesce-fresco-primavera-tenerife-2026"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mariscos-primavera-tenerife-2026"/>
   </url>
   <url>
@@ -170,6 +188,7 @@
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/politica-privacidad"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/privacy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/politica-privacidad"/>
   </url>
   <url>
@@ -179,6 +198,7 @@
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/politica-privacidad"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/privacy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/politica-privacidad"/>
   </url>
   <url>
@@ -188,6 +208,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/best-seafood-restaurants-costa-adeje"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/migliori-ristoranti-pesce-costa-adeje"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje"/>
   </url>
   <url>
@@ -197,6 +218,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/best-seafood-restaurants-costa-adeje"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/migliori-ristoranti-pesce-costa-adeje"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje"/>
   </url>
   <url>
@@ -206,6 +228,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-mojo-verde-history-recipe"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/mojo-verde-canario-storia-ricetta"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
   </url>
   <url>
@@ -215,6 +238,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-mojo-verde-history-recipe"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/mojo-verde-canario-storia-ricetta"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
   </url>
   <url>
@@ -224,6 +248,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/papas-arrugadas-canary-origin"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/papas-arrugadas-origine-canaria"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
   </url>
   <url>
@@ -233,6 +258,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/papas-arrugadas-canary-origin"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/papas-arrugadas-origine-canaria"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
   </url>
   <url>
@@ -242,6 +268,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/vinos-canarios-tenerife-guia-maridaje"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-wines-tenerife-pairing-guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/vini-canari-tenerife-guida-abbinamenti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/vinos-canarios-tenerife-guia-maridaje"/>
   </url>
   <url>
@@ -251,6 +278,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/vinos-canarios-tenerife-guia-maridaje"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-wines-tenerife-pairing-guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/vini-canari-tenerife-guida-abbinamenti"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/vinos-canarios-tenerife-guia-maridaje"/>
   </url>
   <url>
@@ -260,6 +288,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/que-comer-tenerife-primera-vez"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/what-to-eat-tenerife-first-time"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/cosa-mangiare-tenerife-prima-volta"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/que-comer-tenerife-primera-vez"/>
   </url>
   <url>
@@ -269,6 +298,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/que-comer-tenerife-primera-vez"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/what-to-eat-tenerife-first-time"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/cosa-mangiare-tenerife-prima-volta"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/que-comer-tenerife-primera-vez"/>
   </url>
   <url>
@@ -278,6 +308,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/pulpo-canario-como-pedirlo"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-octopus-how-to-order"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/polpo-canario-come-ordinarlo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/pulpo-canario-como-pedirlo"/>
   </url>
   <url>
@@ -287,6 +318,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/pulpo-canario-como-pedirlo"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-octopus-how-to-order"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/polpo-canario-come-ordinarlo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/pulpo-canario-como-pedirlo"/>
   </url>
   <url>
@@ -296,6 +328,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/corporate-dinner-south-tenerife"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/cena-aziendale-tenerife-sud"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
   </url>
   <url>
@@ -305,6 +338,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/corporate-dinner-south-tenerife"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/cena-aziendale-tenerife-sud"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
   </url>
   <url>
@@ -324,5 +358,175 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/los-cristianos-donde-comer-local"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/los-cristianos-local-food-spots"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/los-cristianos-donde-comer-local"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/chi-siamo</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/chi-siamo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/sobre-nosotros"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/carta</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/carta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/menu"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/carta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/carta"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/prenotazioni</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/reservas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/prenotazioni"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/reservas"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/menu-speciali</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menus-especiales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/special-menus"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/menu-speciali"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menus-especiales"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/eventi</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/eventos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/events"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/eventi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/eventos"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/contatti</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/contatti"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/contacto"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/privacy</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/politica-privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/politica-privacidad"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/cena-aziendale-tenerife-sud</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/corporate-dinner-south-tenerife"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/cena-aziendale-tenerife-sud"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cena-empresa-tenerife-sur"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/pesce-fresco-primavera-tenerife-2026</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mariscos-primavera-tenerife-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/seasonal-seafood-tenerife-spring-2026"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/pesce-fresco-primavera-tenerife-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mariscos-primavera-tenerife-2026"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/migliori-ristoranti-pesce-costa-adeje</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/best-seafood-restaurants-costa-adeje"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/migliori-ristoranti-pesce-costa-adeje"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mejores-restaurantes-mariscos-costa-adeje"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/mojo-verde-canario-storia-ricetta</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-mojo-verde-history-recipe"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/mojo-verde-canario-storia-ricetta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/mojo-verde-canario-historia-receta"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/papas-arrugadas-origine-canaria</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/papas-arrugadas-canary-origin"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/papas-arrugadas-origine-canaria"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/papas-arrugadas-mojo-origen"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/polpo-canario-come-ordinarlo</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/pulpo-canario-como-pedirlo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-octopus-how-to-order"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/polpo-canario-come-ordinarlo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/pulpo-canario-como-pedirlo"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/cosa-mangiare-tenerife-prima-volta</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/que-comer-tenerife-primera-vez"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/what-to-eat-tenerife-first-time"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/cosa-mangiare-tenerife-prima-volta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/que-comer-tenerife-primera-vez"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/blog/vini-canari-tenerife-guida-abbinamenti</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/vinos-canarios-tenerife-guia-maridaje"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-wines-tenerife-pairing-guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/blog/vini-canari-tenerife-guida-abbinamenti"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/vinos-canarios-tenerife-guia-maridaje"/>
   </url>
 </urlset>

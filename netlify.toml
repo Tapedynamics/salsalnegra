@@ -208,6 +208,98 @@
   status = 301
   force = true
 
+# === IT main pages: clean URLs (301 permanent) ===
+[[redirects]]
+  from = "/it/chi-siamo.html"
+  to = "/it/chi-siamo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/carta.html"
+  to = "/it/carta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/prenotazioni.html"
+  to = "/it/prenotazioni"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/menu-speciali.html"
+  to = "/it/menu-speciali"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/eventi.html"
+  to = "/it/eventi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/contatti.html"
+  to = "/it/contatti"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/privacy.html"
+  to = "/it/privacy"
+  status = 301
+  force = true
+
+# === IT blog: clean URLs (301 permanent) ===
+[[redirects]]
+  from = "/it/blog/cena-aziendale-tenerife-sud.html"
+  to = "/it/blog/cena-aziendale-tenerife-sud"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/blog/pesce-fresco-primavera-tenerife-2026.html"
+  to = "/it/blog/pesce-fresco-primavera-tenerife-2026"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/blog/migliori-ristoranti-pesce-costa-adeje.html"
+  to = "/it/blog/migliori-ristoranti-pesce-costa-adeje"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/blog/mojo-verde-canario-storia-ricetta.html"
+  to = "/it/blog/mojo-verde-canario-storia-ricetta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/blog/papas-arrugadas-origine-canaria.html"
+  to = "/it/blog/papas-arrugadas-origine-canaria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/blog/polpo-canario-come-ordinarlo.html"
+  to = "/it/blog/polpo-canario-come-ordinarlo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/blog/cosa-mangiare-tenerife-prima-volta.html"
+  to = "/it/blog/cosa-mangiare-tenerife-prima-volta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/blog/vini-canari-tenerife-guida-abbinamenti.html"
+  to = "/it/blog/vini-canari-tenerife-guida-abbinamenti"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
