@@ -300,6 +300,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (atun-rojo-canarias-temporada)
+[[redirects]]
+  from = "/blog/atun-rojo-canarias-temporada.html"
+  to = "/blog/atun-rojo-canarias-temporada"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-bluefin-tuna-season.html"
+  to = "/en/blog/canary-bluefin-tuna-season"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
