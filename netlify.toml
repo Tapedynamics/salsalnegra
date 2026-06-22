@@ -313,6 +313,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (paella-verdadera-ingredientes-trampas)
+[[redirects]]
+  from = "/blog/paella-verdadera-ingredientes-trampas.html"
+  to = "/blog/paella-verdadera-ingredientes-trampas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/real-paella-ingredients-red-flags.html"
+  to = "/en/blog/real-paella-ingredients-red-flags"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
