@@ -326,6 +326,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (cumpleanos-restaurante-vistas-mar-tenerife)
+[[redirects]]
+  from = "/blog/cumpleanos-restaurante-vistas-mar-tenerife.html"
+  to = "/blog/cumpleanos-restaurante-vistas-mar-tenerife"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/birthday-sea-view-restaurant-tenerife.html"
+  to = "/en/blog/birthday-sea-view-restaurant-tenerife"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
