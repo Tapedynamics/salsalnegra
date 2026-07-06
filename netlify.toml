@@ -339,6 +339,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (queso-canario-denominaciones-maridaje)
+[[redirects]]
+  from = "/blog/queso-canario-denominaciones-maridaje.html"
+  to = "/blog/queso-canario-denominaciones-maridaje"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-cheese-denominations-pairing.html"
+  to = "/en/blog/canary-cheese-denominations-pairing"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
