@@ -352,6 +352,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (verano-tenerife-platos-frescos)
+[[redirects]]
+  from = "/blog/verano-tenerife-platos-frescos.html"
+  to = "/blog/verano-tenerife-platos-frescos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/summer-tenerife-fresh-dishes.html"
+  to = "/en/blog/summer-tenerife-fresh-dishes"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
