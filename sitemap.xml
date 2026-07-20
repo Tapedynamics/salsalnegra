@@ -619,4 +619,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/summer-tenerife-fresh-dishes"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/verano-tenerife-platos-frescos"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/maridaje-mariscos-vino-canario</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/maridaje-mariscos-vino-canario"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/seafood-canary-wine-pairing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/maridaje-mariscos-vino-canario"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/seafood-canary-wine-pairing</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/maridaje-mariscos-vino-canario"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/seafood-canary-wine-pairing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/maridaje-mariscos-vino-canario"/>
+  </url>
 </urlset>

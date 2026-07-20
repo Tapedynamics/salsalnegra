@@ -365,6 +365,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (maridaje-mariscos-vino-canario)
+[[redirects]]
+  from = "/blog/maridaje-mariscos-vino-canario.html"
+  to = "/blog/maridaje-mariscos-vino-canario"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/seafood-canary-wine-pairing.html"
+  to = "/en/blog/seafood-canary-wine-pairing"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
