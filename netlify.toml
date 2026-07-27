@@ -378,6 +378,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (ropa-vieja-canaria-receta)
+[[redirects]]
+  from = "/blog/ropa-vieja-canaria-receta.html"
+  to = "/blog/ropa-vieja-canaria-receta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-ropa-vieja-recipe.html"
+  to = "/en/blog/canary-ropa-vieja-recipe"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

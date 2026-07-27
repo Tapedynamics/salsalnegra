@@ -637,4 +637,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/seafood-canary-wine-pairing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/maridaje-mariscos-vino-canario"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/ropa-vieja-canaria-receta</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/ropa-vieja-canaria-receta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-ropa-vieja-recipe"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/ropa-vieja-canaria-receta"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/canary-ropa-vieja-recipe</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/ropa-vieja-canaria-receta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-ropa-vieja-recipe"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/ropa-vieja-canaria-receta"/>
+  </url>
 </urlset>
