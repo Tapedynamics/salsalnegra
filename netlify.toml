@@ -391,6 +391,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (cigalas-gambas-langostinos-diferencias)
+[[redirects]]
+  from = "/blog/cigalas-gambas-langostinos-diferencias.html"
+  to = "/blog/cigalas-gambas-langostinos-diferencias"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/langoustine-prawn-shrimp-differences.html"
+  to = "/en/blog/langoustine-prawn-shrimp-differences"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

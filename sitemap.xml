@@ -655,4 +655,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-ropa-vieja-recipe"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/ropa-vieja-canaria-receta"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/cigalas-gambas-langostinos-diferencias</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/cigalas-gambas-langostinos-diferencias"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/langoustine-prawn-shrimp-differences"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cigalas-gambas-langostinos-diferencias"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/langoustine-prawn-shrimp-differences</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/cigalas-gambas-langostinos-diferencias"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/langoustine-prawn-shrimp-differences"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cigalas-gambas-langostinos-diferencias"/>
+  </url>
 </urlset>
