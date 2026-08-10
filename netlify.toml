@@ -404,6 +404,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (gofio-canario-que-es)
+[[redirects]]
+  from = "/blog/gofio-canario-que-es.html"
+  to = "/blog/gofio-canario-que-es"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-gofio-what-is-it.html"
+  to = "/en/blog/canary-gofio-what-is-it"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"

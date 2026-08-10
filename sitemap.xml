@@ -673,4 +673,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/langoustine-prawn-shrimp-differences"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/cigalas-gambas-langostinos-diferencias"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/gofio-canario-que-es</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/gofio-canario-que-es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-gofio-what-is-it"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/gofio-canario-que-es"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/canary-gofio-what-is-it</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/gofio-canario-que-es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-gofio-what-is-it"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/gofio-canario-que-es"/>
+  </url>
 </urlset>
