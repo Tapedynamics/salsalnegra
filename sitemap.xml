@@ -691,4 +691,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-gofio-what-is-it"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/gofio-canario-que-es"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/navidad-tenerife-menus-especiales</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/navidad-tenerife-menus-especiales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/christmas-tenerife-special-menus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/navidad-tenerife-menus-especiales"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/christmas-tenerife-special-menus</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/navidad-tenerife-menus-especiales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/christmas-tenerife-special-menus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/navidad-tenerife-menus-especiales"/>
+  </url>
 </urlset>

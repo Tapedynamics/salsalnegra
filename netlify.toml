@@ -417,6 +417,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (navidad-tenerife-menus-especiales)
+[[redirects]]
+  from = "/blog/navidad-tenerife-menus-especiales.html"
+  to = "/blog/navidad-tenerife-menus-especiales"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/christmas-tenerife-special-menus.html"
+  to = "/en/blog/christmas-tenerife-special-menus"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
