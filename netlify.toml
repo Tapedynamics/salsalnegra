@@ -430,6 +430,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (productos-km0-tenerife-restaurantes)
+[[redirects]]
+  from = "/blog/productos-km0-tenerife-restaurantes.html"
+  to = "/blog/productos-km0-tenerife-restaurantes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/local-produce-tenerife-restaurants.html"
+  to = "/en/blog/local-produce-tenerife-restaurants"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
