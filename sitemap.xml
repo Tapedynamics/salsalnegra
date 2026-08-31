@@ -727,4 +727,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/local-produce-tenerife-restaurants"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/productos-km0-tenerife-restaurantes"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/puesta-sol-tenerife-mejores-sitios-cenar</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/puesta-sol-tenerife-mejores-sitios-cenar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/tenerife-sunset-best-dinner-spots"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/puesta-sol-tenerife-mejores-sitios-cenar"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/tenerife-sunset-best-dinner-spots</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/puesta-sol-tenerife-mejores-sitios-cenar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/tenerife-sunset-best-dinner-spots"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/puesta-sol-tenerife-mejores-sitios-cenar"/>
+  </url>
 </urlset>

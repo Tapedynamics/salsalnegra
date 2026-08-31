@@ -443,6 +443,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (puesta-sol-tenerife-mejores-sitios-cenar)
+[[redirects]]
+  from = "/blog/puesta-sol-tenerife-mejores-sitios-cenar.html"
+  to = "/blog/puesta-sol-tenerife-mejores-sitios-cenar"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/tenerife-sunset-best-dinner-spots.html"
+  to = "/en/blog/tenerife-sunset-best-dinner-spots"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
