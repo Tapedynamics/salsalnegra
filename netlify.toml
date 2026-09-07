@@ -456,6 +456,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (tapas-tenerife-cultura-platos)
+[[redirects]]
+  from = "/blog/tapas-tenerife-cultura-platos.html"
+  to = "/blog/tapas-tenerife-cultura-platos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/tenerife-tapas-culture-dishes.html"
+  to = "/en/blog/tenerife-tapas-culture-dishes"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
