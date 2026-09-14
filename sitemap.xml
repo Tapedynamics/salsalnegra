@@ -763,4 +763,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/tenerife-tapas-culture-dishes"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/tapas-tenerife-cultura-platos"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/plancha-brasa-diferencias-pescado</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/plancha-brasa-diferencias-pescado"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/griddle-vs-grill-fish-differences"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/plancha-brasa-diferencias-pescado"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/griddle-vs-grill-fish-differences</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/plancha-brasa-diferencias-pescado"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/griddle-vs-grill-fish-differences"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/plancha-brasa-diferencias-pescado"/>
+  </url>
 </urlset>

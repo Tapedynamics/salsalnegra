@@ -469,6 +469,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (plancha-brasa-diferencias-pescado)
+[[redirects]]
+  from = "/blog/plancha-brasa-diferencias-pescado.html"
+  to = "/blog/plancha-brasa-diferencias-pescado"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/griddle-vs-grill-fish-differences.html"
+  to = "/en/blog/griddle-vs-grill-fish-differences"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
