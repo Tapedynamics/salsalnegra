@@ -482,6 +482,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (mero-canario-como-cocinarlo)
+[[redirects]]
+  from = "/blog/mero-canario-como-cocinarlo.html"
+  to = "/blog/mero-canario-como-cocinarlo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-grouper-how-to-cook.html"
+  to = "/en/blog/canary-grouper-how-to-cook"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
