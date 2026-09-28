@@ -495,6 +495,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (comer-sin-gluten-tenerife-sur)
+[[redirects]]
+  from = "/blog/comer-sin-gluten-tenerife-sur.html"
+  to = "/blog/comer-sin-gluten-tenerife-sur"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/gluten-free-south-tenerife.html"
+  to = "/en/blog/gluten-free-south-tenerife"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
