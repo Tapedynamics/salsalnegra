@@ -508,6 +508,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (vieiras-navajas-tenerife-cuando-pedirlas)
+[[redirects]]
+  from = "/blog/vieiras-navajas-tenerife-cuando-pedirlas.html"
+  to = "/blog/vieiras-navajas-tenerife-cuando-pedirlas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/scallops-razor-clams-tenerife-when.html"
+  to = "/en/blog/scallops-razor-clams-tenerife-when"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
