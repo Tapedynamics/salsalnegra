@@ -24,6 +24,18 @@
   force = true
 
 [[redirects]]
+  from = "/reserva/mesa"
+  to = "/reservas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/book/table"
+  to = "/en/booking"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/menus-especiales.html"
   to = "/menus-especiales"
   status = 301
