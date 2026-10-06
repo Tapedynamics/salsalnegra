@@ -17,3 +17,77 @@ nul
 
 # Node
 node_modules/
+
+# --- Documenti di lavoro TD (08/09/2026, debito aperto dal 24/08) ---
+# La root e la publish dir di Netlify: qualunque file non ignorato qui
+# finisce pubblicato su salnegratenerife.com da un git add -A distratto.
+/PIANO-*.md
+/RICHIESTA-*.md
+/DOSSIER-*.md
+/HANDOFF*.md
+/DIAGNOSI-*.md
+/MESSAGGIO-*.md
+/ESEGUI-*.md
+/REPORT-*.md
+/EXPORT-*.csv
+/BRIEF-*.md
+_ops-trigger-24ago/
+_OPS/
+_sync-*/
+
+# --- Sistemi che NON sono il sito, ma stanno dentro la publish dir ---
+salnegra-gestionale/
+proto-pos-onetap/
+_deploy-guia/
+reel-engine/
+guia-veronica-anadir-plato.html
+
+# --- Segreti e dump, ovunque ---
+*.env
+*.sql
+
+# --- Snapshot di lavoro e materiali non del sito (08/09/2026) ---
+# Nessuno di questi e referenziato da una pagina tracciata (verificato).
+# Ignorarli non tocca la produzione: Netlify pubblica solo cio che e tracciato.
+_i18n-es-27mag/
+_lenovo-print-agent/
+/_overlay-c*.html
+/_taskid.txt
+musica-estate/
+istruzioni-chiusura/
+reel-assets/
+CLIP PRONTI PER EDIT/
+/LOCANDINA-*.jpg
+/LOCANDINA-*.png
+/locandina-*.html
+/nginx-salnegra.conf
+/qr-s1-2.html
+/qr-s1-2.svg
+/qr-tavolo-s1-1.svg
+/test-aiact-salnegra.mjs
+
+# Snapshot JS in root, copie datate di file che vivono su td-01
+/*-18mag.js
+/*-19mag.js
+/*-20mag.js
+/backend-*.js
+/chatbotService-*.js
+/dashboard-*.js
+/api-lib-*.js
+/reset-pw.js
+/voicebot-server.js
+
+# Documentazione interna in root
+/manifest.md
+/HEALTH.md
+/CATALOGO_BEBIDAS.md
+/chatbot-memory-consolidation-SPEC.md
+
+# Immagini non referenziate da nessuna pagina e 404 in produzione
+images/menu_backup/
+images/ai-variante-*
+images/hero-cocktail.jpg
+images/hero-toast.jpg
+images/dish-round.jpg
+images/logo-black-cropped.png
+images/logo-white-cropped.png
