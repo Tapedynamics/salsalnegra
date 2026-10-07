@@ -102,6 +102,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menus-especiales"/>
   </url>
   <url>
+    <loc>https://salnegratenerife.com/menu-del-dia</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menu-del-dia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/lunch-menu"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/menu-del-giorno"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menu-del-dia"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/lunch-menu</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menu-del-dia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/lunch-menu"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/menu-del-giorno"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menu-del-dia"/>
+  </url>
+  <url>
     <loc>https://salnegratenerife.com/eventos</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -408,6 +428,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/special-menus"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/menu-speciali"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menus-especiales"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/menu-del-giorno</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/menu-del-dia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/lunch-menu"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/menu-del-giorno"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menu-del-dia"/>
   </url>
   <url>
     <loc>https://salnegratenerife.com/it/eventi</loc>

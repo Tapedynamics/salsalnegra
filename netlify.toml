@@ -42,6 +42,12 @@
   force = true
 
 [[redirects]]
+  from = "/menu-del-dia.html"
+  to = "/menu-del-dia"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/eventos.html"
   to = "/eventos"
   status = 301
@@ -190,6 +196,12 @@
   force = true
 
 [[redirects]]
+  from = "/en/lunch-menu.html"
+  to = "/en/lunch-menu"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/en/events.html"
   to = "/en/events"
   status = 301
@@ -242,6 +254,12 @@
 [[redirects]]
   from = "/it/menu-speciali.html"
   to = "/it/menu-speciali"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/menu-del-giorno.html"
+  to = "/it/menu-del-giorno"
   status = 301
   force = true
 
