@@ -48,6 +48,24 @@
   force = true
 
 [[redirects]]
+  from = "/pescado-marisco-los-cristianos.html"
+  to = "/pescado-marisco-los-cristianos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/paella.html"
+  to = "/paella"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cenas-grupo-eventos.html"
+  to = "/cenas-grupo-eventos"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/eventos.html"
   to = "/eventos"
   status = 301
@@ -202,6 +220,24 @@
   force = true
 
 [[redirects]]
+  from = "/en/seafood-los-cristianos.html"
+  to = "/en/seafood-los-cristianos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/paella.html"
+  to = "/en/paella"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/group-dinners-events.html"
+  to = "/en/group-dinners-events"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/en/events.html"
   to = "/en/events"
   status = 301
@@ -260,6 +296,24 @@
 [[redirects]]
   from = "/it/menu-del-giorno.html"
   to = "/it/menu-del-giorno"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/pesce-frutti-di-mare-los-cristianos.html"
+  to = "/it/pesce-frutti-di-mare-los-cristianos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/paella.html"
+  to = "/it/paella"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it/cene-gruppo-eventi.html"
+  to = "/it/cene-gruppo-eventi"
   status = 301
   force = true
 

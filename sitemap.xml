@@ -122,6 +122,96 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/menu-del-dia"/>
   </url>
   <url>
+    <loc>https://salnegratenerife.com/pescado-marisco-los-cristianos</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/pescado-marisco-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/seafood-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/pesce-frutti-di-mare-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/pescado-marisco-los-cristianos"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/seafood-los-cristianos</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/pescado-marisco-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/seafood-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/pesce-frutti-di-mare-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/pescado-marisco-los-cristianos"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/pesce-frutti-di-mare-los-cristianos</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/pescado-marisco-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/seafood-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/pesce-frutti-di-mare-los-cristianos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/pescado-marisco-los-cristianos"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/paella</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/paella"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/paella"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/paella"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/paella"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/paella</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/paella"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/paella"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/paella"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/paella"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/paella</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/paella"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/paella"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/paella"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/paella"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/cenas-grupo-eventos</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/cenas-grupo-eventos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/group-dinners-events"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/cene-gruppo-eventi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/cenas-grupo-eventos"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/group-dinners-events</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/cenas-grupo-eventos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/group-dinners-events"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/cene-gruppo-eventi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/cenas-grupo-eventos"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/it/cene-gruppo-eventi</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/cenas-grupo-eventos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/group-dinners-events"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://salnegratenerife.com/it/cene-gruppo-eventi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/cenas-grupo-eventos"/>
+  </url>
+  <url>
     <loc>https://salnegratenerife.com/eventos</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
