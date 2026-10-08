@@ -19,14 +19,22 @@ function loadMenuText(lang) {
   const footerAt = html.indexOf('<footer');
   const main = footerAt > -1 ? html.slice(0, footerAt) : html;
   const lines = [];
-  const re = /<h3>([\s\S]*?)<\/h3>|<h4>([\s\S]*?)<\/h4>\s*<span class="price">([\s\S]*?)<\/span>\s*<\/div>\s*(?:<p>([\s\S]*?)<\/p>)?/g;
+  // Intro box above the menu: bread & sauces, lunch menu price.
+  const intro = main.match(/<div class="content-wrapper"[^>]*>([\s\S]*?)<\/div>/);
+  if (intro) lines.push(clean(intro[1]));
+  const re =/<h3>([\s\S]*?)<\/h3>|<h4>([\s\S]*?)<\/h4>\s*<span class="price">([\s\S]*?)<\/span>\s*<\/div>\s*(?:<p>([\s\S]*?)<\/p>)?/g;
   let m;
   while ((m = re.exec(main))) {
     if (m[1] !== undefined) lines.push(`\n${clean(m[1])}:`);
     else lines.push(`- ${clean(m[2])} — ${clean(m[3])}${m[4] ? ` (${clean(m[4])})` : ''}`);
   }
-  const hours = html.slice(footerAt > -1 ? footerAt : 0).match(/<p><strong>([^<]+)<\/strong><br>(\d{1,2}:\d{2} - \d{1,2}:\d{2})<\/p>/);
-  if (hours) lines.push(`\n${lang === 'es' ? 'Horario' : 'Opening hours'}: ${hours[1]} ${hours[2]}`);
+  if (!lines.some((l) => l.startsWith('- '))) {
+    console.warn(`WARN: no dishes parsed from ${file}: menu markup changed?`);
+    return '';
+  }
+  const hours = html.slice(footerAt > -1 ? footerAt : 0).match(/<h4>(?:Horarios|Opening hours)<\/h4>\s*<p><strong>([^<]+)<\/strong><br>([^<]+)<\/p>/);
+  if (hours) lines.push(`\n${lang === 'es' ? 'Horario' : 'Opening hours'}: ${clean(hours[1])} ${clean(hours[2])}`);
+  else console.warn(`WARN: opening hours not found in ${file}`);
   return lines.join('\n').trim();
 }
 
