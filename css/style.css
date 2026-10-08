@@ -1403,12 +1403,12 @@ p {
 }
 
 .cookie-banner-text a {
-    color: var(--color-primary);
+    color: var(--color-white);
     text-decoration: underline;
 }
 
 .cookie-banner-text a:hover {
-    color: var(--color-white);
+    color: var(--color-gray-light);
 }
 
 .cookie-banner-buttons {
@@ -1439,8 +1439,8 @@ p {
 
 .cookie-btn-reject {
     background: transparent;
-    color: var(--color-gray-light);
-    border: 1px solid var(--color-gray);
+    color: var(--color-white);
+    border: 2px solid var(--color-gray-light);
 }
 
 .cookie-btn-reject:hover {
