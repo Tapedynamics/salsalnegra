@@ -31,6 +31,9 @@ node_modules/
 /REPORT-*.md
 /EXPORT-*.csv
 /BRIEF-*.md
+/PREMORTEM-*.md
+/VERIFICA-*.md
+/LEDGER-*.md
 _ops-trigger-24ago/
 _OPS/
 _sync-*/
