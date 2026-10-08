@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W8MPMC28');</script>
-<!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7G77T77WRT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7G77T77WRT');
-      gtag('config', 'AW-16644254944');
-    </script>
+    <script src="/js/consent.js?v=1" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Descubre los vinos canarios de Tenerife, con suelos volcánicos y clima único, y disfruta de maridajes perfectos en el restaurante Sal Negra. Una experiencia inolvidable.">
@@ -108,7 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/style.css?v=15">
+    <link rel="stylesheet" href="../css/style.css?v=17">
     <link rel="stylesheet" href="blog.css?v=1">
 </head>
 <body>
@@ -208,10 +193,24 @@ height=0 width=0 style=display:none;visibility:hidden></iframe></noscript>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2008 Sal Negra Tenerife. Todos los derechos reservados.</p>
+                <p style="margin-top: 0.5rem;"><a href="/politica-privacidad" style="text-decoration: underline;">Privacidad y cookies</a> · <a href="#" data-cookie-settings style="text-decoration: underline;">Configurar cookies</a></p>
             </div>
         </div>
     </footer>
 
-    <script src="../js/script.js?v=5"></script>
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                <p>Usamos cookies técnicas necesarias y, solo si las acepta, cookies de <strong>Google Analytics</strong> (estadísticas de visitas) y <strong>Google Ads</strong> (medir y personalizar anuncios). Puede cambiar su elección cuando quiera en «Configurar cookies», al pie de la página. <a href="/politica-privacidad">Política de privacidad y cookies</a></p>
+            </div>
+            <div class="cookie-banner-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Aceptar</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectCookies()">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js?v=7"></script>
 </body>
 </html>
