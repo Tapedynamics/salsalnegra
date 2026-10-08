@@ -15,6 +15,31 @@ function jsonSafe(obj) {
   return JSON.stringify(obj, null, 2);
 }
 
+// Same booking button as the home hero (Google reserve link).
+const RESERVE_URL = 'https://www.google.com/maps/reserve/v/dine/c/BOlR24NDHmg';
+
+// Most relevant commercial page for the closing CTA, picked from the slug.
+const RELATED = {
+  es: {
+    groups: '<a href="/cenas-grupo-eventos">cenas de grupo y eventos</a>',
+    paella: '<a href="/paella">nuestra paella</a>',
+    seafood: '<a href="/pescado-marisco-los-cristianos">nuestro pescado y marisco</a>'
+  },
+  en: {
+    groups: '<a href="/en/group-dinners-events">group dinners and events</a>',
+    paella: '<a href="/en/paella">our paella</a>',
+    seafood: '<a href="/en/seafood-los-cristianos">our seafood</a>'
+  }
+};
+
+function relatedLink(slug, lang) {
+  const s = String(slug);
+  let key = 'seafood';
+  if (/paella/.test(s)) key = 'paella';
+  else if (/cena-empresa|cumpleanos|navidad|corporate|birthday|christmas/.test(s)) key = 'groups';
+  return RELATED[lang][key];
+}
+
 function renderPostEs({ topic, bodyHtml, date, excerpt, image }) {
   const url = `https://salnegratenerife.com/blog/${topic.slug_es}`;
   const urlEn = `https://salnegratenerife.com/en/blog/${topic.slug_en}`;
@@ -154,8 +179,8 @@ ${bodyHtml}
 
     <div class="post-cta">
         <h3>Reserva tu mesa en Sal Negra</h3>
-        <p>Mariscos frescos del día, vistas al mar y cocina mediterránea en el corazón de Costa Adeje.</p>
-        <a href="../reservas.html" class="btn btn-primary">Reservar ahora</a>
+        <p>Pescado y marisco, vistas al mar y cocina mediterránea en Los Cristianos. Consulta nuestra <a href="/carta">carta</a> o descubre ${relatedLink(topic.slug_es, 'es')}.</p>
+        <a href="${RESERVE_URL}" target="_blank" rel="noopener" class="btn btn-primary">RESERVAS</a>
     </div>
 
     <div class="post-nav">
@@ -331,8 +356,8 @@ ${bodyHtml}
 
     <div class="post-cta">
         <h3>Book a table at Sal Negra</h3>
-        <p>Daily fresh seafood, sea views and Mediterranean cooking at the heart of Costa Adeje.</p>
-        <a href="../booking.html" class="btn btn-primary">Book now</a>
+        <p>Seafood, sea views and Mediterranean cooking in Los Cristianos. See our <a href="/en/menu">menu</a> or discover ${relatedLink(topic.slug_en, 'en')}.</p>
+        <a href="${RESERVE_URL}" target="_blank" rel="noopener" class="btn btn-primary">BOOK A TABLE</a>
     </div>
 
     <div class="post-nav">
