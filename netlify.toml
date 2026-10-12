@@ -605,6 +605,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (aniversario-pareja-tenerife-cena-romantica)
+[[redirects]]
+  from = "/blog/aniversario-pareja-tenerife-cena-romantica.html"
+  to = "/blog/aniversario-pareja-tenerife-cena-romantica"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/anniversary-tenerife-romantic-dinner.html"
+  to = "/en/blog/anniversary-tenerife-romantic-dinner"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
