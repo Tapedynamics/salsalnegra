@@ -181,7 +181,7 @@ ${bodyHtml}
                 </div>
                 <div class="footer-section">
                     <h4>Contacto</h4>
-                    <p><strong>Dirección:</strong><br>Avda. La Habana<br>Centro Comercial San Telmo<br>Local 13 b, Tenerife</p>
+                    <p><strong>Dirección:</strong><br>Avda. La Habana<br>Centro Comercial San Telmo<br>Local 13 b<br>Los Cristianos, Tenerife</p>
                     <p><strong>Teléfono:</strong><br><a href="tel:922306958">922 30 69 58</a></p>
                 </div>
                 <div class="footer-section">
@@ -358,7 +358,7 @@ ${bodyHtml}
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p><strong>Address:</strong><br>Avda. La Habana<br>Centro Comercial San Telmo<br>Local 13 b, Tenerife</p>
+                    <p><strong>Address:</strong><br>Avda. La Habana<br>Centro Comercial San Telmo<br>Local 13 b<br>Los Cristianos, Tenerife</p>
                     <p><strong>Phone:</strong><br><a href="tel:922306958">+34 922 30 69 58</a></p>
                 </div>
                 <div class="footer-section">
