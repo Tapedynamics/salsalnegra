@@ -17,6 +17,19 @@
   status = 301
   force = true
 
+# URL vecchio (sito precedente, Search Console) -> carta
+[[redirects]]
+  from = "/carta-de-sal-negra-tenerife/"
+  to = "/carta"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/carta-de-sal-negra-tenerife"
+  to = "/carta"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/reservas.html"
   to = "/reservas"
