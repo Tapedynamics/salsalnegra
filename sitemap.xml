@@ -991,4 +991,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/sardines-mackerel-tenerife"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/sardinas-caballa-azul-tenerife"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/frituras-pescado-canario</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/frituras-pescado-canario"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-fried-seafood"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/frituras-pescado-canario"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/canary-fried-seafood</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/frituras-pescado-canario"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-fried-seafood"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/frituras-pescado-canario"/>
+  </url>
 </urlset>

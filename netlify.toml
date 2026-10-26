@@ -644,6 +644,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (frituras-pescado-canario)
+[[redirects]]
+  from = "/blog/frituras-pescado-canario.html"
+  to = "/blog/frituras-pescado-canario"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-fried-seafood.html"
+  to = "/en/blog/canary-fried-seafood"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
