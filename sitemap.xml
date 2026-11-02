@@ -1009,4 +1009,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-fried-seafood"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/frituras-pescado-canario"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/menu-degustacion-tenerife-cuando-pedir</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/menu-degustacion-tenerife-cuando-pedir"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/tasting-menu-tenerife-when-to-order"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/menu-degustacion-tenerife-cuando-pedir"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/tasting-menu-tenerife-when-to-order</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/menu-degustacion-tenerife-cuando-pedir"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/tasting-menu-tenerife-when-to-order"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/menu-degustacion-tenerife-cuando-pedir"/>
+  </url>
 </urlset>

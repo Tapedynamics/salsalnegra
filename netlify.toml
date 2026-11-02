@@ -657,6 +657,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (menu-degustacion-tenerife-cuando-pedir)
+[[redirects]]
+  from = "/blog/menu-degustacion-tenerife-cuando-pedir.html"
+  to = "/blog/menu-degustacion-tenerife-cuando-pedir"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/tasting-menu-tenerife-when-to-order.html"
+  to = "/en/blog/tasting-menu-tenerife-when-to-order"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
