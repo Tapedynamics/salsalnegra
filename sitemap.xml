@@ -1027,4 +1027,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/tasting-menu-tenerife-when-to-order"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/menu-degustacion-tenerife-cuando-pedir"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/sostenibilidad-pesca-canarias</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/sostenibilidad-pesca-canarias"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/sustainable-fishing-canary-islands"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/sostenibilidad-pesca-canarias"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/sustainable-fishing-canary-islands</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/sostenibilidad-pesca-canarias"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/sustainable-fishing-canary-islands"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/sostenibilidad-pesca-canarias"/>
+  </url>
 </urlset>

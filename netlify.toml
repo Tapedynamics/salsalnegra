@@ -670,6 +670,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (sostenibilidad-pesca-canarias)
+[[redirects]]
+  from = "/blog/sostenibilidad-pesca-canarias.html"
+  to = "/blog/sostenibilidad-pesca-canarias"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/sustainable-fishing-canary-islands.html"
+  to = "/en/blog/sustainable-fishing-canary-islands"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
