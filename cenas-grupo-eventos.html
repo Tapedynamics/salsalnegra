@@ -53,6 +53,8 @@
         .sn-cta p a { white-space: nowrap; }
         .sn-empresa { scroll-margin-top: 100px; margin: 0 0 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--color-gray-light); }
         .sn-landing .content-wrapper .sn-empresa h2 { margin-top: 0; }
+        .sn-empresa picture { display: block; }
+        .sn-empresa-img { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto 2rem; border-radius: 8px; }
         .sn-empresa-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
         .sn-empresa-ctas .btn { display: inline-flex; align-items: center; gap: 0.5rem; }
         @media (max-width: 480px) { .sn-landing .content-wrapper h2 { font-size: 1.6rem; } }
@@ -88,7 +90,10 @@ height=0 width=0 style=display:none;visibility:hidden></iframe></noscript>
             <div class="content-wrapper">
                 <section id="menus-empresa" class="sn-empresa">
                     <h2>Menús de empresa</h2>
-                    <!-- Grafica menús de empresa: va qui, sotto il titolo: <img src="/images/menus-empresa.jpg" alt="..." width=".." height=".." loading="lazy" class="sn-landing-img"> -->
+                    <picture>
+                        <source type="image/webp" srcset="images/menus-empresa-440.webp 440w, images/menus-empresa-880.webp 880w" sizes="(max-width: 480px) 100vw, 440px">
+                        <img src="images/menus-empresa-880.jpg" alt="Menús de empresa de Sal Negra: menús de 30 €, 40 € y 50 € con agua, pan y vino incluidos" width="880" height="1100" decoding="async" class="sn-empresa-img">
+                    </picture>
                     <ul class="sn-dishes">
                         <li><span class="dish">Croquetas, pimientos de padrón, parrillada de carne<small>Por persona</small></span><span class="price">30 €</span></li>
                         <li><span class="dish">Chopitos fritos, mejillones marinera, gambas al ajillo, paella de pescado y marisco<small>Por persona</small></span><span class="price">40 €</span></li>
