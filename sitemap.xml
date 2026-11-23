@@ -1045,4 +1045,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/sustainable-fishing-canary-islands"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/sostenibilidad-pesca-canarias"/>
   </url>
+  <url>
+    <loc>https://salnegratenerife.com/blog/sancocho-canario-pescado-salado</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/sancocho-canario-pescado-salado"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-sancocho-salted-fish"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/sancocho-canario-pescado-salado"/>
+  </url>
+  <url>
+    <loc>https://salnegratenerife.com/en/blog/canary-sancocho-salted-fish</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://salnegratenerife.com/blog/sancocho-canario-pescado-salado"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://salnegratenerife.com/en/blog/canary-sancocho-salted-fish"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://salnegratenerife.com/blog/sancocho-canario-pescado-salado"/>
+  </url>
 </urlset>

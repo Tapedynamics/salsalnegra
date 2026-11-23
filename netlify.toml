@@ -683,6 +683,19 @@
   status = 301
   force = true
 
+# Auto-generated blog redirect (sancocho-canario-pescado-salado)
+[[redirects]]
+  from = "/blog/sancocho-canario-pescado-salado.html"
+  to = "/blog/sancocho-canario-pescado-salado"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/canary-sancocho-salted-fish.html"
+  to = "/en/blog/canary-sancocho-salted-fish"
+  status = 301
+  force = true
+
 # 404 fallback
 [[redirects]]
   from = "/*"
